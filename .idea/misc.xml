@@ -1,0 +1,189 @@
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidProjects/LatestWorkingCopy/New OTM SYSTEM/OTM Jobs git/app/src/main/res/layout/activity_pj_job_details.xml" value="0.14444444444444443" />
+        <entry key="..\:/AndroidProjects/LatestWorkingCopy/New OTM SYSTEM/OTM Jobs git/app/src/main/res/layout/activity_signup_2.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/circle_off_white.xml" value="0.2965" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/circle_red.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/circle_red_white_corner.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/dashboard_bottom_tab_bg.xml" value="0.188" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/edittext_light_bg_solid.xml" value="0.188" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/edittext_light_bg_transparent_solid.xml" value="0.229" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/edittext_light_bg_transperant_solid.xml" value="0.229" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_arrow_down.xml" value="0.229" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_arrow_down_light.xml" value="0.188" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_tick.xml" value="0.188" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_vector.xml" value="0.1545" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/membership_plan_bg.xml" value="0.136" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/rounded_black_button_bg_transperent.xml" value="0.162" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/rounded_gray_button_bg_transperent.xml" value="0.188" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/seller_details_background.xml" value="0.202" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/subscription_bottom_bg.xml" value="0.2965" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_baseline_edit.xml" value="0.202" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_compare.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_compare2.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_empty_image_placeholder.xml" value="0.162" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_watchlist.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_watchlist2.xml" value="0.202" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_watchlist_active.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/font/my_custom_font.xml" value="0.31197916666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_add_product.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_category_list.xml" value="0.2953125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_compare_product.xml" value="0.2578125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_dashboard.xml" value="0.17028985507246377" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_filters.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_introduction.xml" value="0.27291666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_my_products.xml" value="0.33125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_product_details.xml" value="0.22" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_seller_details.xml" value="0.32447916666666665" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_seller_details2.xml" value="0.22" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_signup_2.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_splash.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_subscription.xml" value="0.22" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_subscription2.xml" value="0.2223731884057971" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_verify_otp.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_webview.xml" value="0.36666666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/app_bar_dashboard.xml" value="0.24375" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/bottom_dialog_select_item.xml" value="0.33" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/bottom_sheet_dialog_select_item.xml" value="0.26979166666666665" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/content_dashboard.xml" value="0.33" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_add_product_alert.xml" value="0.328125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_add_product_reached.xml" value="0.328125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_contact_alert.xml" value="0.2" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_contact_reached.xml" value="0.33" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_report_product.xml" value="0.23854166666666668" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_seller_details.xml" value="0.33" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_seller_details2.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_sort_by_product.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_sort_by_seller.xml" value="0.36666666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_view_free_contact.xml" value="0.36666666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_directory.xml" value="0.2546875" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_market.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_product_watchlist.xml" value="0.24375" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_watchlist.xml" value="0.24375" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_watchlist_products.xml" value="0.24375" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_watchlist_sellers.xml" value="0.24375" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/layout_compare_count.xml" value="0.2" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/layout_progressbar.xml" value="0.265625" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/nav_header_dashboard.xml" value="0.17028985507246377" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_bottom_dialog_select_item.xml" value="0.278125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_category_item.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_compare_details_title.xml" value="0.2578125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_compare_details_value.xml" value="0.2578125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_compare_product.xml" value="0.2578125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_contry_flag_list.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_dashboard_banner_pager.xml" value="0.3067708333333333" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_filter_items_list.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_filters_list.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_introduction_pager.xml" value="0.17831813576494426" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_introduction_pager_dots.xml" value="0.27291666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_login_users.xml" value="0.17028985507246377" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_membership_plan.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_payment_info.xml" value="0.18" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_product.xml" value="0.33" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_seller.xml" value="0.33" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_sort_by_item.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/seller_details_dialog.xml" value="0.31145833333333334" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/toolbar_main.xml" value="0.2" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/menu/dashboard_navigation_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/menu/single_item_text_menu.xml" value="0.3489583333333333" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/edittext_light_bg_transparent_solid.xml" value="0.219" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_check_circle_green_24dp.xml" value="0.279" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_close.xml" value="0.168" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_done.xml" value="0.168" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_empty_user.xml" value="0.219" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/membership_plan_active_bg.xml" value="0.202" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/membership_plan_bg.xml" value="0.23" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/rounded_button_bg.xml" value="0.2035" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/rounded_transperent_button_bg.xml" value="0.2035" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable/ic_baseline_call.xml" value="0.168" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable/ic_baseline_check_circle.xml" value="0.279" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable/ic_baseline_error_outline.xml" value="0.192" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable/ic_compare2.xml" value="0.279" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_add_product.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_app_information.xml" value="0.3385416666666667" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_category_list.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_category_products.xml" value="0.3463541666666667" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_compare_product.xml" value="0.2" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_dashboard.xml" value="0.16995947315096252" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_edit_profile.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_featured_products.xml" value="0.334375" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_filters.xml" value="0.3458333333333333" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_introduction.xml" value="0.28229166666666666" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_login.xml" value="0.1634963768115942" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_my_products.xml" value="0.286231884057971" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_product_details.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_seller_details.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_seller_details2.xml" value="0.31875" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_splash.xml" value="0.28229166666666666" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_subscription.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_subscription2.xml" value="0.31875" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/app_bar_dashboard.xml" value="0.28229166666666666" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/bottom_sheet_dialog_select_item.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/content_dashboard.xml" value="0.16995947315096252" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_add_product_alert.xml" value="0.30364583333333334" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_add_product_reached.xml" value="0.21311475409836064" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_contact_alert.xml" value="0.1517509727626459" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_contact_reached.xml" value="0.18055555555555555" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_report_product.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_search_post_code.xml" value="0.23958333333333334" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_select_attachment.xml" value="0.35104166666666664" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_select_date_range.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_sort_by_product.xml" value="0.33489583333333334" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_view_free_contact.xml" value="0.1" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/fragment_market.xml" value="0.18" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/fragment_watchlist.xml" value="0.2318840579710145" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/fragment_watchlist_products.xml" value="0.286231884057971" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/layout_compare_count.xml" value="0.286231884057971" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/layout_progressbar.xml" value="0.286231884057971" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_bottom_dialog_select_item.xml" value="0.18840579710144928" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_category_item.xml" value="0.3078125" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_compare_details_title.xml" value="0.2318840579710145" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_compare_details_value.xml" value="0.15526849037487336" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_compare_product.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_dashboard_banner_pager.xml" value="0.20969202898550723" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_introduction_pager.xml" value="0.2" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_introduction_pager_dots.xml" value="0.20052083333333334" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_product.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_seller.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_sort_by_item.xml" value="0.20969202898550723" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/menu/dashboard_navigation_drawer.xml" value="0.3171875" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/utilities/src/main/res/layout/dialog_loading.xml" value="0.286231884057971" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/drawable-nodpi/ic_empty_place_holder.xml" value="0.164" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_app_information.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_change_password.xml" value="0.12771739130434784" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_dashboard.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_edit_profile.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_forgot_password.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_job_history.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_main.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_my_jobs_details.xml" value="0.2027097446586764" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_select_trade.xml" value="0.2760416666666667" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_trade_person_details.xml" value="0.2760416666666667" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/row_my_jobs.xml" value="0.28532608695652173" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

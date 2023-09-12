@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:background="@android:color/transparent"
+    android:gravity="center_horizontal"
+    android:minHeight="?attr/actionBarSize"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp"
+    app:layout_collapseMode="pin"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    tools:ignore="MissingPrefix">
+
+    <LinearLayout
+        android:id="@+id/toolbarChatView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/routUserPic"
+            android:layout_width="@dimen/size_32dp"
+            android:layout_height="@dimen/size_32dp"
+            android:layout_marginEnd="@dimen/size_10dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgUser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgOnlineStatus"
+                android:layout_width="@dimen/size_10dp"
+                android:layout_height="@dimen/size_10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/circle_white"
+                android:padding="@dimen/size_2dp"
+                android:tint="@color/transparent"
+                android:visibility="gone"
+                app:srcCompat="@drawable/circle_white"
+                app:tint="@color/green" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                style="@style/ToolbarTitleFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@string/font_family_medium"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <TextView
+                android:id="@+id/txtLastSeen"
+                style="@style/ToolbarTitleFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/colorSecondaryLightText"
+                android:textSize="@dimen/text_size_12sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/toolBarNavigation"
+        style="@style/ToolbarTitleFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:ellipsize="end"
+        android:fontFamily="@string/font_family_medium"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/colorPrimaryText" />
+
+    <LinearLayout
+        android:id="@+id/routActionButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgActionWatchList"
+            android:layout_width="@dimen/size_24dp"
+            android:layout_height="@dimen/size_24dp"
+            android:layout_marginEnd="@dimen/size_12dp"
+            android:padding="@dimen/size_1dp"
+            app:srcCompat="@drawable/ic_watchlist" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgActionCompare"
+            android:layout_width="@dimen/size_24dp"
+            android:layout_height="@dimen/size_24dp"
+            android:layout_marginEnd="@dimen/size_12dp"
+            android:padding="@dimen/size_1dp"
+            app:srcCompat="@drawable/ic_compare2" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgActionShare"
+            android:layout_width="@dimen/size_24dp"
+            android:layout_height="@dimen/size_24dp"
+            android:layout_marginEnd="@dimen/size_12dp"
+            android:padding="@dimen/size_2dp"
+            app:srcCompat="@drawable/ic_share" />
+
+    </LinearLayout>
+</androidx.appcompat.widget.Toolbar>

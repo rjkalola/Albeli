@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccentTransparent">#6657b86b</color>
+    <color name="colorOrange">#ff8213</color>
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorSecondaryText">#737373</color>
+    <color name="colorSecondaryLightText">#606a74</color>
+    <color name="colorSecondaryDarkText">#525252</color>
+    <color name="colorSecondaryExtraLightText">#9E9E9E</color>
+    <color name="colorWindowBackground">#FFFFFF</color>
+    <color name="colorWindowBackgroundDark">#FDFDFD</color>
+
+    <color name="colorSolidButtonText">#FFFFFF</color>
+    <color name="colorTransparentButtonText">#57b86b</color>
+    <color name="colorDefaultAccent">#57b86b</color>
+    <color name="colorTitleBg">#F4F5F7</color>
+    <color name="colorHint">#bdbdbd</color>
+    <color name="colorDivider">#e6eaee</color>
+    <color name="colorUnderline">#e6e9ee</color>
+    <color name="colorFloatingLabelText">#000000</color>
+    <color name="colorErrorColor">#e50914</color>
+    <color name="colorDashBoardTabBg">#f4f5f7</color>
+    <color name="colorDashBoardInActiveTab">#5B5D64</color>
+    <color name="colorDashBoardActiveTab">#57b86b</color>
+    <color name="colorDashBoardTabIndicator">#57b86b</color>
+    <color name="colorInProgress">#e9e9e9</color>
+    <color name="colorInActiveProgress">#cdd4db</color>
+    <color name="colorSignIn">#18c072</color>
+    <color name="colorBreakIn">#f68121</color>
+    <color name="colorSignOut">#fd3c3c</color>
+    <!--    <color name="colorBreakIn">#18c072</color>-->
+
+
+    <color name="colorFolder">#00c1f1</color>
+    <color name="colorNavigationMenuText">#212121</color>
+    <!--    <color name="colorBusyStatus">#ff7200</color>-->
+    <color name="colorShareLinkSolidColor">#ebf4fd</color>
+    <color name="colorShareLinkStrokeColor">#aecff0</color>
+    <color name="colorPopupBackground">#ffffff</color>
+    <color name="colorIconBackground">#E6EAEE</color>
+    <color name="colorDigitalCardBackground">#f5f9fc</color>
+
+
+    <color name="colorDarkDivider">#bdc5d4</color>
+    <color name="colorRippleColor">#FFFF</color>
+    <color name="colorRipple2">#B3B3B3</color>
+    <color name="colorFilterClear">#fe3000</color>
+    <color name="colorUnCheck">#c4cdd6</color>
+    <!--    <color name="black">#000000</color>-->
+
+    <color name="light_green">#81ebc3</color>
+    <color name="green">#00ae46</color>
+    <color name="green_dark">#088853</color>
+    <color name="yellow">#ffc000</color>
+    <color name="red">#e50914</color>
+    <color name="gray">#94a5af</color>
+    <color name="light_gray">#d4dce9</color>
+    <color name="colorButtonPress">#EEEEEE</color>
+    <color name="indigo">#3D0084</color>
+
+    <color name="colorInActiveDot">#b2b2b2</color>
+    <color name="colorGreenCheckInCounter">#01c875</color>
+    <color name="colorProgressIndicator">#dfe4ed</color>
+    <color name="disableEditTextColor">#aaaaaa</color>
+
+    <color name="colorStatusAvailable">#01c875</color>
+    <color name="colorStatusBusy">#ff1b1c</color>
+    <color name="colorStatusOffWork">#ff9205</color>
+
+    <color name="bg_gradient_start">#31244e</color>
+    <color name="bg_gradient_end">#6b394c</color>
+
+    <color name="color_chat_right_bubble_time">#49658d</color>
+    <color name="color_loading_text">#7C7C7C</color>
+    <color name="color_scroll_to_bottom_button_circle">#f4f4f4</color>
+    <color name="color_unread_feed_background">#edf2fb</color>
+
+    <color name="colorMyCertificateSolid">#fafcfe</color>
+    <color name="colorMyCertificateStroke">#eef2f6</color>
+
+    <color name="colorActiveRadioButton">#33B148</color>
+    <color name="colorInActiveRadioButton">#B5B5B5</color>
+
+    <color name="colorButtonGray">#8d8d8d</color>
+
+    <color name="colorPinItemTypeOptionsNormal">#CFCFCF</color>
+    <color name="colorPinItemTypeOptionsPressed">#4DCFCFCF</color>
+    <color name="colorPinItemTypeText">#4D000000</color>
+
+    <color name="colorPinItemTypeSelectedNormal">#e20613</color>
+    <color name="colorPinItemTypeSelectedPressed">#4De20613</color>
+
+    <color name="colorChatBubbleStroke">#d4d4d4</color>
+    <color name="colorChatBubbleSolid">#e8ebf0</color>
+
+
+
+    // Dashboard Circle Colors
+    <color name="inner_work_color1">#4421e0</color>
+    <color name="inner_work_color2">#fb2724</color>
+    <!--    <color name="inner_work_color1">#4421e0</color>-->
+    <!--    <color name="inner_work_color2">#AB97D8</color>-->
+    <!--    <color name="inner_work_color3">#E43737</color>-->
+
+    <color name="inner_break_color1">#db7827</color>
+    <color name="inner_break_color2">#F6D3B5</color>
+    <color name="outer_work_color1">#e7eddf</color>
+    <color name="outer_work_color2">#f8efde</color>
+    <color name="outer_break_color1">#fddbad</color>
+    <color name="outer_break_color2">#fbb5b3</color>
+
+    <integer-array name="inner_work_color_list">
+        <item>@color/inner_work_color1</item>
+        <item>@color/inner_work_color2</item>
+    </integer-array>
+    <integer-array name="inner_break_color_list">
+        <item>@color/inner_break_color1</item>
+        <item>@color/inner_break_color2</item>
+    </integer-array>
+    <integer-array name="outer_work_color_list">
+        <item>@color/outer_work_color1</item>
+        <item>@color/outer_work_color2</item>
+    </integer-array>
+    <integer-array name="outer_break_color_list">
+        <item>@color/outer_break_color1</item>
+        <item>@color/outer_break_color2</item>
+    </integer-array>
+
+
+    <color name="chart_not_started_color">#d13438</color>
+    <color name="chart_in_progress_color">#327eaa</color>
+    <color name="chart_completed_color">#418040</color>
+
+    <integer-array name="chart_color_list">
+        <item>@color/chart_not_started_color</item>
+        <item>@color/chart_in_progress_color</item>
+        <item>@color/chart_completed_color</item>
+    </integer-array>
+
+    <color name="color_clock_in_rectangle">#EDEDED</color>
+
+
+    //Albeli
+    <color name="abc_input_method_navigation_guard">@android:color/black</color>
+    <color name="abc_search_url_text_normal">#7fa87f</color>
+    <color name="abc_search_url_text_pressed">@android:color/black</color>
+    <color name="abc_search_url_text_selected">@android:color/black</color>
+    <color name="accent_material_dark">@color/material_deep_teal_200</color>
+    <color name="accent_material_light">@color/material_deep_teal_500</color>
+    <color name="background_floating_material_dark">@color/material_grey_800</color>
+    <color name="background_floating_material_light">@android:color/white</color>
+    <color name="background_material_dark">@color/material_grey_850</color>
+    <color name="background_material_light">@color/material_grey_50</color>
+    <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
+    <color name="bright_foreground_disabled_material_light">#80000000</color>
+    <color name="bright_foreground_inverse_material_dark">@color/bright_foreground_material_light</color>
+    <color name="bright_foreground_inverse_material_light">@color/bright_foreground_material_dark</color>
+    <color name="bright_foreground_material_dark">@android:color/white</color>
+    <color name="bright_foreground_material_light">@android:color/black</color>
+    <color name="browser_actions_bg_grey">#f5f5f5</color>
+    <color name="browser_actions_divider_color">#1e000000</color>
+    <color name="browser_actions_text_color">#de000000</color>
+    <color name="browser_actions_title_color">#646464</color>
+    <color name="button_material_dark">#ff5a595b</color>
+    <color name="button_material_light">#ffd6d7d7</color>
+    <color name="cardview_dark_background">#ff424242</color>
+    <color name="cardview_light_background">#ffffffff</color>
+    <color name="cardview_shadow_end_color">#03000000</color>
+    <color name="cardview_shadow_start_color">#37000000</color>
+    <color name="colorAccent">#979191</color>
+    <color name="colorAssuredEnd">#ff8c02</color>
+    <color name="colorAssuredStart">#ff3b36</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorGray">@android:color/darker_gray</color>
+    <color name="colorGrayDark">#9b9b9b</color>
+    <color name="colorGrayLight">#f4f4f4</color>
+    <color name="colorGreen">#57b76b</color>
+    <color name="colorIvBack">#c8c8c8</color>
+    <color name="colorPriceStrike">#ff3c3c</color>
+    <color name="colorPrimary">#cec7c7</color>
+    <color name="colorPrimaryDark">#979191</color>
+    <color name="colorRed">#ff0000</color>
+    <color name="colorTvRating">#3eb658</color>
+    <color name="colorTvReview">#ff5151</color>
+    <color name="colorTvSignin">#3eb658</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="com_facebook_blue">#3b5998</color>
+    <color name="com_facebook_button_background_color">#415dae</color>
+    <color name="com_facebook_button_background_color_disabled">#bdc1c9</color>
+    <color name="com_facebook_button_background_color_focused">#fffffe</color>
+    <color name="com_facebook_button_background_color_focused_disabled">#84878c</color>
+    <color name="com_facebook_button_background_color_pressed">#2f477a</color>
+    <color name="com_facebook_button_background_color_selected">#7c8fc8</color>
+    <color name="com_facebook_button_border_color_focused">#dedee6</color>
+    <color name="com_facebook_button_login_background_color">#4267b2</color>
+    <color name="com_facebook_button_login_silver_background_color">#f4f6f8</color>
+    <color name="com_facebook_button_login_silver_background_color_pressed">#e9eaf0</color>
+    <color name="com_facebook_button_send_background_color">@color/com_facebook_messenger_blue</color>
+    <color name="com_facebook_button_send_background_color_pressed">#006fff</color>
+    <color name="com_facebook_device_auth_text">#90949c</color>
+    <color name="com_facebook_likeboxcountview_border_color">#6a7180</color>
+    <color name="com_facebook_likeboxcountview_text_color">#6a7180</color>
+    <color name="com_facebook_likeview_text_color">#6a7180</color>
+    <color name="com_facebook_messenger_blue">#0084ff</color>
+    <color name="com_smart_login_code">#3c6499</color>
+    <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
+    <color name="common_google_signin_btn_text_dark_disabled">#1f000000</color>
+    <color name="common_google_signin_btn_text_dark_focused">@android:color/black</color>
+    <color name="common_google_signin_btn_text_dark_pressed">@android:color/white</color>
+    <color name="common_google_signin_btn_text_light_default">#90000000</color>
+    <color name="common_google_signin_btn_text_light_disabled">#1f000000</color>
+    <color name="common_google_signin_btn_text_light_focused">#90000000</color>
+    <color name="common_google_signin_btn_text_light_pressed">#de000000</color>
+    <color name="default_bubble_indicator_fill_color">#ffffff</color>
+    <color name="default_bubble_indicator_page_color">#000000</color>
+    <color name="design_bottom_navigation_shadow_color">#14000000</color>
+    <color name="design_dark_default_color_background">#121212</color>
+    <color name="design_dark_default_color_error">#cf6679</color>
+    <color name="design_dark_default_color_on_background">#ffffff</color>
+    <color name="design_dark_default_color_on_error">#000000</color>
+    <color name="design_dark_default_color_on_primary">#000000</color>
+    <color name="design_dark_default_color_on_secondary">#000000</color>
+    <color name="design_dark_default_color_on_surface">#ffffff</color>
+    <color name="design_dark_default_color_primary">#bb86fc</color>
+    <color name="design_dark_default_color_primary_dark">#000000</color>
+    <color name="design_dark_default_color_primary_variant">#3700b3</color>
+    <color name="design_dark_default_color_secondary">#03dac6</color>
+    <color name="design_dark_default_color_secondary_variant">#03dac6</color>
+    <color name="design_dark_default_color_surface">#121212</color>
+    <color name="design_default_color_background">#ffffff</color>
+    <color name="design_default_color_error">#b00020</color>
+    <color name="design_default_color_on_background">#000000</color>
+    <color name="design_default_color_on_error">#ffffff</color>
+    <color name="design_default_color_on_primary">#ffffff</color>
+    <color name="design_default_color_on_secondary">#000000</color>
+    <color name="design_default_color_on_surface">#000000</color>
+    <color name="design_default_color_primary">#6200ee</color>
+    <color name="design_default_color_primary_dark">#3700b3</color>
+    <color name="design_default_color_primary_variant">#3700b3</color>
+    <color name="design_default_color_secondary">#03dac6</color>
+    <color name="design_default_color_secondary_variant">#018786</color>
+    <color name="design_default_color_surface">#ffffff</color>
+    <color name="design_fab_shadow_end_color">@android:color/transparent</color>
+    <color name="design_fab_shadow_mid_color">#14000000</color>
+    <color name="design_fab_shadow_start_color">#44000000</color>
+    <color name="design_fab_stroke_end_inner_color">#0a000000</color>
+    <color name="design_fab_stroke_end_outer_color">#0f000000</color>
+    <color name="design_fab_stroke_top_inner_color">#1affffff</color>
+    <color name="design_fab_stroke_top_outer_color">#2effffff</color>
+    <color name="design_snackbar_background_color">#323232</color>
+    <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
+    <color name="dim_foreground_disabled_material_light">#80323232</color>
+    <color name="dim_foreground_material_dark">#ffbebebe</color>
+    <color name="dim_foreground_material_light">#ff323232</color>
+    <color name="error_color_material_dark">#ff7043</color>
+    <color name="error_color_material_light">#ff5722</color>
+    <color name="foreground_material_dark">@android:color/white</color>
+    <color name="foreground_material_light">@android:color/black</color>
+    <color name="highlighted_text_material_dark">#6680cbc4</color>
+    <color name="highlighted_text_material_light">#66009688</color>
+    <color name="ic_launcher_background">#e3f9ba</color>
+    <color name="material_blue_grey_800">#ff37474f</color>
+    <color name="material_blue_grey_900">#ff263238</color>
+    <color name="material_blue_grey_950">#ff21272b</color>
+    <color name="material_deep_teal_200">#ff80cbc4</color>
+    <color name="material_deep_teal_500">#ff008577</color>
+    <color name="material_grey_100">#fff5f5f5</color>
+    <color name="material_grey_300">#ffe0e0e0</color>
+    <color name="material_grey_50">#fffafafa</color>
+    <color name="material_grey_600">#ff757575</color>
+    <color name="material_grey_800">#ff424242</color>
+    <color name="material_grey_850">#ff303030</color>
+    <color name="material_grey_900">#ff212121</color>
+    <color name="mtrl_btn_text_color_disabled">#61000000</color>
+    <color name="mtrl_btn_transparent_bg_color">#00ffffff</color>
+    <color name="mtrl_scrim_color">#52000000</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#6b000000</color>
+    <color name="mtrl_textinput_disabled_color">#1f000000</color>
+    <color name="mtrl_textinput_filled_box_default_background_color">#0a000000</color>
+    <color name="mtrl_textinput_focused_box_stroke_color">#00000000</color>
+    <color name="mtrl_textinput_hovered_box_stroke_color">#de000000</color>
+    <color name="notification_action_color_filter">@color/secondary_text_default_material_light</color>
+    <color name="notification_icon_bg_color">#ff9e9e9e</color>
+    <color name="notification_material_background_media_default_color">#ff424242</color>
+    <color name="primary_dark_material_dark">@android:color/black</color>
+    <color name="primary_dark_material_light">@color/material_grey_600</color>
+    <color name="primary_material_dark">@color/material_grey_900</color>
+    <color name="primary_material_light">@color/material_grey_100</color>
+    <color name="primary_text_default_material_dark">#ffffffff</color>
+    <color name="primary_text_default_material_light">#de000000</color>
+    <color name="primary_text_disabled_material_dark">#4dffffff</color>
+    <color name="primary_text_disabled_material_light">#39000000</color>
+    <color name="progressColor1">#fec31e</color>
+    <color name="progressColor2">#ee7966</color>
+    <color name="progressColor3">#8dd3ce</color>
+    <color name="ripple_material_dark">#33ffffff</color>
+    <color name="ripple_material_light">#1f000000</color>
+    <color name="secondary_text_default_material_dark">#b3ffffff</color>
+    <color name="secondary_text_default_material_light">#8a000000</color>
+    <color name="secondary_text_disabled_material_dark">#36ffffff</color>
+    <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="switch_thumb_disabled_material_dark">#ff616161</color>
+    <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
+    <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
+    <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
+    <color name="tooltip_background_dark">#e6616161</color>
+    <color name="tooltip_background_light">#e6ffffff</color>
+</resources>

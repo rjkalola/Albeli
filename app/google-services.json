@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "520156587732",
+    "project_id": "tile-bazar",
+    "storage_bucket": "tile-bazar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520156587732:android:644914a7398adc185e3d41",
+        "android_client_info": {
+          "package_name": "com.ecommerce.albeliapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520156587732-5vanrv7r8lvb7lo474ce44103l5mbbi5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ecommerce.albeliapp",
+            "certificate_hash": "6a8fa76aed2240b2eee45b147d13e6252e03a905"
+          }
+        },
+        {
+          "client_id": "520156587732-g6bpgc8cmqj9k2p898pgdv5i5dij8rqg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnYwVe_wmDDLobfHBCqEFfwOxx_9YPBsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520156587732-g6bpgc8cmqj9k2p898pgdv5i5dij8rqg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

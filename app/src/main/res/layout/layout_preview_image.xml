@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/routRootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBlack"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/routToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBack"
+                android:layout_width="@dimen/size_38dp"
+                android:layout_height="@dimen/size_38dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/size_14dp"
+                android:padding="@dimen/size_8dp"
+                android:tint="@color/colorWhite"
+                app:srcCompat="@drawable/ic_arrow_back" />
+
+            <TextView
+                android:id="@+id/txtTitle"
+                style="@style/MediumFontTextView"
+                android:layout_centerInParent="true"
+                android:fontFamily="@string/font_family_medium"
+                android:textColor="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgEdit"
+                android:layout_width="@dimen/size_38dp"
+                android:layout_height="@dimen/size_38dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:visibility="visible"
+                android:layout_marginEnd="@dimen/size_14dp"
+                android:padding="@dimen/size_8dp"
+                android:tint="@color/colorWhite"
+                app:srcCompat="@drawable/ic_edit" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgShare"
+                android:layout_width="@dimen/size_38dp"
+                android:layout_height="@dimen/size_38dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/size_14dp"
+                android:padding="@dimen/size_11dp"
+                android:tint="@color/colorWhite"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_share" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgPreviewImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true" />
+
+            <ProgressBar
+                android:id="@+id/pbPreviewImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

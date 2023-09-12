@@ -1,0 +1,38 @@
+{
+  "IsSuccess": true,
+  "info": [{
+    "name": "Category",
+    "key": "category",
+    "data": [{
+      "id": 1,
+      "name": "Double Charged"
+    }, {
+      "id": 2,
+      "name": "GVT-PGVT"
+    }]
+  }, {
+    "key": "grade",
+    "name": "Grade",
+    "data": [{
+      "id": 1,
+      "name": "Premium"
+    }, {
+      "id": 2,
+      "name": "Standard"
+    }]
+  }, {
+    "key": "tile_size",
+    "name": "Tile Size",
+    "data": [{
+      "id": 1,
+      "name": "600 x 600 mm (24 x 24 inch)"
+    }, {
+      "id": 2,
+      "name": "400 x 400 mm (16 x 16 inch)"
+    }, {
+      "id": 3,
+      "name": "200 x 1200 mm (08 x 48 inch)"
+    }]
+
+  }]
+}

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_main" />
+
+        <View
+            android:id="@+id/dividerToolbar"
+            style="@style/Divider"
+            android:layout_below="@id/toolbar"
+            android:layout_marginStart="@dimen/size_20dp"
+            android:layout_marginEnd="@dimen/size_20dp"
+            android:background="@color/colorDefaultAccent" />
+
+        <LinearLayout
+            android:id="@+id/routProgressDivider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_5dp"
+            android:layout_below="@id/dividerToolbar"
+            android:layout_marginStart="@dimen/size_20dp"
+            android:layout_marginEnd="@dimen/size_20dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorDefaultAccent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btnNext"
+            android:layout_below="@+id/routProgressDivider">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    style="@style/SmallFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_50dp"
+                    android:fontFamily="@string/font_family_medium"
+                    android:paddingStart="@dimen/size_20dp"
+                    android:paddingEnd="@dimen/size_20dp"
+                    android:text="@string/title_sign_up_screen1"
+                    android:textColor="@color/colorDefaultAccent"
+                    android:textSize="@dimen/text_size_17sp" />
+
+                <LinearLayout
+                    android:id="@+id/routNameView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtTitle"
+                    android:layout_marginStart="@dimen/size_21dp"
+                    android:layout_marginTop="@dimen/size_25dp"
+                    android:layout_marginEnd="@dimen/size_21dp"
+                    android:layout_marginBottom="@dimen/size_14dp">
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edtFirstName"
+                        style="@style/SmallFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/size_8dp"
+                        android:layout_weight="1"
+                        android:digits="@string/only_text_digits"
+                        android:hint="@string/hint_first_name"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+
+                        app:met_errorColor="@color/colorErrorColor"
+                        app:met_floatingLabel="normal"
+                        app:met_floatingLabelTextColor="@color/colorFloatingLabelText"
+                        app:met_singleLineEllipsis="false"
+                        app:met_textColor="@color/colorPrimaryText"
+                        app:met_textColorHint="@color/colorHint"
+                        app:met_underlineColor="@color/colorUnderline" />
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edtLastName"
+                        style="@style/SmallFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_8dp"
+                        android:layout_weight="1"
+                        android:digits="@string/only_text_digits"
+                        android:hint="@string/hint_last_name"
+                        android:imeOptions="actionDone"
+                        android:inputType="textCapWords"
+                        app:met_errorColor="@color/colorErrorColor"
+                        app:met_floatingLabel="normal"
+                        app:met_floatingLabelTextColor="@color/colorFloatingLabelText"
+                        app:met_singleLineEllipsis="false"
+                        app:met_textColor="@color/colorPrimaryText"
+                        app:met_textColorHint="@color/colorHint"
+                        app:met_underlineColor="@color/colorUnderline" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtTitlePhoneNumber"
+                    style="@style/VerySmallFontTextView"
+                    android:layout_below="@+id/routNameView"
+                    android:layout_marginStart="@dimen/size_21dp"
+                    android:layout_marginEnd="@dimen/size_21dp"
+                    android:text="@string/hint_phone_number"
+                    android:textColor="@color/colorHint"
+                    android:visibility="visible" />
+
+                <RelativeLayout
+                    android:id="@+id/routPhoneNumberView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtTitlePhoneNumber"
+                    android:layout_marginStart="@dimen/size_21dp"
+                    android:layout_marginEnd="@dimen/size_21dp"
+                    android:layout_marginBottom="@dimen/size_14dp"
+                    android:visibility="visible">
+
+                    <RelativeLayout
+                        android:id="@+id/routExtensionView"
+                        android:layout_width="@dimen/size_66dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true">
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            style="@style/SmallFont"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:focusable="false"
+                            android:inputType="number"
+                            android:textColor="@color/colorPrimaryText"
+                            android:visibility="gone"
+                            app:backgroundTint="@color/transparent"
+                            app:met_errorColor="@color/colorErrorColor"
+                            app:met_floatingLabel="none"
+                            app:met_floatingLabelTextColor="@color/colorFloatingLabelText"
+                            app:met_singleLineEllipsis="false"
+                            app:met_textColor="@color/colorPrimaryText"
+                            app:met_textColorHint="@color/colorHint"
+                            app:met_underlineColor="@color/colorUnderline" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgCountryFlag"
+                            android:layout_width="@dimen/size_40dp"
+                            android:layout_height="@dimen/size_30dp"
+                            android:layout_centerVertical="true" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/size_25dp"
+                            android:layout_height="@dimen/size_25dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/size_6dp"
+                            app:srcCompat="@drawable/ic_arrow_down" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_8dp"
+                        android:layout_toEndOf="@+id/routExtensionView"
+                        android:visibility="visible">
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:id="@+id/edtPhoneExtension"
+                            style="@style/SmallFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/size_9dp"
+                            android:focusable="false"
+                            android:imeOptions="actionNext"
+                            android:textColor="@color/colorPrimaryText"
+                            android:visibility="gone"
+                            app:backgroundTint="@color/transparent"
+                            app:met_errorColor="@color/colorErrorColor"
+                            app:met_floatingLabel="none"
+                            app:met_floatingLabelTextColor="@color/colorFloatingLabelText"
+                            app:met_hideUnderline="true"
+                            app:met_singleLineEllipsis="false"
+                            app:met_textColor="@color/colorPrimaryText"
+                            app:met_textColorHint="@color/colorHint"
+                            app:met_underlineColor="@color/colorAccent" />
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:id="@+id/edtPhone"
+                            style="@style/SmallFont"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/edtPhoneExtension"
+                            android:hint="@string/hint_phone"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="11"
+                            android:textColor="@color/colorPrimaryText"
+                            app:backgroundTint="@color/transparent"
+                            app:met_errorColor="@color/colorErrorColor"
+                            app:met_floatingLabelTextColor="@color/colorFloatingLabelText"
+                            app:met_textColor="@color/colorPrimaryText"
+                            app:met_textColorHint="@color/colorHint"
+                            app:met_underlineColor="@color/colorUnderline" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edtEmailId"
+                    style="@style/SmallFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/routPhoneNumberView"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_14dp"
+                    android:hint="@string/hint_email_optional"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:visibility="visible"
+                    app:met_errorColor="@color/colorErrorColor"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelTextColor="@color/colorFloatingLabelText"
+                    app:met_singleLineEllipsis="false"
+                    app:met_textColor="@color/colorPrimaryText"
+                    app:met_textColorHint="@color/colorHint"
+                    app:met_underlineColor="@color/colorUnderline" />
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/save_button_height_50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/size_20dp"
+            android:visibility="visible"
+            app:mrl_rippleColor="@color/colorRippleColor"
+            app:mrl_rippleDelayClick="true"
+            app:mrl_rippleDuration="@string/ripple_duration"
+            app:mrl_rippleHover="true"
+            app:mrl_rippleOverlay="true">
+
+            <TextView
+                android:id="@+id/txtNext"
+                style="@style/SmallFont"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorDefaultAccent"
+                android:fontFamily="@string/font_family_medium"
+                android:gravity="center"
+                android:text="@string/next"
+                android:textColor="@color/colorWhite" />
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+    </RelativeLayout>
+</layout>

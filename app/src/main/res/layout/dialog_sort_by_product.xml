@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_12dp"
+            android:layout_marginBottom="@dimen/size_12dp"
+            android:fontFamily="@string/font_family_medium"
+            android:text="@string/sort_by"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/text_size_16sp" />
+
+        <View style="@style/DividerMedium" />
+
+        <RelativeLayout
+            android:id="@+id/routNameAscending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/size_20dp"
+            android:paddingTop="@dimen/size_14dp"
+            android:layout_marginTop="@dimen/size_6dp"
+            android:paddingEnd="@dimen/size_16dp"
+            android:paddingBottom="@dimen/size_14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@string/font_family_regular"
+                android:text="@string/sort_by_name_ascending"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_15sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgNameAscending"
+                android:layout_width="@dimen/size_18dp"
+                android:layout_height="@dimen/size_18dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:tint="@color/colorAccent"
+                app:srcCompat="@drawable/ic_done" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/routNameDescending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/size_20dp"
+            android:paddingTop="@dimen/size_14dp"
+            android:paddingEnd="@dimen/size_16dp"
+            android:paddingBottom="@dimen/size_14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@string/font_family_regular"
+                android:text="@string/sort_by_name_descending"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_15sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgNameDescending"
+                android:layout_width="@dimen/size_18dp"
+                android:layout_height="@dimen/size_18dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:tint="@color/colorAccent"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_done" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/routPriceLowToHigh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/size_20dp"
+            android:paddingTop="@dimen/size_14dp"
+            android:paddingEnd="@dimen/size_16dp"
+            android:paddingBottom="@dimen/size_14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@string/font_family_regular"
+                android:text="@string/sort_by_price_low_to_high"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_15sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPriceLowToHigh"
+                android:layout_width="@dimen/size_18dp"
+                android:layout_height="@dimen/size_18dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:tint="@color/colorAccent"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_done" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/routPriceHighToLow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/size_20dp"
+            android:paddingTop="@dimen/size_14dp"
+            android:paddingEnd="@dimen/size_16dp"
+            android:paddingBottom="@dimen/size_14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@string/font_family_regular"
+                android:text="@string/sort_by_price_high_to_low"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_15sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPriceHighToLow"
+                android:layout_width="@dimen/size_18dp"
+                android:layout_height="@dimen/size_18dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:tint="@color/colorAccent"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_done" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/routDateModified"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/size_20dp"
+            android:paddingTop="@dimen/size_14dp"
+            android:layout_marginBottom="@dimen/size_6dp"
+            android:paddingEnd="@dimen/size_16dp"
+            android:paddingBottom="@dimen/size_14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@string/font_family_regular"
+                android:text="@string/sort_by_date_modified"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_15sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgDateModified"
+                android:layout_width="@dimen/size_18dp"
+                android:layout_height="@dimen/size_18dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:tint="@color/colorAccent"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_done" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

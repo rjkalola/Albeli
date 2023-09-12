@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/size_20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_30dp"
+                        android:layout_height="@dimen/size_30dp"
+                        android:background="@color/colorGreen" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/fragment_signin_tvSignUp"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/sign_up"
+                        android:textColor="@color/colorGreen" />
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_10dp"
+                    android:text="Sign in to continue" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/fragment_signin_edtEmail"
+                    style="@style/Edittext_Login"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_30dp"
+                    android:background="@drawable/bg_edittext"
+                    android:drawableStart="@drawable/ic_email"
+                    android:gravity="left|center_vertical|center_horizontal|center|start"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/fragment_signin_edtPassword"
+                    style="@style/Edittext_Login"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_15dp"
+                    android:background="@drawable/bg_edittext"
+                    android:drawableStart="@drawable/ic_lock"
+                    android:gravity="left|center_vertical|center_horizontal|center|start"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_signin_tvForgotPassword"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/size_5dp"
+                    android:text="@string/forgot_password_"
+                    android:textColor="@color/colorGreen" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_signin_tvSignin"
+                    style="@style/Button_Signup"
+                    android:layout_marginTop="@dimen/size_25dp"
+                    android:text="@string/sign_in" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_signin_tvFB"
+                    style="@style/Button_Signup"
+                    android:layout_marginTop="@dimen/size_15dp"
+                    android:background="@drawable/bg_social_media"
+                    android:drawableStart="@drawable/ic_fb"
+                    android:paddingStart="@dimen/size_20dp"
+                    android:text="@string/login_with_facebook"
+                    android:textColor="@color/colorBlack" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_1dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/size_1dp"
+                        android:background="@color/colorBlack" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/colorWhite"
+                        android:paddingStart="@dimen/size_5dp"
+                        android:paddingEnd="@dimen/size_5dp"
+                        android:text="@string/or"
+                        android:textColor="@color/colorGreen" />
+                </FrameLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_signin_tvSkipNow"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10dp"
+                    android:padding="@dimen/size_5dp"
+                    android:text="@string/skip_for_now"
+                    android:textColor="@color/colorGreen" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

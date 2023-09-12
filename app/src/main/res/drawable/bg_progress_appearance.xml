@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <item android:gravity="center" android:id="@android:id/background">
+        <shape android:shape="line">
+            <stroke android:width="3px" android:color="@color/colorTvSignin" android:dashWidth="10px" android:dashGap="17px"/>
+            <size android:height="5px"/>
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="@color/colorTvSignin"/>
+                <size android:height="2px" android:width="20px"/>
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <size android:height="5px" android:width="2px"/>
+                <solid android:color="@color/colorTvSignin"/>
+            </shape>
+        </clip>
+    </item>
+</layer-list>

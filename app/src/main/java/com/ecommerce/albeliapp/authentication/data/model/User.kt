@@ -1,0 +1,46 @@
+package com.ecommerce.albeliapp.authentication.data.model
+
+data class User(
+    var id: Int = 0,
+    var customer_id: Int = 0,
+    var first_name: String = "",
+    var name: String = "",
+    var last_name: String = "",
+    var email: String = "",
+    var password: String = "",
+    var date_of_birth: String = "",
+    var country_id: Int = 0,
+    var phone_extension_id: String? = "",
+    var phone_number: String = "",
+    var pin_code: String = "",
+    var street_address: String = "",
+    var ip_address: String = "",
+    var time_zone: String = "",
+    var verification_token: String? = "",
+    var date_modified: String = "",
+    var date_added: String = "",
+    var api_token: String? = "",
+    var image: String? = "",
+    var device_token: String = "",
+    var device_type: String = "",
+
+    var city: String = "",
+    var state_name: String = "",
+    var city_id: Int = 0,
+    var state_id: Int = 0,
+    var company_name: String = "",
+    var address: String = "",
+
+    var is_paid: Int = 0,
+    var view_count: Int = 0,
+    var total_view_count: Int = 0,
+    var free_product: Int = 0,
+    var total_free_product: Int = 0,
+
+    var payment_plan_name: String = "",
+    var plan_start_date: String = "",
+    var plan_end_date: String = "",
+    var plan_days: Int = 0,
+    var plan_id: Int = 0,
+
+)

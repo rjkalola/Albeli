@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_main" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/btnLogin"
+            android:layout_below="@+id/toolbar"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_30dp"
+                android:paddingLeft="@dimen/size_20dp"
+                android:paddingRight="@dimen/size_20dp"
+                android:paddingBottom="@dimen/size_20dp">
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    style="@style/SmallFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/note_verify_phone_number_otp"
+                    android:textColor="@color/colorDefaultAccent"
+                    android:textSize="@dimen/text_size_20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/routOtpView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtTitle"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/routOtp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_30dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_1"
+                            style="@style/LargeFont"
+                            android:layout_width="@dimen/size_60dp"
+                            android:layout_height="@dimen/size_60dp"
+                            android:layout_marginEnd="@dimen/size_9dp"
+                            android:digits="0123456789"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:nextFocusForward="@+id/edtVerifyCode_2"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_2"
+                            style="@style/LargeFont"
+                            android:layout_width="@dimen/size_60dp"
+                            android:layout_height="@dimen/size_60dp"
+                            android:layout_marginStart="@dimen/size_9dp"
+                            android:layout_marginEnd="@dimen/size_9dp"
+                            android:digits="0123456789"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:nextFocusForward="@+id/edtVerifyCode_3"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_3"
+                            style="@style/LargeFont"
+                            android:layout_width="@dimen/size_60dp"
+                            android:layout_height="@dimen/size_60dp"
+                            android:layout_marginStart="@dimen/size_9dp"
+                            android:layout_marginEnd="@dimen/size_9dp"
+                            android:digits="0123456789"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:nextFocusForward="@+id/edtVerifyCode_4"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_4"
+                            style="@style/LargeFont"
+                            android:layout_width="@dimen/size_60dp"
+                            android:layout_height="@dimen/size_60dp"
+                            android:layout_marginStart="@dimen/size_9dp"
+                            android:layout_marginEnd="@dimen/size_9dp"
+                            android:digits="0123456789"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:nextFocusForward="@+id/edtVerifyCode_5"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_5"
+                            style="@style/LargeFont"
+                            android:layout_width="@dimen/size_60dp"
+                            android:layout_height="@dimen/size_60dp"
+                            android:layout_marginStart="@dimen/size_9dp"
+                            android:digits="0123456789"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/routResendView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/size_40dp"
+                        android:visibility="visible">
+
+                        <TextView
+                            style="@style/VerySmallFontTextView"
+                            android:fontFamily="@string/font_family_medium"
+                            android:text="@string/click_on"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_12sp" />
+
+                        <TextView
+                            android:id="@+id/txtResendOtp"
+                            style="@style/SmallFontTextView"
+                            android:fontFamily="@string/font_family_medium"
+                            android:padding="@dimen/size_4dp"
+                            android:text="@string/resend"
+                            android:textColor="@color/colorDefaultAccent"
+                            android:textSize="@dimen/text_size_15sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            style="@style/VerySmallFontTextView"
+                            android:fontFamily="@string/font_family_medium"
+                            android:text="@string/note_verify_phone_number_resend"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_12sp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/save_button_height_50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/size_20dp"
+            android:visibility="visible"
+            app:mrl_rippleColor="@color/colorRippleColor"
+            app:mrl_rippleDelayClick="true"
+            app:mrl_rippleDuration="@string/ripple_duration"
+            app:mrl_rippleHover="true"
+            app:mrl_rippleOverlay="true">
+
+            <TextView
+                android:id="@+id/txtLogin"
+                style="@style/SmallFont"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorDefaultAccent"
+                android:fontFamily="@string/font_family_medium"
+                android:gravity="center"
+                android:text="@string/log_in"
+                android:textColor="@color/colorWhite" />
+        </com.balysv.materialripple.MaterialRippleLayout>
+    </RelativeLayout>
+</layout>

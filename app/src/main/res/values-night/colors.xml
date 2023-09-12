@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#000000</color>-->
+    <!--<color name="colorPrimaryDark">#e50913</color>-->
+    <!--<color name="colorAccent">#000000</color>-->
+    <color name="colorPrimary">#0090ff</color>
+    <color name="colorPrimaryDark">#191b24</color>
+    <color name="colorAccent">#0090ff</color>
+    <color name="colorOrange">#ff8213</color>
+    <color name="colorPrimaryText">#ffffff</color>
+    <color name="colorSecondaryText">#C9C9C9</color>
+    <color name="colorSecondaryLightText">#9A9A9A</color>
+    <color name="colorSecondaryDarkText">#ACACAC</color>
+    <color name="colorSecondaryExtraLightText">#8C8C8C</color>
+    <color name="colorWindowBackground">#191b24</color>
+    <color name="colorWindowBackgroundDark">#191b24</color>
+
+    <color name="colorSolidButtonText">#FFFFFF</color>
+    <color name="colorTransparentButtonText">#0090ff</color>
+    <color name="colorDefaultAccent">#0090ff</color>
+    <color name="colorTitleBg">#2B2B2B</color>
+    <color name="colorHint">#747273</color>
+    <color name="colorDivider">#272934</color>
+    <color name="colorUnderline">#242424</color>
+    <color name="colorFloatingLabelText">#FDFDFD</color>
+    <color name="colorErrorColor">#d43643</color>
+    <color name="colorDashBoardTabBg">#11141b</color>
+    <!--    <color name="colorDashBoardInActiveTab">#5B5D64</color>-->
+    <color name="colorDashBoardInActiveTab">#FFFFFF</color>
+    <color name="colorDashBoardActiveTab">#ffffff</color>
+    <color name="colorDashBoardTabIndicator">#ffffff</color>
+    <color name="colorInProgress">#2a2d36</color>
+    <color name="colorInActiveProgress">#5d5f67</color>
+    <color name="colorSignIn">#18c072</color>
+    <!--    <color name="colorBreakIn">#18c072</color>-->
+    <color name="colorBreakIn">#f68121</color>
+    <color name="colorSignOut">#c51b05</color>
+
+    <color name="colorFolder">#00c1f1</color>
+    <color name="colorNavigationMenuText">#212121</color>
+    <!--    <color name="colorBusyStatus">#ff7200</color>-->
+    <color name="colorShareLinkSolidColor">#20222e</color>
+    <color name="colorShareLinkStrokeColor">#535967</color>
+    <color name="colorPopupBackground">#424242</color>
+    <color name="colorIconBackground">#323542</color>
+    <color name="colorDigitalCardBackground">#20222e</color>
+
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorDarkDivider">#454757</color>
+    <color name="colorRippleColor">#FFFF</color>
+    <color name="colorRipple2">#686868</color>
+    <!--    <color name="black">#000000</color>-->
+    <color name="green">#00ae46</color>
+    <color name="green_dark">#088853</color>
+    <color name="yellow">#ffc000</color>
+    <color name="red">#d43643</color>
+    <color name="gray">#94a5af</color>
+    <color name="light_gray">#d4dce9</color>
+    <color name="colorInActiveDot">#b2b2b2</color>
+    <color name="colorGreenCheckInCounter">#01c875</color>
+    <color name="colorProgressIndicator">#dfe4ed</color>
+    <color name="disableEditTextColor">#585a67</color>
+
+    <color name="color_chat_right_bubble_time">#A8A8A8</color>
+    <color name="color_loading_text">#ffffff</color>
+    <color name="color_scroll_to_bottom_button_circle">#474747</color>
+    <color name="color_unread_feed_background">#22242f</color>
+
+    <color name="colorMyCertificateSolid">#252525</color>
+    <color name="colorMyCertificateStroke">#303030</color>
+
+    <color name="colorChatBubbleStroke">#5E5E5E</color>
+    <color name="colorChatBubbleSolid">#5F6168</color>
+
+    <color name="color_clock_in_rectangle">#5E5E5E</color>
+
+    <color name="colorInActiveRadioButton">#646468</color>
+</resources>
