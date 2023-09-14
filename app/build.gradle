@@ -44,13 +44,13 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "SERVER_URL", '"https://otmsystem.com/api/v1/"'
+            buildConfigField "String", "SERVER_URL", '"http://albelifashion.in/api/v1/"'
             buildConfigField "String", "SORT_URL", '"https://otmsystem.com/"'
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "SERVER_URL", '"https://otmsystem.com/api/v1/"'
+            buildConfigField "String", "SERVER_URL", '"http://albelifashion.in/api/v1/"'
             buildConfigField "String", "SORT_URL", '"https://otmsystem.com/"'
         }
     }

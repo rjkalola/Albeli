@@ -29,8 +29,7 @@ class SplashActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
         setStatusBarColor()
         mContext = this
-//        getResourcesResponse()
-//        commonViewModel.companyResource()
+
         Handler(Looper.getMainLooper()).postDelayed({
             val userInfo: String =
                 MyApplication().preferenceGetString(AppConstants.SharedPrefKey.USER_INFO, "")

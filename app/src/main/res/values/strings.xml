@@ -242,8 +242,8 @@
     <string name="setting">Settings</string>
     <string name="settings">SETTINGS</string>
     <string name="share">Share</string>
-    <string name="sign_in">Sign in</string>
-    <string name="sign_up">Sign up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
     <string name="skip_for_now">Skip for now</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="submit">Submit</string>

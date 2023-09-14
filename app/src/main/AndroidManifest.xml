@@ -41,12 +41,17 @@
                 <data
                     android:host="owlmanagement.com"
                     android:scheme="http" />
-                <!-- note that the leading "/" is required for pathPrefix-->
+
             </intent-filter>
         </activity>
 
         <activity
             android:name="com.ecommerce.albeliapp.authentication.ui.activity.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.ecommerce.albeliapp.authentication.ui.activity.SignUpActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
 
