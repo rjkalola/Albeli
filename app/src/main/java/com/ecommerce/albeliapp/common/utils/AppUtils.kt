@@ -17,6 +17,7 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
@@ -38,6 +39,7 @@ import com.ecommerce.utilities.utils.AlertDialogHelper
 import com.ecommerce.utilities.utils.DateFormatsConstants
 import com.ecommerce.utilities.utils.DateHelper
 import com.ecommerce.utilities.utils.StringHelper
+import com.ecommerce.utilities.utils.ToastHelper
 import com.google.firebase.dynamiclinks.DynamicLink
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.google.gson.Gson
@@ -204,7 +206,7 @@ object AppUtils {
         } //Not same serve? Already false
     }
 
-    fun handleUnauthorized(context: Context?, baseResponse: BaseResponse?) {
+    fun handleUnauthorized(context: Context?, baseResponse: BaseResponse?,view:View) {
         if (context == null || baseResponse == null) return
         if (baseResponse.ErrorCode == AppConstants.UNAUTHORIZED) {
             AlertDialogHelper.showDialog(
@@ -231,23 +233,25 @@ object AppUtils {
                 0
             )
         } else {
-            handleResponseMessage(context, baseResponse.Message!!)
+            handleResponseMessage(context, baseResponse.Message!!,view)
         }
     }
 
-    private fun handleResponseMessage(context: Context, messageString: String) {
+    private fun handleResponseMessage(context: Context, messageString: String,view:View) {
         try {
             if (context == null) return
             var message: String? = ""
-            if (messageString.contains("ERR") || messageString.contains("SUCC")) {
+           /* if (messageString.contains("ERR") || messageString.contains("SUCC")) {
                 message = getStringResourceByName(context, messageString)
             } else {
                 message = messageString
-            }
-            AlertDialogHelper.showDialog(
+            }*/
+            message = messageString
+            ToastHelper.showSnackBar(context, message,view)
+          /*  AlertDialogHelper.showDialog(
                 context, null, message, context.getString(R.string.ok),
                 null, false, null, 0
-            )
+            )*/
         } catch (e: Exception) {
 
         }
@@ -542,10 +546,6 @@ object AppUtils {
         item.title = s
     }
 
-    fun getFirebaseUserId(mContext: Context): String {
-        return "CUST_" + getUserPreference(mContext)!!.customer_id
-    }
-
     fun getFirebaseTime(date: Date): String {
         val format = SimpleDateFormat(DateFormatsConstants.HH_MM_24, Locale.US)
         return format.format(date)
@@ -790,28 +790,6 @@ object AppUtils {
         val intent = Intent(mContext, WebViewActivity::class.java)
         intent.putExtras(bundle)
         mContext.startActivity(intent)
-    }
-
-    fun setSellerName(mContext: Context, name: String, textView: TextView) {
-        if (!StringHelper.isEmpty(name)) {
-            if (isLogin(mContext)) {
-                if (AppUtils.getUserPreference(mContext)!!.is_paid == AppConstants.Type.FREE_USER) {
-                    if (name.length >= 4) {
-                        textView.text = name.substring(0, 4) + getStringWithStart(name.length - 4);
-                    } else {
-                        textView.text = name
-                    }
-                } else if (AppUtils.getUserPreference(mContext)!!.is_paid == AppConstants.Type.PREMIUM_USER) {
-                    textView.text = name
-                }
-            } else {
-                if (name.length >= 4) {
-                    textView.text = name.substring(0, 4) + getStringWithStart(name.length - 4);
-                } else {
-                    textView.text = name
-                }
-            }
-        }
     }
 
     fun getStringWithStart(count: Int): String {

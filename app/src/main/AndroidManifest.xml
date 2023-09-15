@@ -48,12 +48,17 @@
         <activity
             android:name="com.ecommerce.albeliapp.authentication.ui.activity.LoginActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name="com.ecommerce.albeliapp.authentication.ui.activity.SignUpActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ecommerce.albeliapp.authentication.ui.activity.DashboardActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

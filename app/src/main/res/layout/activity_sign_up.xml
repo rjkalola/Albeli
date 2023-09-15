@@ -68,7 +68,7 @@
                     android:textSize="@dimen/text_size_15sp" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtUserFirstName"
+                    android:id="@+id/edtFirstName"
                     style="@style/Edittext_Login"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/size_30dp"
@@ -79,7 +79,7 @@
                     android:inputType="text" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtUserLastName"
+                    android:id="@+id/edtLastName"
                     style="@style/Edittext_Login"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/size_16dp"
@@ -90,7 +90,7 @@
                     android:inputType="text" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtUserEmailPhone"
+                    android:id="@+id/edtEmail"
                     style="@style/Edittext_Login"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/size_16dp"
@@ -123,7 +123,7 @@
                     android:inputType="textPassword" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvSignup"
+                    android:id="@+id/txtSignUp"
                     style="@style/Button_Signup"
                     android:layout_marginTop="@dimen/size_26dp"
                     android:gravity="center"

@@ -63,7 +63,7 @@ class SplashActivity : BaseActivity() {
                     if (response.IsSuccess) {
 
                     } else {
-                        AppUtils.handleUnauthorized(mContext, response)
+                        AppUtils.handleUnauthorized(mContext, response, binding.root)
                     }
                 }
             } catch (e: Exception) {
