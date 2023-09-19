@@ -163,4 +163,5 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
 
     implementation 'com.faltenreich:skeletonlayout:5.0.0'
+    implementation 'com.crystal:crystalrangeseekbar:1.1.3'
 }

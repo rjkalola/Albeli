@@ -1,7 +1,6 @@
-package com.ecommerce.albeliapp.common.ui.fragment
+package com.ecommerce.albeliapp.dashboard.ui.fragment
 
-import android.app.Activity
-import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,94 +8,103 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
+import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ecommerce.imagepickers.utils.Constant
-import com.ecommerce.imagepickers.utils.GlideUtil
 import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.common.api.model.ModuleInfo
 import com.ecommerce.albeliapp.common.callback.SelectItemListener
-import com.ecommerce.albeliapp.databinding.DialogCountryFlagBinding
-import com.ecommerce.albeliapp.databinding.RowContryFlagListBinding
+import com.ecommerce.albeliapp.databinding.BottomSheetDialogSelectItemBinding
+import com.ecommerce.albeliapp.databinding.RowBottomDialogSelectItemBinding
 import com.ecommerce.utilities.utils.CollectionUtils
-import com.ecommerce.utilities.utils.StringHelper
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.*
-import kotlin.collections.ArrayList
 
-class CountryFlagDialog(
-    var mContext: Activity,
-    var list: MutableList<ModuleInfo>,
-    var selectItemListener: SelectItemListener,
-    var identifyId: Int
-) : DialogFragment() {
+class SelectItemBottomSheetDialog(mContext: Context?) :
+    BottomSheetDialog(mContext!!) {
+    private lateinit var binding: BottomSheetDialogSelectItemBinding
+    private lateinit var adapter: ListAdapter
 
-    private lateinit var binding: DialogCountryFlagBinding
-    private lateinit var dialog: AlertDialog
-    var mList: MutableList<ModuleInfo> = ArrayList()
-    private var adapter: ListAdapter? = null
+    companion object {
+        private var mListener: SelectItemListener? = null
+        private var selectedItem: Int? = 0
+        private var list: MutableList<ModuleInfo> = ArrayList()
+        private var identifyId: Int? = 0
+        private var title: String? = null
+        private lateinit var mContext: Context
 
-    init {
-        for (i in 0 until list.size) {
-            list[i].position = i
-            mList.add(list[i])
+        fun newInstance(
+            context: Context?,
+            list: MutableList<ModuleInfo>,
+            title: String? = "",
+            identifyId: Int? = 0,
+            mListener: SelectItemListener?
+        ): SelectItemBottomSheetDialog {
+            this.selectedItem = selectedItem!!
+            this.identifyId = identifyId!!
+            this.mListener = mListener
+            this.mContext = context!!
+            this.list.clear()
+            for (i in 0 until list.size) {
+                list[i].position = i
+                this.list.add(list[i])
+            }
+            this.title = title
+            return SelectItemBottomSheetDialog(context)
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.MyDialogFragmentStyle)
-    }
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val ad = AlertDialog.Builder(mContext)
-        val i = mContext.layoutInflater
-        val view = i.inflate(R.layout.dialog_country_flag, null)
-        binding = DataBindingUtil.bind(view)!!
-        ad.setView(view)
-        dialog = ad.create()
-        dialog.setCancelable(false)
+        val sheetView: View = layoutInflater.inflate(R.layout.bottom_sheet_dialog_select_item, null)
+        setContentView(sheetView)
+        binding = DataBindingUtil.bind(sheetView)!!
+        binding.txtTitle.text = title
 
         binding.edtSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                adapter!!.filter(s.toString())
+                adapter.filter(s.toString())
             }
 
             override fun afterTextChanged(s: Editable) {}
         })
 
-        setAdapter()
+        binding.imgClose.setOnClickListener {
+            dismiss()
+        }
 
-        return dialog
+        setAdapter()
     }
 
     private fun setAdapter() {
-        if (CollectionUtils.isNotEmpty(mList)) {
-            binding.recyclerView.visibility = View.VISIBLE
+        if (CollectionUtils.isNotEmpty(list)) {
+            binding.rvItems.visibility = View.VISIBLE
             adapter = ListAdapter(
-                mList,
-                selectItemListener,
-                identifyId, dialog
+                list,
+                mListener!!,
+                identifyId!!
             )
-            binding.recyclerView.layoutManager = LinearLayoutManager(mContext)
-            binding.recyclerView.adapter = adapter
+            binding.rvItems.layoutManager = LinearLayoutManager(mContext)
+            binding.rvItems.adapter = adapter
         } else {
-            binding.recyclerView.visibility = View.GONE
+            binding.rvItems.visibility = View.GONE
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
+        this.window!!.setLayout(
+            FrameLayout.LayoutParams.MATCH_PARENT,
+            FrameLayout.LayoutParams.MATCH_PARENT
+        )
     }
 
     class ListAdapter(
         private var mList: MutableList<ModuleInfo>,
         var listener: SelectItemListener,
         var identifyId: Int,
-        val dialog: AlertDialog
     ) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var listOfAllData: MutableList<ModuleInfo> = ArrayList()
@@ -107,30 +115,19 @@ class CountryFlagDialog(
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val itemView: View = LayoutInflater.from(parent.context)
-                .inflate(R.layout.row_contry_flag_list, parent, false)
+                .inflate(R.layout.row_bottom_dialog_select_item, parent, false)
             return ItemViewHolder(itemView)
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            val data: ModuleInfo = mList.get(position)
+            val data: ModuleInfo = mList[position]
             val itemViewHolder = holder as ItemViewHolder
-            itemViewHolder.binding.txtName.setText(
-                data.name + " (" + data.extension + ")"
-            )
-            if (!StringHelper.isEmpty(data.flag_name)) GlideUtil.loadImage(
-                data.flag_name,
-                itemViewHolder.binding.imgFlag,
-                null,
-                null,
-                Constant.ImageScaleType.FIT_CENTER,
-                null
-            )
+
             itemViewHolder.binding.routMainView.setOnClickListener { v ->
                 listener.onSelectItem(
                     data.position,
-                    identifyId,0
+                    identifyId, 0
                 )
-                dialog.dismiss()
             }
             itemViewHolder.getData(data)
         }
@@ -149,7 +146,7 @@ class CountryFlagDialog(
 
         private inner class ItemViewHolder(itemView: View) :
             RecyclerView.ViewHolder(itemView) {
-            var binding: RowContryFlagListBinding = DataBindingUtil.bind(itemView)!!
+            var binding: RowBottomDialogSelectItemBinding = DataBindingUtil.bind(itemView)!!
             fun getData(info: ModuleInfo) {
                 binding.info = info
             }
@@ -178,4 +175,6 @@ class CountryFlagDialog(
             notifyDataSetChanged()
         }
     }
+
+
 }

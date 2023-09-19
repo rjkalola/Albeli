@@ -34,6 +34,7 @@ import com.ecommerce.albeliapp.common.api.model.BaseResponse
 import com.ecommerce.albeliapp.common.api.model.FcmData
 import com.ecommerce.albeliapp.common.ui.activity.BaseActivity
 import com.ecommerce.albeliapp.common.ui.activity.WebViewActivity
+import com.ecommerce.albeliapp.dashboard.ui.fragment.LoginRequiredBottomSheetDialog
 import com.ecommerce.utilities.callback.DialogButtonClickListener
 import com.ecommerce.utilities.utils.AlertDialogHelper
 import com.ecommerce.utilities.utils.DateFormatsConstants
@@ -59,6 +60,14 @@ object AppUtils {
     fun isLogin(context: Context?): Boolean {
         val user = getUserPreference(context)
         return user != null && user.id > 0
+    }
+
+    fun showLoginRequiredAlertDialog(
+        mContext: Context?
+    ) {
+        val loginRequiredBottomSheetDialog =
+            LoginRequiredBottomSheetDialog.newInstance(mContext)
+        loginRequiredBottomSheetDialog.show()
     }
 
     fun getUserPreference(context: Context?): User? {
@@ -310,7 +319,7 @@ object AppUtils {
     fun getEmptyGalleryDrawable(mContext: Context): Drawable? {
         return ResourcesCompat.getDrawable(
             mContext.resources,
-            R.drawable.ic_empty_image_placeholder,
+            R.drawable.ic_default_place_holder,
             null
         )
     }

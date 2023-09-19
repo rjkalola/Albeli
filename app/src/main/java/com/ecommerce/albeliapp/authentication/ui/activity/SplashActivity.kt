@@ -6,13 +6,14 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.databinding.DataBindingUtil
-import com.ecommerce.albeliapp.R
-import com.ecommerce.albeliapp.databinding.ActivitySplashBinding
 import com.ecommerce.albeliapp.MyApplication
+import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.common.api.CommonViewModel
 import com.ecommerce.albeliapp.common.ui.activity.BaseActivity
 import com.ecommerce.albeliapp.common.utils.AppConstants
 import com.ecommerce.albeliapp.common.utils.AppUtils
+import com.ecommerce.albeliapp.dashboard.ui.activity.DashboardActivity
+import com.ecommerce.albeliapp.databinding.ActivitySplashBinding
 import com.ecommerce.utilities.utils.AlertDialogHelper
 import com.ecommerce.utilities.utils.StringHelper
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,20 +32,12 @@ class SplashActivity : BaseActivity() {
         mContext = this
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val userInfo: String =
-                MyApplication().preferenceGetString(AppConstants.SharedPrefKey.USER_INFO, "")
-            if (StringHelper.isEmpty(userInfo) || userInfo.equals("null", ignoreCase = true)) {
-                if (!MyApplication().preferenceGetBoolean(
-                        AppConstants.SharedPrefKey.INTRODUCTION_SLIDER,
-                        false
-                    )
-                )
-                    moveActivity(mContext, LoginActivity::class.java, true, true, null)
-//                else
-//                    moveActivity(mContext, DashBoardActivity::class.java, true, true, null)
-            }
-//            else {
-//                    moveActivity(mContext, DashBoardActivity::class.java, true, true, null)
+//            val userInfo: String =
+//                MyApplication().preferenceGetString(AppConstants.SharedPrefKey.USER_INFO, "")
+//            if (StringHelper.isEmpty(userInfo) || userInfo.equals("null", ignoreCase = true)) {
+//                moveActivity(mContext, LoginActivity::class.java, true, true, null)
+//            } else {
+            moveActivity(mContext, DashboardActivity::class.java, true, true, null)
 //            }
         }, SPLASH_TIME_OUT.toLong())
     }

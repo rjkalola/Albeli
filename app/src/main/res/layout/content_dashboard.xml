@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DashboardActivity">
+
+        <com.ecommerce.utilities.utils.ViewPagerDisableSwipe
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/divider" />
+
+        <View
+            android:id="@+id/divider"
+            style="@style/DividerMedium"
+            android:layout_above="@+id/routTabsView"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/routTabsView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/routHomeTab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/size_12dp"
+                android:paddingBottom="@dimen/size_12dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgHomeTab"
+                    android:layout_width="@dimen/size_27dp"
+                    android:padding="@dimen/size_1dp"
+                    android:layout_height="@dimen/size_27dp"
+                    app:srcCompat="@drawable/ic_home_selected" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/routCategoryTab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/size_10dp"
+                android:paddingBottom="@dimen/size_10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imCategoryTab"
+                    android:layout_width="@dimen/size_27dp"
+                    android:layout_height="@dimen/size_27dp"
+                    android:padding="@dimen/size_1dp"
+                    app:srcCompat="@drawable/ic_shirt" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/routCartTab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/size_10dp"
+                android:paddingBottom="@dimen/size_10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgCartTab"
+                    android:layout_width="@dimen/size_27dp"
+                    android:layout_height="@dimen/size_27dp"
+                    android:padding="@dimen/size_1dp"
+                    app:srcCompat="@drawable/ic_shopping_cart" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/routProfileTab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/size_10dp"
+                android:paddingBottom="@dimen/size_10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgProfileTab"
+                    android:layout_width="@dimen/size_27dp"
+                    android:padding="@dimen/size_1dp"
+                    android:layout_height="@dimen/size_27dp"
+                    app:srcCompat="@drawable/ic_avatar" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--        </androidx.cardview.widget.CardView>-->
+    </RelativeLayout>
+</layout>

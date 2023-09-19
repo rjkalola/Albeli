@@ -24,38 +24,20 @@ object AppConstants {
     const val DYNAMIC_LINK_URL = "https://tilebazar.com"
 
     object IntentKey {
-        const val PHONE_NUMBER = "PHONE_NUMBER"
-        const val SIGN_UP_REQUEST_DATA = "SIGN_UP_REQUEST_DATA"
         const val IMAGE_URI = "image_uri"
         const val CROP_RATIO_X = "crop_ratio_X"
         const val CROP_RATIO_Y = "crop_ratio_Y"
         const val FILE_EXTENSION = "file_extension"
-        const val PRODUCT_INFO = "PRODUCT_INFO"
-        const val DIRECTORY_INFO = "DIRECTORY_INFO"
-        const val USER_ID = "USER_ID"
-        const val FORGOT_PASSWORD_DATA = "FORGOT_PASSWORD_DATA"
-        const val EMAIL = "EMAIL"
         const val NOTIFICATION_TYPE = "NOTIFICATION_TYPE"
         const val IS_FROM_NOTIFICATION = "IS_FROM_NOTIFICATION"
-        const val FILTER_TYPE = "FILTER_TYPE"
+        const val FILTER_MIN_PRICE = "FILTER_MIN_PRICE"
+        const val FILTER_MAX_PRICE = "FILTER_MAX_PRICE"
         const val FILTER_DATA = "FILTER_DATA"
-        const val PRODUCT_TYPE = "PRODUCT_TYPE"
-        const val PRODUCT_ID = "PRODUCT_ID"
-        const val FROM_DYNAMIC_LINK = "FROM_DYNAMIC_LINK"
-        const val SELLER_ID = "SELLER_ID"
-        const val RC_LOCATION_PERM = 1
-        const val LOCATION_SETTING_STATUS = 2
-        const val SELECT_CATEGORY = 3
-        const val SELECT_SUB_CATEGORY = 4
-        const val ADD_JOB = 5
+        const val FILTER_IDS = "FILTER_IDS"
         const val REQUEST_CROP_IMAGE = 6
-        const val EXTERNAL_STORAGE_PERMISSION = 7
-        const val CATEGORY_ID = "CATEGORY_ID"
-        const val CATEGORY_NAME = "CATEGORY_NAME"
-        const val SQ_FT_PRICE_TYPE = "SQ_FT_PRICE_TYPE"
         const val WEB_URL = "WEB_URL"
         const val TITLE = "TITLE"
-        const val OTP_TYPE = "OTP_TYPE"
+
 
     }
 
@@ -64,12 +46,10 @@ object AppConstants {
         const val USERS = "USERS"
         const val APP_URL = "APP_URL"
         const val THEME_MODE = "THEME_MODE"
-        const val CHAT_USER_INFO = "CHAT_USER_INFO"
         const val DEVICE_ID = "DEVICE_ID"
-        const val PRODUCT_CONFIGURATION = "PRODUCT_CONFIGURATION"
         const val COMPARE_PRODUCT_IDS = "COMPARE_PRODUCT_IDS"
-        const val INTRODUCTION_SLIDER = "INTRODUCTION_SLIDER"
-        const val SUPPORT_NUMBER = "SUPPORT_NUMBER"
+        const val DEFAULT_CATEGORY_ID = "DEFAULT_CATEGORY_ID"
+        const val DEFAULT_CATEGORY_NAME = "DEFAULT_CATEGORY_NAME"
     }
 
     object THEME_MODE {
@@ -79,26 +59,7 @@ object AppConstants {
 
     object DialogIdentifier {
         const val LOGOUT = 1
-        const val SELECT_COUNTRY_FLAG = 2
-        const val SELECT_POST_CODE = 3
-        const val CLEAR_CHAT = 4
-        const val CLEAR_FILTER = 5
-        const val SELECT_CATEGORY = 6
-        const val SELECT_GRADE = 7
-        const val SELECT_SIZE = 8
-        const val SELECT_RATE_TYPE = 9
-        const val SELECT_PRICE_TYPE = 10
-        const val SELECT_NO_OF_BOXES = 11
-        const val SELECT_PRODUCT_SORT = 12
-        const val SELECT_SELLER_SORT = 13
-        const val SELECT_STATE = 14
-        const val DELETE_PRODUCT = 15
-        const val SELECT_ISSUE_TYPE = 16
-        const val REPORT_PRODUCT_ISSUE_DIALOG = 17
-        const val REPORT_SELLER_ISSUE_DIALOG = 18
-        const val ADD_PRODUCT_SUCCESS = 19
-        const val DELETE_ACCOUNT = 20
-        const val DELETE_ACCOUNT_SUCCESS = 21
+        const val SELECT_CATEGORY = 2
         const val UPDATE_APP = 22
 
         const val DOB_PICKER = "DOB_PICKER"
@@ -109,19 +70,9 @@ object AppConstants {
     }
 
     object Action {
-        const val DELETE_LOGIN_USER = 1
-        const val VIEW_LOGIN_USER = 2
-        const val WATCHLIST = 3
-        const val COMPARE = 4
-        const val REMOVE_COMPARE = 5
-        const val PRODUCTS_DETAILS = 6
-        const val DIRECTORY_DETAILS = 7
-        const val EDIT_PRODUCT = 8
-        const val DELETE_PRODUCT = 9
-        const val REPORT_ISSUE = 10;
-        const val SHARE_PRODUCT = 11
-        const val SHARE_SELLER = 12
-        const val CATEGORY_DETAILS = 13
+        const val WATCHLIST = 1
+        const val PRODUCTS_DETAILS = 2
+        const val CATEGORY_DETAILS = 3
     }
 
     object FileExtension {
@@ -172,7 +123,7 @@ object AppConstants {
     }
 
     object DataLimit {
-        const val PRODUCTS_LIMIT = 10
+        const val PRODUCTS_LIMIT = 20
         const val DIRECTORY_LIMIT = 10
     }
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DashboardActivity">
+
+        <!--        <androidx.appcompat.widget.Toolbar-->
+        <!--            android:id="@+id/toolbar"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentTop="true"-->
+        <!--            android:background="@android:color/transparent"-->
+        <!--            android:minHeight="?attr/actionBarSize"-->
+        <!--            app:contentInsetLeft="0dp"-->
+        <!--            app:contentInsetStart="0dp"-->
+        <!--            app:contentInsetStartWithNavigation="0dp"-->
+        <!--            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+        <!--            tools:ignore="MissingPrefix">-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/toolBarNavigation"-->
+        <!--                style="@style/ToolbarTitleFont"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:ellipsize="end"-->
+        <!--                android:fontFamily="@string/font_family_medium"-->
+        <!--                android:text=""-->
+        <!--                android:textColor="@color/colorPrimaryText" />-->
+
+        <!--        </androidx.appcompat.widget.Toolbar>-->
+
+<!--        <View-->
+<!--            android:id="@+id/toolbarDivider"-->
+<!--            style="@style/ToolbarDivider" />-->
+
+        <include
+            android:id="@+id/contentDashboard"
+            layout="@layout/content_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+</layout>

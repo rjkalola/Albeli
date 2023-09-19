@@ -8,11 +8,7 @@ class ModuleInfo(
     var id: Int = 0,
     var position: Int = 0,
     var name: String = "",
-    var key: String = "",
-    var extension: String = "",
-    var flag_name: String = "",
-    var extension_with_name: String = "",
-    var count: Int = 0,
-    var is_selected: Boolean = false,
-    var data: MutableList<ModuleInfo> = ArrayList()
+    var value: String = "",
+    var values: MutableList<ModuleInfo> = ArrayList(),
+    var check: Boolean = false
 ) : Parcelable

@@ -56,7 +56,17 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.ecommerce.albeliapp.authentication.ui.activity.DashboardActivity"
+            android:name=".dashboard.ui.activity.DashboardActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".dashboard.ui.activity.ProductFilterActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".dashboard.ui.activity.SearchProductActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 

@@ -1,0 +1,125 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/routToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/max_elevation"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/size_16dp"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:fontFamily="@font/biennale_medium"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_17sp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgSearch"
+                    style="@style/Style_ivActionBarButton"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_search2" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgFilter"
+                    style="@style/Style_ivActionBarButton"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/imgSearch"
+                    android:src="@drawable/ic_filter"
+                    android:tint="@color/progressColor1" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routToolbar"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/divider"
+                android:layout_marginStart="@dimen/size_4dp"
+                android:layout_marginTop="@dimen/size_6dp"
+                android:layout_marginEnd="@dimen/size_4dp"
+                android:layout_marginBottom="@dimen/size_6dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvCategoryItems"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_above="@id/loadMore"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/txtEmptyPlaceHolder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/no_data_found"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="@dimen/text_size_14sp"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/loadMore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/size_16dp"
+                        android:paddingTop="@dimen/size_8dp"
+                        android:paddingEnd="0dp"
+                        android:paddingBottom="@dimen/size_8dp"
+                        android:visibility="gone">
+
+                        <ProgressBar
+                            style="?android:attr/progressBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_6dp"
+                            android:padding="@dimen/size_3dp"
+                            android:text="@string/loading_more"
+                            android:textColor="@color/colorPrimaryText" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routToolbar" />
+    </RelativeLayout>
+
+</layout>

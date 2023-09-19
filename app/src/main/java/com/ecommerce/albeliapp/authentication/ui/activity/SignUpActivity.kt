@@ -11,6 +11,7 @@ import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.authentication.ui.viewmodel.AuthenticationViewModel
 import com.ecommerce.albeliapp.common.ui.activity.BaseActivity
 import com.ecommerce.albeliapp.common.utils.AppUtils
+import com.ecommerce.albeliapp.dashboard.ui.activity.DashboardActivity
 import com.ecommerce.albeliapp.databinding.ActivitySignUpBinding
 import com.ecommerce.utilities.utils.AlertDialogHelper
 import com.ecommerce.utilities.utils.ToastHelper
@@ -20,7 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivitySignUpBinding
-    private lateinit var mContext: Context;
+    private lateinit var mContext: Context
     private val authenticationViewModel: AuthenticationViewModel by viewModel()
     private var lastClickedTime: Long = 0
 
@@ -37,7 +38,7 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         if (SystemClock.elapsedRealtime() - this.lastClickedTime >= 1000) {
-            this.lastClickedTime = SystemClock.elapsedRealtime();
+            this.lastClickedTime = SystemClock.elapsedRealtime()
             when (v.id) {
                 R.id.txtSignIn ->
                     moveActivity(mContext, LoginActivity::class.java, true, false, null)
@@ -46,11 +47,11 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
                     finish()
 
                 R.id.txtSignUp -> {
-                    val firstName: String = binding.edtFirstName.getText().toString()
-                    val lastName: String = binding.edtLastName.getText().toString()
-                    val email: String = binding.edtEmail.getText().toString()
-                    val password: String = binding.edtPassword.getText().toString()
-                    val confirmPassword: String = binding.edtPassword.getText().toString()
+                    val firstName: String = binding.edtFirstName.text.toString()
+                    val lastName: String = binding.edtLastName.text.toString()
+                    val email: String = binding.edtEmail.text.toString()
+                    val password: String = binding.edtPassword.text.toString()
+                    val confirmPassword: String = binding.edtPassword.text.toString()
                     if (checkValidation(
                             firstName,
                             lastName,
@@ -59,7 +60,8 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
                             confirmPassword
                         )
                     ) {
-                        callRegisterWS(obj, obj2, obj3, obj4)
+                        showProgressDialog(mContext, "")
+                        authenticationViewModel.register(firstName, lastName, email, password)
                     }
                 }
             }
@@ -115,7 +117,9 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
                     )
                 } else {
                     if (response.IsSuccess) {
-
+                        hideProgressDialog()
+                        AppUtils.setUserPreference(mContext, response.info)
+                        moveActivity(mContext, DashboardActivity::class.java, true, true, null)
                     } else {
                         AppUtils.handleUnauthorized(mContext, response, binding.root)
                     }

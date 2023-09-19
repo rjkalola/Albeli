@@ -167,7 +167,7 @@
     <color name="cardview_light_background">#ffffffff</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
-    <color name="colorAccent">#979191</color>
+    <color name="colorAccent">#57b86b</color>
     <color name="colorAssuredEnd">#ff8c02</color>
     <color name="colorAssuredStart">#ff3b36</color>
     <color name="colorBlack">#000000</color>

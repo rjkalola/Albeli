@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/routToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:elevation="@dimen/size_10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/size_10dp"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtUserName"
+                        android:textSize="@dimen/text_size_14sp"
+                        style="@style/TextStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/size_4dp"
+
+                        android:text="Hi Divan"
+                        android:textColor="@color/colorGreen" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvWelcome"
+                        style="@style/TextStyleLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtUserName"
+                        android:text="Welcome"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgNotification"
+                    style="@style/Style_ivActionBarButton"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/size_9dp"
+                    android:layout_toStartOf="@id/imgSearch"
+                    android:src="@drawable/ic_notification" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgSearch"
+                    style="@style/Style_ivActionBarButton"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_search2" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routToolbar"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingTop="@dimen/size_10dp"
+                android:paddingBottom="@dimen/size_10dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_130dp"
+                        android:layout_marginStart="@dimen/size_12dp"
+                        android:layout_marginEnd="@dimen/size_12dp">
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:id="@+id/pagerBannerSlider"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/size_10dp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvBannerDots"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/pagerBannerSlider"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="@dimen/size_8dp"
+                            android:layout_marginTop="@dimen/size_8dp"
+                            android:layout_marginEnd="@dimen/size_8dp"
+                            android:layout_marginBottom="@dimen/size_8dp"
+                            android:nestedScrollingEnabled="false" />
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvCategories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_6dp"
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:layout_marginEnd="@dimen/size_6dp"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextStyleLarge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_12dp"
+                        android:layout_marginTop="@dimen/size_15dp"
+                        android:layout_marginEnd="@dimen/size_12dp"
+                        android:text="@string/feature_product"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvFeaturedProducts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_12dp"
+                        android:layout_marginEnd="@dimen/size_12dp"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_130dp"
+                        android:layout_marginStart="@dimen/size_12dp"
+                        android:layout_marginEnd="@dimen/size_12dp"
+                        android:layout_marginTop="@dimen/size_10dp">
+
+                        <com.ecommerce.albeliapp.common.utils.WrapContentHeightViewPager
+                            android:id="@+id/vpBanner1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/size_10dp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/tblPageIndicator1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/vpBanner1"
+                            android:layout_centerHorizontal="true"
+                            android:layout_margin="@dimen/size_8dp"
+                            android:nestedScrollingEnabled="false" />
+                    </RelativeLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_below="@id/routToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+
+</layout>

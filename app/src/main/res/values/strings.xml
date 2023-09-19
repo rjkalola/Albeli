@@ -264,4 +264,5 @@
     <string name="yes">Yes</string>
     <string name="you_haven_t_added_any_item_in_cart">You haven\'t added any item in Cart.</string>
     <string name="you_haven_t_ordered_any_item_yet">You haven\'t ordered any item yet.</string>
+    <string name="loading_more">Loading more&#8230;</string>
 </resources>

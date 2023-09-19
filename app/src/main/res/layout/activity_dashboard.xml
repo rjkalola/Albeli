@@ -5,13 +5,15 @@
 
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="horizontal">
 
+        <include
+            android:id="@+id/appBarLayout"
+            layout="@layout/app_bar_dashboard" />
 
-
-    </LinearLayout>
+    </RelativeLayout>
 </layout>

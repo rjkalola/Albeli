@@ -12,6 +12,7 @@ import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.authentication.ui.viewmodel.AuthenticationViewModel
 import com.ecommerce.albeliapp.common.ui.activity.BaseActivity
 import com.ecommerce.albeliapp.common.utils.AppUtils
+import com.ecommerce.albeliapp.dashboard.ui.activity.DashboardActivity
 import com.ecommerce.albeliapp.databinding.ActivityLoginBinding
 import com.ecommerce.utilities.utils.AlertDialogHelper
 import com.ecommerce.utilities.utils.ToastHelper
@@ -44,6 +45,7 @@ class LoginActivity : BaseActivity(), OnClickListener {
                     val email: String = binding.edtEmail.text.toString().trim()
                     val password: String = binding.edtPassword.text.toString().trim()
                     if (checkValidation(email, password)) {
+                        showProgressDialog(mContext, "")
                         authenticationViewModel.login(email, password)
                     }
                 }
@@ -70,7 +72,9 @@ class LoginActivity : BaseActivity(), OnClickListener {
                     )
                 } else {
                     if (response.IsSuccess) {
-
+                        hideProgressDialog()
+                        AppUtils.setUserPreference(mContext,response.info)
+                        moveActivity(mContext, DashboardActivity::class.java, true, true, null)
                     } else {
                         AppUtils.handleUnauthorized(mContext, response, binding.root)
                     }

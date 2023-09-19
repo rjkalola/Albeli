@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:elevation="@dimen/size_10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/size_10dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtUserName"
+                    style="@style/TextStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/size_4dp"
+                    android:text="Hi Divan"
+                    android:textColor="@color/colorGreen" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvWelcome"
+                    style="@style/TextStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtUserName"
+                    android:text="Welcome"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgNotification"
+                style="@style/Style_ivActionBarButton"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/size_9dp"
+                android:layout_toStartOf="@id/imgSearch"
+                android:src="@drawable/ic_notification" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgSearch"
+                style="@style/Style_ivActionBarButton"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_search2" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

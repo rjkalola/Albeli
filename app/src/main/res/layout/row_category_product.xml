@@ -1,0 +1,102 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.ecommerce.albeliapp.dashboard.data.model.CategoryProductInfo" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/routMainView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_6dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.ecommerce.albeliapp.common.utils.ProductImageViewByWidth
+                android:id="@+id/imgProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_default_place_holder" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtDeal"
+                style="@style/TextStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_10dp"
+                android:background="@color/colorGreen"
+                android:paddingStart="@dimen/size_7dp"
+                android:paddingTop="@dimen/size_1dp"
+                android:paddingEnd="@dimen/size_7dp"
+                android:paddingBottom="@dimen/size_3dp"
+                android:text="@string/deal"
+                android:textColor="@color/colorWhite"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatCheckedTextView
+                android:id="@+id/imgFavorite"
+                android:layout_width="@dimen/size_24dp"
+                android:layout_height="@dimen/size_24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/size_10dp"
+                android:layout_marginEnd="@dimen/size_10dp"
+                android:drawableStart="@drawable/drawable_like_selector"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/routPriceDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgProduct"
+                android:layout_marginStart="@dimen/size_9dp"
+                android:layout_marginTop="@dimen/size_7dp"
+                android:layout_marginEnd="@dimen/size_9dp"
+                android:gravity="center_vertical"
+                android:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtPrice"
+                    style="@style/TextStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{info.selling_price.formatted}"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtOldPrice"
+                    style="@style/TextStyleVerySmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_8dp"
+                    android:text="@{info.price.formatted}"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
+                style="@style/TextStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/routPriceDetails"
+                android:layout_marginStart="@dimen/size_9dp"
+                android:layout_marginEnd="@dimen/size_9dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:layout_marginTop="@dimen/size_1dp"
+                android:layout_marginBottom="@dimen/size_7dp"
+                android:text="@{info.product_name}"
+                android:textColor="@color/colorBlack"
+                android:visibility="visible" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

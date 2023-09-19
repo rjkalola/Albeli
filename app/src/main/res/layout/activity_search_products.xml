@@ -1,0 +1,144 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/routRootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/routToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:elevation="@dimen/max_elevation"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/routBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgBack"
+                        android:layout_width="@dimen/size_30dp"
+                        android:layout_height="@dimen/size_30dp"
+                        android:layout_marginStart="@dimen/size_8dp"
+                        android:padding="@dimen/size_8dp"
+                        app:srcCompat="@drawable/ic_back"
+                        app:tint="@color/colorBlack" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_4dp"
+                        android:fontFamily="@string/font_family_medium"
+                        android:includeFontPadding="false"
+                        android:text="@string/lbl_search"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="@dimen/text_size_17sp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/routSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/routToolbar"
+            android:background="@drawable/bg_edittext"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/size_10dp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtSearch"
+                style="@style/Edittext_Login"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/colorWhite"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="@dimen/size_10dp"
+                android:gravity="center_vertical"
+                android:hint="@string/search_here"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivClose"
+                style="@style/Style_ivActionBarButton"
+                android:padding="@dimen/size_13dp"
+                android:src="@drawable/ic_close" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routSearchView"
+            android:layout_marginStart="@dimen/size_4dp"
+            android:layout_marginTop="@dimen/size_6dp"
+            android:layout_marginEnd="@dimen/size_4dp"
+            android:layout_marginBottom="@dimen/size_6dp"
+            android:background="@color/colorWhite">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategoryItems"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/loadMore"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/txtEmptyPlaceHolder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/no_data_found"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_14sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/loadMore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/size_16dp"
+                android:paddingTop="@dimen/size_8dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="@dimen/size_8dp"
+                android:visibility="gone">
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_6dp"
+                    android:padding="@dimen/size_3dp"
+                    android:text="@string/loading_more"
+                    android:textColor="@color/colorPrimaryText" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routToolbar" />
+    </RelativeLayout>
+
+</layout>
