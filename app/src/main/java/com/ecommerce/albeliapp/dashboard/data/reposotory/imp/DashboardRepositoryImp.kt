@@ -4,6 +4,7 @@ import com.ecommerce.albeliapp.common.api.model.BaseResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
+import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import com.ecommerce.albeliapp.dashboard.data.remote.DashboardInterface
 import com.ecommerce.albeliapp.dashboard.data.reposotory.DashboardRepository
 import okhttp3.RequestBody
@@ -59,5 +60,9 @@ class DashboardRepositoryImp(
 
     override suspend fun removeProductFromWishList(product_id: RequestBody): BaseResponse {
         return dashboardInterface.removeProductFromWishList(product_id)
+    }
+
+    override suspend fun getProductDetails(product_id: RequestBody): ProductDetailsResponse {
+        return dashboardInterface.getProductDetails(product_id)
     }
 }

@@ -47,7 +47,7 @@ class CategoryProductsAdapter(
             itemViewHolder.binding.txtOldPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         itemViewHolder.binding.imgFavorite.isChecked = info.wishlisted;
         itemViewHolder.binding.routMainView.setOnClickListener {
-//            listener.onSelectItem(position, AppConstants.Action.CATEGORY_DETAILS, 0)
+            listener.onSelectItem(position, AppConstants.Action.PRODUCTS_DETAILS, 0)
         }
         itemViewHolder.binding.imgFavorite.setOnClickListener {
             listener.onSelectItem(position, AppConstants.Action.WATCHLIST, 0)

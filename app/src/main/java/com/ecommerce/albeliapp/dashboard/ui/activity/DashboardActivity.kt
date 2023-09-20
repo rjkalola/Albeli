@@ -56,7 +56,6 @@ class DashboardActivity : BaseActivity(), OnClickListener {
                     setupTab(1)
             }
         }
-
     }
 
     private fun setupViewPager(viewPager: ViewPagerDisableSwipe) {

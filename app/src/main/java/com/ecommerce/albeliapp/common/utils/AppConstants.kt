@@ -37,6 +37,7 @@ object AppConstants {
         const val REQUEST_CROP_IMAGE = 6
         const val WEB_URL = "WEB_URL"
         const val TITLE = "TITLE"
+        const val PRODUCT_ID = "PRODUCT_ID"
 
 
     }
@@ -59,7 +60,6 @@ object AppConstants {
 
     object DialogIdentifier {
         const val LOGOUT = 1
-        const val SELECT_CATEGORY = 2
         const val UPDATE_APP = 22
 
         const val DOB_PICKER = "DOB_PICKER"
@@ -73,6 +73,7 @@ object AppConstants {
         const val WATCHLIST = 1
         const val PRODUCTS_DETAILS = 2
         const val CATEGORY_DETAILS = 3
+        const val SELECT_CATEGORY = 4
     }
 
     object FileExtension {

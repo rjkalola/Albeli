@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.ecommerce.albeliapp.dashboard.data.model.CategoryProductInfo" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/routToolbarView"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:elevation="@dimen/max_elevation"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/routBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgBack"
+                        android:layout_width="@dimen/size_30dp"
+                        android:layout_height="@dimen/size_30dp"
+                        android:layout_marginStart="@dimen/size_8dp"
+                        android:padding="@dimen/size_8dp"
+                        app:srcCompat="@drawable/ic_back"
+                        app:tint="@color/colorBlack" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_4dp"
+                        android:fontFamily="@string/font_family_medium"
+                        android:includeFontPadding="false"
+                        android:text="Product Details"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="@dimen/text_size_17sp" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatCheckedTextView
+                    android:id="@+id/imgFavorite"
+                    android:layout_width="@dimen/size_24dp"
+                    android:layout_height="@dimen/size_24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/size_14dp"
+                    android:drawableStart="@drawable/drawable_like_selector"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routToolbarView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_260dp">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/vpBanner1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/size_10dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/tblPageIndicator1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/vpBanner1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/size_8dp"
+                        android:nestedScrollingEnabled="false" />
+                </RelativeLayout>
+
+                <View
+                    style="@style/Style_vDivider"
+                    android:layout_marginTop="@dimen/size_14dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTitle"
+                    style="@style/TextStyleLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16dp"
+                    android:layout_marginTop="@dimen/size_14dp"
+                    android:layout_marginEnd="@dimen/size_16dp"
+                    android:text="@{info.product_name}"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_18sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_2dp"
+                    android:paddingStart="@dimen/size_16dp"
+                    android:paddingEnd="@dimen/size_16dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtPrice"
+                            style="@style/TextStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{info.selling_price.formatted}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_14sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtOldPrice"
+                            style="@style/TextStyleVerySmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_6dp"
+                            android:text="@{info.price.formatted}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtOutOfStoke"
+                            style="@style/TextStyleVerySmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/size_9dp"
+                            android:background="@drawable/bg_assured"
+                            android:gravity="center"
+                            android:paddingStart="@dimen/size_5dp"
+                            android:paddingEnd="@dimen/size_5dp"
+                            android:text="Out of Stock"
+                            android:textColor="@color/colorWhite"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvSKU"
+                        style="@style/TextStyleVerySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:maxLines="1"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/text_size_12sp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/routRadioButtonView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View
+                        style="@style/Style_vDivider"
+                        android:layout_marginTop="@dimen/size_14dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_16dp"
+                        android:layout_marginTop="@dimen/size_14dp"
+                        android:layout_marginEnd="@dimen/size_16dp"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvRGTitle"
+                            style="@style/TextStyleNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_16sp"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/radioGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_6dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/routCheckboxView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View
+                        style="@style/Style_vDivider"
+                        android:layout_marginTop="@dimen/size_14dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_16dp"
+                        android:layout_marginTop="@dimen/size_14dp"
+                        android:layout_marginEnd="@dimen/size_16dp"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvCheckBoxTitle"
+                            style="@style/TextStyleNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_16sp"
+                            android:textStyle="bold" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvCheckBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_6dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/routDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View
+                        style="@style/Style_vDivider"
+                        android:layout_marginTop="@dimen/size_14dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_16dp"
+                        android:layout_marginTop="@dimen/size_14dp"
+                        android:layout_marginEnd="@dimen/size_16dp"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvDropdownTitle"
+                            style="@style/TextStyleNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_16sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/spDropdown"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_30dp"
+                            android:layout_marginTop="@dimen/size_10dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llCheckBox2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View style="@style/Style_vDivider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/size_10dp"
+                        android:paddingEnd="@dimen/size_10dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvCheckBox2Title"
+                            style="@style/TextStyleNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textStyle="bold" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvCheckBox2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    style="@style/Style_vDivider"
+                    android:layout_marginTop="@dimen/size_14dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_14dp"
+                    android:paddingStart="@dimen/size_16dp"
+                    android:paddingEnd="@dimen/size_16dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvAvgReview"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_assured"
+                        android:backgroundTint="@color/colorTvRating"
+                        android:paddingStart="@dimen/size_10dp"
+                        android:paddingTop="@dimen/size_4dp"
+                        android:paddingEnd="@dimen/size_10dp"
+                        android:paddingBottom="@dimen/size_4dp"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvReviewCount"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:drawableEnd="@drawable/ic_next"
+                        android:drawablePadding="@dimen/size_5dp"
+                        android:textColor="@color/colorTvReview"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <View
+                    style="@style/Style_vDivider"
+                    android:layout_marginTop="@dimen/size_14dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextStyleLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16dp"
+                    android:layout_marginTop="@dimen/size_14dp"
+                    android:text="Description"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtDescription"
+                    style="@style/TextStyleLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16dp"
+                    android:layout_marginTop="@dimen/size_6dp"
+                    android:layout_marginEnd="@dimen/size_16dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <View style="@style/Style_vDivider" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextStyleLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_15dp"
+                    android:paddingStart="@dimen/size_10dp"
+                    android:paddingEnd="@dimen/size_10dp"
+                    android:text="Additional Information"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_15dp"
+                    android:paddingStart="@dimen/size_10dp"
+                    android:paddingEnd="@dimen/size_10dp"
+                    android:text="Specification"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDescAdditional"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/size_5dp"
+                    android:paddingStart="@dimen/size_10dp"
+                    android:paddingEnd="@dimen/size_10dp"
+                    android:textColor="@color/colorBlack" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_10dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnAddToCart"
+                        style="@style/Style_tvActionButtons"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:drawableEnd="@drawable/ic_shopping_cart"
+                        android:drawablePadding="@dimen/size_10dp"
+                        android:paddingStart="@dimen/size_30dp"
+                        android:paddingEnd="@dimen/size_10dp"
+                        android:text="@string/add_to_cart"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routToolbarView" />
+
+    </RelativeLayout>
+
+</layout>

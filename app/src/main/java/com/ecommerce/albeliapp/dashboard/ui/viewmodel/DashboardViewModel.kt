@@ -9,6 +9,7 @@ import com.ecommerce.albeliapp.common.utils.traceErrorException
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
+import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import com.ecommerce.albeliapp.dashboard.data.reposotory.DashboardRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,6 +24,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val categoryProductsResponse = MutableLiveData<CategoryProductsResponse>()
     val categoryResponse = MutableLiveData<CategoryResponse>()
     val baseResponse = MutableLiveData<BaseResponse>()
+    val productDetailsResponse = MutableLiveData<ProductDetailsResponse>()
 
     fun getDashboardResponse() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -82,7 +84,14 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response =
-                    dashboardRepository.getCategoryProducts(categoryIdBody, limitBody, offsetBody,filterIdsBody,minAmountBody,maxAmountBody)
+                    dashboardRepository.getCategoryProducts(
+                        categoryIdBody,
+                        limitBody,
+                        offsetBody,
+                        filterIdsBody,
+                        minAmountBody,
+                        maxAmountBody
+                    )
                 withContext(Dispatchers.Main) {
                     categoryProductsResponse.value = response
                 }
@@ -165,6 +174,29 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                     dashboardRepository.removeProductFromWishList(productIdBody)
                 withContext(Dispatchers.Main) {
                     baseResponse.value = response
+                }
+            } catch (e: JSONException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getProductDetailsResponse(productId: String) {
+        val productIdBody: RequestBody = AppUtils.getRequestBody(productId.toString())
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.getProductDetails(productIdBody)
+                withContext(Dispatchers.Main) {
+                    productDetailsResponse.value = response
                 }
             } catch (e: JSONException) {
                 e.printStackTrace()

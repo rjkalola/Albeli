@@ -4,6 +4,7 @@ import com.ecommerce.albeliapp.common.api.model.BaseResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
+import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import okhttp3.RequestBody
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -58,6 +59,12 @@ interface DashboardInterface {
     suspend fun removeProductFromWishList(
         @Part("product_id") product_id: RequestBody
     ): BaseResponse
+
+    @Multipart
+    @POST("product-detail")
+    suspend fun getProductDetails(
+        @Part("product_id") product_id: RequestBody
+    ): ProductDetailsResponse
 
 }
 

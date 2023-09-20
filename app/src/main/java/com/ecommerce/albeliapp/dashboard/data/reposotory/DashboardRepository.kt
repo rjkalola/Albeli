@@ -4,7 +4,11 @@ import com.ecommerce.albeliapp.common.api.model.BaseResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
+import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import okhttp3.RequestBody
+import retrofit2.http.Multipart
+import retrofit2.http.POST
+import retrofit2.http.Part
 
 interface DashboardRepository {
     suspend fun getDashboard(): DashboardResponse
@@ -40,4 +44,8 @@ interface DashboardRepository {
     suspend fun removeProductFromWishList(
         product_id: RequestBody
     ): BaseResponse
+
+    suspend fun getProductDetails(
+        product_id: RequestBody
+    ): ProductDetailsResponse
 }

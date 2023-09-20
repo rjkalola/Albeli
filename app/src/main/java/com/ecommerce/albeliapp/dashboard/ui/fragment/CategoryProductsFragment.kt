@@ -25,6 +25,7 @@ import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductInfo
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.ui.adapter.CategoryProductsAdapter
+import com.ecommerce.albeliapp.dashboard.ui.activity.ProductDetailsActivity
 import com.ecommerce.albeliapp.dashboard.ui.activity.ProductFilterActivity
 import com.ecommerce.albeliapp.dashboard.ui.activity.SearchProductActivity
 import com.ecommerce.albeliapp.dashboard.ui.fragment.SelectItemBottomSheetDialog
@@ -35,7 +36,6 @@ import com.ecommerce.utilities.utils.StringHelper
 import com.ecommerce.utilities.utils.ToastHelper
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.parceler.Parcels
-import kotlin.math.max
 
 class CategoryProductsFragment : BaseFragment(), View.OnClickListener, SelectItemListener {
     private lateinit var binding: FragmentCategoryProductsBinding
@@ -138,7 +138,7 @@ class CategoryProductsFragment : BaseFragment(), View.OnClickListener, SelectIte
                         showSelectItemDialog(
                             categoryResponse?.Data!!,
                             getString(R.string.title_choose_category),
-                            AppConstants.DialogIdentifier.SELECT_CATEGORY
+                            AppConstants.Action.SELECT_CATEGORY
                         )
                     }
                 }
@@ -353,19 +353,14 @@ class CategoryProductsFragment : BaseFragment(), View.OnClickListener, SelectIte
                 }
             }
 
-//            AppConstants.Action.DIRECTORY_DETAILS -> {
-////                showSellerDetailsDialog()
-//                val intent = Intent(mContext, SellerDetailsActivity::class.java)
-//                val bundle = Bundle()
-//                bundle.putParcelable(
-//                    AppConstants.IntentKey.DIRECTORY_INFO, Parcels.wrap<DirectoryInfo?>(
-//                        adapter!!.list[position]
-//                    )
-//                )
-//                intent.putExtras(bundle)
-//                resultSellerDetailsActivity.launch(intent)
-//            }
-            AppConstants.DialogIdentifier.SELECT_CATEGORY -> {
+            AppConstants.Action.PRODUCTS_DETAILS -> {
+                val intent = Intent(mContext, ProductDetailsActivity::class.java)
+                val bundle = Bundle()
+                bundle.putString(AppConstants.IntentKey.PRODUCT_ID,adapter!!.list[position].id.toString())
+                intent.putExtras(bundle)
+                resultProductDetailsActivity.launch(intent)
+            }
+            AppConstants.Action.SELECT_CATEGORY -> {
                 selectItemBottomSheetDialog.dismiss()
                 categoryId = categoryResponse?.Data!![position].id
                 categoryName = categoryResponse?.Data!![position].name
@@ -375,13 +370,13 @@ class CategoryProductsFragment : BaseFragment(), View.OnClickListener, SelectIte
         }
     }
 
-    var resultSellerDetailsActivity =
+    var resultProductDetailsActivity =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result != null
                 && result.resultCode == Activity.RESULT_OK
             ) {
-//                if (activity is DashBoardActivity) (activity as DashBoardActivity?)!!.refreshCompareCount()
-//                loadData(true, true)
+                offset = 0
+                loadData(true, true)
             }
         }
 
