@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/routToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:elevation="@dimen/max_elevation"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/routBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="@dimen/size_30dp"
+                    android:layout_height="@dimen/size_30dp"
+                    android:layout_marginStart="@dimen/size_8dp"
+                    android:padding="@dimen/size_8dp"
+                    app:srcCompat="@drawable/ic_back"
+                    app:tint="@color/colorBlack" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_4dp"
+                    android:fontFamily="@string/font_family_medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/edit_profile"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_17sp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routToolbar">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/size_20dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtUserFirstName"
+                    style="@style/Edittext_Login"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_edittext"
+                    android:drawableStart="@drawable/ic_email"
+                    android:gravity="start"
+                    android:hint="@string/hint_user_firstname"
+                    android:inputType="text"
+                    android:text="@{info.first_name}"
+                    android:textColor="@color/colorBlack" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtUserLastName"
+                    style="@style/Edittext_Login"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_15dp"
+                    android:background="@drawable/bg_edittext"
+                    android:drawableStart="@drawable/ic_email"
+                    android:gravity="start"
+                    android:hint="@string/hint_user_lastname"
+                    android:inputType="text"
+                    android:text="@{info.last_name}"
+                    android:textColor="@color/colorBlack" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtUserEmail"
+                    style="@style/Edittext_Login"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_15dp"
+                    android:background="@drawable/bg_edittext"
+                    android:drawableStart="@drawable/ic_email"
+                    android:gravity="start"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress"
+                    android:text="@{info.email}"
+                    android:textColor="@color/colorBlack" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtUserPhone"
+                    style="@style/Edittext_Login"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_15dp"
+                    android:background="@drawable/bg_edittext"
+                    android:digits="1234567890 ()-"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:gravity="start"
+                    android:hint="@string/hint_phone"
+                    android:inputType="phone"
+                    android:maxLength="13"
+                    android:text="@{info.phone}"
+                    android:textColor="@color/colorBlack" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSave"
+                    style="@style/Button_Signup"
+                    android:layout_marginTop="@dimen/size_26dp"
+                    android:gravity="center"
+                    android:text="@string/save" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </ScrollView>
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routToolbar" />
+
+    </RelativeLayout>
+
+</layout>

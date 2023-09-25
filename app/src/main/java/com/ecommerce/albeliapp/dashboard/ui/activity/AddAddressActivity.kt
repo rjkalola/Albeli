@@ -55,6 +55,8 @@ class AddAddressActivity : BaseActivity(), OnClickListener {
             addressInfo =
                 Parcels.unwrap<AddressInfo>(intent.getParcelableExtra(AppConstants.IntentKey.ADDRESS_INFO))
             binding.info = addressInfo
+            if (addressInfo.is_default == "1")
+                binding.cbDefault.isChecked = true
         } else {
             binding.txtTitle.text = "Add Address"
             addressInfo = AddressInfo()
@@ -164,7 +166,15 @@ class AddAddressActivity : BaseActivity(), OnClickListener {
                             android.R.layout.simple_list_item_1,
                             addressResourcesResponse.Data
                         )
-                        binding.spState.post { binding.spState.setPadding(0, 0, 0, 0) }
+                        if (addressInfo.id > 0) {
+                            for (i in addressResourcesResponse.Data.indices) {
+                                if (addressInfo.state == addressResourcesResponse.Data[i].short) {
+                                    binding.spState.setSelection(i)
+                                    break
+                                }
+                            }
+                        }
+
                     } else {
                         AppUtils.handleUnauthorized(mContext, response, binding.root)
                     }

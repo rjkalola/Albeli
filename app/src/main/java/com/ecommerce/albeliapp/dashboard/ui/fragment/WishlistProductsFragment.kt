@@ -83,7 +83,7 @@ class WishlistProductsFragment : BaseFragment(), View.OnClickListener, SelectIte
     fun loadData(isProgress: Boolean, isClear: Boolean) {
         if (!NetworkHelper.isConnected(requireContext())) {
             ToastHelper.showSnackBar(
-                mContext,
+                requireActivity(),
                 mContext.getString(R.string.alert_no_connection),
                 binding.root
             )

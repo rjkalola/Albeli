@@ -7,6 +7,8 @@ import com.ecommerce.albeliapp.dashboard.data.model.AddressResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
+import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
+import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import okhttp3.RequestBody
 import retrofit2.http.Body
@@ -114,5 +116,26 @@ interface DashboardInterface {
     @GET("addresses")
     suspend fun getAddressList(): AddressResponse
 
+    @GET("my-profile")
+    suspend fun getMyProfile(): MyProfileResponse
+
+    @Multipart
+    @POST("store-profile")
+    suspend fun storeMyProfile(
+        @Part("first_name") first_name: RequestBody,
+        @Part("last_name") last_name: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("phone") phone: RequestBody,
+    ): BaseResponse
+
+    @Multipart
+    @POST("notifications")
+    suspend fun getNotificationList(
+        @Part("limit") limit: RequestBody,
+        @Part("offset") offset: RequestBody,
+    ): NotificationResponse
+
+    @GET("logout")
+    suspend fun logout(): BaseResponse
 }
 

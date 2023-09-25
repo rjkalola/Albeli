@@ -6,6 +6,7 @@ data class User(
     var name: String = "",
     var last_name: String = "",
     var email: String = "",
+    var phone: String = "",
     var api_token: String? = "",
     var image: String? = "",
 )

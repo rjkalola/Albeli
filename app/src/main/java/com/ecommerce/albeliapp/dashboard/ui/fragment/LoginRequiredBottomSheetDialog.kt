@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.authentication.ui.activity.LoginActivity
+import com.ecommerce.albeliapp.common.utils.AppConstants
 import com.ecommerce.albeliapp.databinding.DialogLoginRequiredBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -36,6 +37,7 @@ class LoginRequiredBottomSheetDialog(mContext: Context?) :
 
         binding.txtLogin.setOnClickListener {
             val intent = Intent(mContext, LoginActivity::class.java)
+            intent.putExtra(AppConstants.IntentKey.FROM_DASHBOARD, true)
             mContext.startActivity(intent)
             dismiss()
         }

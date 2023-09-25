@@ -1,6 +1,7 @@
 package com.ecommerce.albeliapp.dashboard.data.ui.adapter
 
 import android.content.Context
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +9,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.common.callback.SelectItemListener
+import com.ecommerce.albeliapp.common.utils.AppConstants
 import com.ecommerce.albeliapp.dashboard.data.model.AddressInfo
 import com.ecommerce.albeliapp.databinding.RowAddressListBinding
+import com.ecommerce.utilities.utils.StringHelper
 
 class AddressListAdapter(
     var mContext: Context,
@@ -28,7 +31,30 @@ class AddressListAdapter(
         val itemViewHolder = holder as ItemViewHolder
         val info = list[position]
         itemViewHolder.getData(info)
-
+        itemViewHolder.binding.tvName.text = info.first_name + " " + info.last_name
+        val list: MutableList<String> = ArrayList()
+        if (!StringHelper.isEmpty(info.address_1))
+            list.add(info.address_1)
+        if (!StringHelper.isEmpty(info.address_2))
+            list.add(info.address_2)
+        if (!StringHelper.isEmpty(info.city))
+            list.add(info.city)
+        if (!StringHelper.isEmpty(info.state))
+            list.add(info.state)
+        if (!StringHelper.isEmpty(info.zip))
+            list.add(info.zip)
+        itemViewHolder.binding.tvAddress.text = TextUtils.join(",", list)
+        if(info.is_default == "1"){
+            itemViewHolder.binding.ivDone.setBackgroundResource(R.drawable.ic_circle_default_address_pressed)
+        }else {
+            itemViewHolder.binding.ivDone.setBackgroundResource(R.drawable.ic_circle_default_address_normal)
+        }
+        itemViewHolder.binding.tvEdit.setOnClickListener {
+            listener.onSelectItem(position, AppConstants.Action.ADDRESS_DETAILS, 0)
+        }
+        itemViewHolder.binding.ivDone.setOnClickListener {
+            listener.onSelectItem(position, AppConstants.Action.CHANGE_DEFAULT_ADDRESS, 0)
+        }
     }
 
     override fun getItemCount(): Int {

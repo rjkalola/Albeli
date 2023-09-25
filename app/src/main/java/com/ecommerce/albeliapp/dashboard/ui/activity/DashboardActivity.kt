@@ -17,11 +17,13 @@ import com.ecommerce.albeliapp.common.ui.adapter.ViewPagerAdapter
 import com.ecommerce.albeliapp.common.utils.AppUtils
 import com.ecommerce.albeliapp.dashboard.data.ui.fragment.CategoryProductsFragment
 import com.ecommerce.albeliapp.dashboard.data.ui.fragment.HomeFragment
+import com.ecommerce.albeliapp.dashboard.data.ui.fragment.MyProfileFragment
 import com.ecommerce.albeliapp.dashboard.data.ui.fragment.WishlistProductsFragment
 import com.ecommerce.albeliapp.dashboard.ui.viewmodel.DashboardViewModel
 import com.ecommerce.albeliapp.databinding.ActivityDashboardBinding
 import com.ecommerce.albeliapp.databinding.ContentDashboardBinding
 import com.ecommerce.utilities.utils.AlertDialogHelper
+import com.ecommerce.utilities.utils.NetworkHelper
 import com.ecommerce.utilities.utils.ToastHelper
 import com.ecommerce.utilities.utils.ViewPagerDisableSwipe
 import com.google.firebase.auth.FirebaseAuth
@@ -49,6 +51,7 @@ class DashboardActivity : BaseActivity(), OnClickListener {
         bindingContent.routCategoryTab.setOnClickListener(this)
         bindingContent.routWatchlistTab.setOnClickListener(this)
         bindingContent.routCartTab.setOnClickListener(this)
+        bindingContent.routProfileTab.setOnClickListener(this)
         setupViewPager(bindingContent.viewPager);
     }
 
@@ -63,11 +66,47 @@ class DashboardActivity : BaseActivity(), OnClickListener {
                 R.id.routCategoryTab ->
                     setupTab(1)
 
-                R.id.routWatchlistTab ->
-                    setupTab(2)
+                R.id.routWatchlistTab -> {
+                    if (!NetworkHelper.isConnected(mContext)) {
+                        ToastHelper.showSnackBar(
+                            mContext,
+                            mContext.getString(R.string.alert_no_connection),
+                            binding.root
+                        )
+                    } else if (AppUtils.isLogin(mContext)) {
+                        setupTab(2)
+                    } else {
+                        AppUtils.showLoginRequiredAlertDialog(mContext)
+                    }
+                }
 
-                R.id.routCartTab ->
-                    moveActivity(mContext, ManageCartActivity::class.java, false, false, null)
+                R.id.routCartTab -> {
+                    if (!NetworkHelper.isConnected(mContext)) {
+                        ToastHelper.showSnackBar(
+                            mContext,
+                            mContext.getString(R.string.alert_no_connection),
+                            binding.root
+                        )
+                    } else if (AppUtils.isLogin(mContext)) {
+                        moveActivity(mContext, ManageCartActivity::class.java, false, false, null)
+                    } else {
+                        AppUtils.showLoginRequiredAlertDialog(mContext)
+                    }
+                }
+
+                R.id.routProfileTab -> {
+                    if (!NetworkHelper.isConnected(mContext)) {
+                        ToastHelper.showSnackBar(
+                            mContext,
+                            mContext.getString(R.string.alert_no_connection),
+                            binding.root
+                        )
+                    } else if (AppUtils.isLogin(mContext)) {
+                        setupTab(3)
+                    } else {
+                        AppUtils.showLoginRequiredAlertDialog(mContext)
+                    }
+                }
             }
         }
     }
@@ -78,12 +117,13 @@ class DashboardActivity : BaseActivity(), OnClickListener {
         pagerAdapter.addFrag(HomeFragment.newInstance(), "")
         pagerAdapter.addFrag(CategoryProductsFragment.newInstance(), "")
         pagerAdapter.addFrag(WishlistProductsFragment.newInstance(), "")
+        pagerAdapter.addFrag(MyProfileFragment.newInstance(), "")
         viewPager.adapter = pagerAdapter
 //        setupTab(selectedTabIndex)
 
     }
 
-    private fun setupTab(position: Int) {
+    fun setupTab(position: Int) {
         selectedTabIndex = position
         resetTabImage()
         bindingContent.viewPager.currentItem = position
@@ -106,6 +146,10 @@ class DashboardActivity : BaseActivity(), OnClickListener {
                 if (pagerAdapter.getmFragmentList()[position] is WishlistProductsFragment)
                     (pagerAdapter.getmFragmentList()[position] as WishlistProductsFragment).initialDataLoad()
             }
+
+            3 -> {
+                bindingContent.imgProfileTab.setImageResource(R.drawable.ic_avatar_selected)
+            }
         }
 
     }
@@ -114,6 +158,7 @@ class DashboardActivity : BaseActivity(), OnClickListener {
         bindingContent.imgHomeTab.setImageResource(R.drawable.ic_home)
         bindingContent.imCategoryTab.setImageResource(R.drawable.ic_shirt)
         bindingContent.imgWatchlistTab.setColorFilter(resources.getColor(R.color.colorBlack))
+        bindingContent.imgProfileTab.setImageResource(R.drawable.ic_avatar)
     }
 
     fun refreshCategoryProducts(categoryId: String, categoryName: String) {
@@ -159,7 +204,8 @@ class DashboardActivity : BaseActivity(), OnClickListener {
     override fun onResume() {
         super.onResume()
         Log.e("test", "onResume")
-        dashboardViewModel.getCartListResponse()
+        if (AppUtils.isLogin(mContext))
+            dashboardViewModel.getCartListResponse()
     }
 
 }

@@ -7,12 +7,11 @@ import com.ecommerce.albeliapp.dashboard.data.model.AddressResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
+import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
+import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import okhttp3.RequestBody
 import retrofit2.http.GET
-import retrofit2.http.Multipart
-import retrofit2.http.POST
-import retrofit2.http.Part
 
 interface DashboardRepository {
     suspend fun getDashboard(): DashboardResponse
@@ -85,4 +84,23 @@ interface DashboardRepository {
 
 
     suspend fun getAddressList(): AddressResponse
+
+    suspend fun getMyProfile(): MyProfileResponse
+
+
+    suspend fun storeMyProfile(
+        first_name: RequestBody,
+        last_name: RequestBody,
+        email: RequestBody,
+        phone: RequestBody,
+    ): BaseResponse
+
+
+    suspend fun getNotificationList(
+        limit: RequestBody,
+        offset: RequestBody,
+    ): NotificationResponse
+
+
+    suspend fun logout(): BaseResponse
 }

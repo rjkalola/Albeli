@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.authentication.ui.viewmodel.AuthenticationViewModel
 import com.ecommerce.albeliapp.common.ui.activity.BaseActivity
+import com.ecommerce.albeliapp.common.utils.AppConstants
 import com.ecommerce.albeliapp.common.utils.AppUtils
 import com.ecommerce.albeliapp.dashboard.ui.activity.DashboardActivity
 import com.ecommerce.albeliapp.databinding.ActivityLoginBinding
@@ -25,6 +26,7 @@ class LoginActivity : BaseActivity(), OnClickListener {
     private lateinit var mContext: Context;
     private val authenticationViewModel: AuthenticationViewModel by viewModel()
     private var lastClickedTime: Long = 0
+    private var isFromDashboard = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,12 @@ class LoginActivity : BaseActivity(), OnClickListener {
         binding.txtSignIn.setOnClickListener(this)
         binding.txtSignUp.setOnClickListener(this)
         binding.imgBack.setOnClickListener(this)
+        if (intent.extras != null && intent.hasExtra(AppConstants.IntentKey.FROM_DASHBOARD))
+            isFromDashboard = intent.getBooleanExtra(AppConstants.IntentKey.FROM_DASHBOARD, false)
+        if (isFromDashboard) {
+            binding.routSkipForNow.visibility = View.GONE
+            binding.txtSkipNow.visibility = View.GONE
+        }
     }
 
     override fun onClick(v: View) {
@@ -73,7 +81,7 @@ class LoginActivity : BaseActivity(), OnClickListener {
                 } else {
                     if (response.IsSuccess) {
                         hideProgressDialog()
-                        AppUtils.setUserPreference(mContext,response.info)
+                        AppUtils.setUserPreference(mContext, response.info)
                         moveActivity(mContext, DashboardActivity::class.java, true, true, null)
                     } else {
                         AppUtils.handleUnauthorized(mContext, response, binding.root)

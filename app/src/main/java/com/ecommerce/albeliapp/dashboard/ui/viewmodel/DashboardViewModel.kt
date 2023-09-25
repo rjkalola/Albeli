@@ -12,6 +12,8 @@ import com.ecommerce.albeliapp.dashboard.data.model.AddressResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
+import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
+import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductOptionsItemInfo
 import com.ecommerce.albeliapp.dashboard.data.reposotory.DashboardRepository
@@ -36,6 +38,9 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val addAddressResponse = MutableLiveData<BaseResponse>()
     val addressResponse = MutableLiveData<AddressResponse>()
     val makeDefaultAddress = MutableLiveData<BaseResponse>()
+    val myProfileResponse = MutableLiveData<MyProfileResponse>()
+    val mNotificationResponse = MutableLiveData<NotificationResponse>()
+    val mLogoutResponse = MutableLiveData<BaseResponse>()
 
     fun getDashboardResponse() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -412,7 +417,92 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                 val response =
                     dashboardRepository.makeDefaultAddress(idBody)
                 withContext(Dispatchers.Main) {
-                    addProductToCartResponse.value = response
+                    makeDefaultAddress.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getMyProfileResponse() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.getMyProfile()
+                withContext(Dispatchers.Main) {
+                    myProfileResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun storeMyProfileResponse(firstName: String, lastName: String, email: String, phone: String) {
+        val firstNameBody: RequestBody = AppUtils.getRequestBody(firstName)
+        val lastNameBody: RequestBody = AppUtils.getRequestBody(lastName)
+        val emailBody: RequestBody = AppUtils.getRequestBody(email)
+        val phoneBody: RequestBody = AppUtils.getRequestBody(phone)
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.storeMyProfile(
+                        firstNameBody,
+                        lastNameBody,
+                        emailBody,
+                        phoneBody
+                    )
+                withContext(Dispatchers.Main) {
+                    baseResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getNotificationList(limit: Int, offset: Int) {
+        val limitBody: RequestBody = AppUtils.getRequestBody(limit.toString())
+        val offsetBody: RequestBody = AppUtils.getRequestBody(offset.toString())
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.getNotificationList(limitBody, offsetBody)
+                withContext(Dispatchers.Main) {
+                    mNotificationResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun mLogoutResponse() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.logout()
+                withContext(Dispatchers.Main) {
+                    mLogoutResponse.value = response
                 }
             } catch (e: JSONException) {
                 traceErrorException(e)

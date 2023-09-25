@@ -39,7 +39,7 @@ object AppConstants {
         const val TITLE = "TITLE"
         const val PRODUCT_ID = "PRODUCT_ID"
         const val ADDRESS_INFO = "ADDRESS_INFO"
-
+        const val FROM_DASHBOARD = "FROM_DASHBOARD"
     }
 
     object SharedPrefKey {
@@ -76,6 +76,8 @@ object AppConstants {
         const val INCREASE_QTY = 5
         const val DECREASE_QTY = 6
         const val REMOVE_CART_ITEM = 7
+        const val ADDRESS_DETAILS = 8
+        const val CHANGE_DEFAULT_ADDRESS = 9
     }
 
     object FileExtension {

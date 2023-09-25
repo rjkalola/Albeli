@@ -69,9 +69,14 @@ class ManageCartActivity : BaseActivity(), OnClickListener {
 
                         1 -> {
                             if ((pagerAdapter.getmFragmentList()[selectedTabIndex] as AddressListFragment).validate()) {
-//                                (pagerAdapter.getmFragmentList()[selectedTabIndex] as AddressListFragment).loadData(true)
-                                selectedTabIndex = 2
-                                setOrderProgress(selectedTabIndex)
+                                if ((pagerAdapter.getmFragmentList()[selectedTabIndex] as AddressListFragment).isDefaultAddress()) {
+                                    selectedTabIndex = 2
+                                    setOrderProgress(selectedTabIndex)
+                                }else{
+                                    ToastHelper.showSnackBar(
+                                        mContext, "Please select any address.", binding.root
+                                    )
+                                }
                             } else {
                                 ToastHelper.showSnackBar(
                                     mContext, "You have not added any address.", binding.root

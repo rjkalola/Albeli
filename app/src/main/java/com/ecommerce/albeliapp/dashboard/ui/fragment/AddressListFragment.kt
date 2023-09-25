@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ecommerce.albeliapp.R
+import com.ecommerce.albeliapp.common.api.model.ModuleInfo
 import com.ecommerce.albeliapp.common.callback.SelectItemListener
 import com.ecommerce.albeliapp.common.ui.fragment.BaseFragment
 import com.ecommerce.albeliapp.common.utils.AppConstants
@@ -33,6 +35,7 @@ import com.ecommerce.utilities.utils.AlertDialogHelper
 import com.ecommerce.utilities.utils.NetworkHelper
 import com.ecommerce.utilities.utils.ToastHelper
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.parceler.Parcels
 import java.lang.String
 import java.util.Locale
 
@@ -80,7 +83,7 @@ class AddressListFragment : BaseFragment(), View.OnClickListener, SelectItemList
             )
         } else {
             if (isProgress)
-                showProgressDialog(mContext,"")
+                showProgressDialog(mContext, "")
             dashboardViewModel.getAddressListResponse()
         }
     }
@@ -100,6 +103,16 @@ class AddressListFragment : BaseFragment(), View.OnClickListener, SelectItemList
 
     public fun validate(): Boolean {
         return addressResponse?.Data!!.isNotEmpty()
+    }
+
+    public fun isDefaultAddress(): Boolean {
+        var isDefaultAddress = false
+        for (i in addressResponse?.Data!!.indices){
+            if(addressResponse?.Data!![i].is_default == "1"){
+                isDefaultAddress = true
+            }
+        }
+        return isDefaultAddress
     }
 
     private fun setAdapter(list: MutableList<AddressInfo>?) {
@@ -140,6 +153,7 @@ class AddressListFragment : BaseFragment(), View.OnClickListener, SelectItemList
         dashboardViewModel.addressResponse.observe(requireActivity()) { response ->
             hideCustomProgressDialog(binding.progressBarView.routProgress)
             hideProgressDialog()
+            binding.progressBarAddress.visibility = View.GONE
             try {
                 if (response == null) {
                     ToastHelper.showSnackBar(
@@ -163,39 +177,22 @@ class AddressListFragment : BaseFragment(), View.OnClickListener, SelectItemList
 
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
         when (action) {
-            AppConstants.Action.PRODUCTS_DETAILS -> {
-                val intent = Intent(mContext, ProductDetailsActivity::class.java)
+            AppConstants.Action.ADDRESS_DETAILS -> {
+                val intent = Intent(mContext, AddAddressActivity::class.java)
                 val bundle = Bundle()
-                bundle.putString(
-                    AppConstants.IntentKey.PRODUCT_ID,
-                    adapter!!.list[position].id.toString()
+                bundle.putParcelable(
+                    AppConstants.IntentKey.ADDRESS_INFO, Parcels.wrap<AddressInfo?>(
+                        adapter!!.list[position]
+                    )
                 )
                 intent.putExtras(bundle)
-//                resultProductDetailsActivity.launch(intent)
+                resultAddAddressActivity.launch(intent)
             }
 
-//            AppConstants.Action.INCREASE_QTY -> {
-//                if (adapter!!.list[position].qty < adapter!!.list[position].product_qty) {
-//                    binding.progressBarCart.visibility = View.VISIBLE
-//                    dashboardViewModel.updateProductToCartResponse(
-//                        adapter!!.list[position].id,
-//                        adapter!!.list[position].qty + 1
-//                    )
-//                }
-//            }
-
-            AppConstants.Action.REMOVE_CART_ITEM -> {
-                selectedPosition = position
-                AlertDialogHelper.showDialog(
-                    mContext,
-                    "Albeli",
-                    "Are you sure want to remove item from the Cart?",
-                    mContext.getString(R.string.ok),
-                    getString(R.string.cancel),
-                    false,
-                    this,
-                    AppConstants.DialogIdentifier.REMOVE_CART_ITEM
-                )
+            AppConstants.Action.CHANGE_DEFAULT_ADDRESS -> {
+                Log.e("test","CHANGE_DEFAULT_ADDRESS")
+                showProgressDialog(mContext,"")
+                dashboardViewModel.makeDefaultAddress(adapter!!.list[position].id)
             }
         }
     }

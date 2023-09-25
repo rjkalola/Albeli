@@ -19,13 +19,8 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.res.ResourcesCompat
-import com.ecommerce.imagepickers.models.FileWithPath
-import com.ecommerce.imagepickers.utils.Constant
-import com.ecommerce.imagepickers.utils.GlideUtil
-import com.ecommerce.imagepickers.utils.ImageUtils
 import com.ecommerce.albeliapp.MyApplication
 import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.authentication.data.model.User
@@ -34,7 +29,12 @@ import com.ecommerce.albeliapp.common.api.model.BaseResponse
 import com.ecommerce.albeliapp.common.api.model.FcmData
 import com.ecommerce.albeliapp.common.ui.activity.BaseActivity
 import com.ecommerce.albeliapp.common.ui.activity.WebViewActivity
+import com.ecommerce.albeliapp.dashboard.ui.activity.DashboardActivity
 import com.ecommerce.albeliapp.dashboard.ui.fragment.LoginRequiredBottomSheetDialog
+import com.ecommerce.imagepickers.models.FileWithPath
+import com.ecommerce.imagepickers.utils.Constant
+import com.ecommerce.imagepickers.utils.GlideUtil
+import com.ecommerce.imagepickers.utils.ImageUtils
 import com.ecommerce.utilities.callback.DialogButtonClickListener
 import com.ecommerce.utilities.utils.AlertDialogHelper
 import com.ecommerce.utilities.utils.DateFormatsConstants
@@ -227,11 +227,11 @@ object AppUtils {
                 false, object : DialogButtonClickListener {
                     override fun onPositiveButtonClicked(dialogIdentifier: Int) {
                         if (context is BaseActivity) {
-//                            MyApplication().clearData()
-//                            context.moveActivity(
-//                                context,
-//                                DashBoardActivity::class.java, true, true, null
-//                            )
+                            MyApplication().clearData()
+                            context.moveActivity(
+                                context,
+                                DashboardActivity::class.java, true, true, null
+                            )
                         }
                     }
 

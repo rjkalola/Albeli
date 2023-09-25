@@ -1,0 +1,89 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/routToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:elevation="@dimen/max_elevation"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/size_16dp"
+                    android:fontFamily="@font/biennale_medium"
+                    android:gravity="center_vertical"
+                    android:text="@string/my_profile"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_17sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMyOrders"
+                style="@style/Style_tvMyProfile"
+                android:text="@string/my_orders"
+                android:textColor="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMyWishlist"
+                style="@style/Style_tvMyProfile"
+                android:text="@string/my_wishlist"
+                android:textColor="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMyNotificationList"
+                style="@style/Style_tvMyProfile"
+                android:text="@string/my_notification_list"
+                android:textColor="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEditProfile"
+                style="@style/Style_tvMyProfile"
+                android:text="@string/edit_profile"
+                android:textColor="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChangePassword"
+                style="@style/Style_tvMyProfile"
+                android:text="@string/change_password"
+                android:textColor="@color/colorBlack"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSetting"
+                style="@style/Style_tvMyProfile"
+                android:visibility="gone"
+                android:text="@string/setting"
+                android:textColor="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogout"
+                style="@style/Style_tvActionButtons"
+                android:layout_marginStart="@dimen/size_10dp"
+                android:layout_marginTop="@dimen/size_30dp"
+                android:layout_marginEnd="@dimen/size_10dp"
+                android:layout_weight="1"
+                android:text="@string/logout" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
+</layout>

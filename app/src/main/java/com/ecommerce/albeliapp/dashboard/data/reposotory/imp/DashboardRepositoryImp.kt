@@ -7,6 +7,8 @@ import com.ecommerce.albeliapp.dashboard.data.model.AddressResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
+import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
+import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import com.ecommerce.albeliapp.dashboard.data.remote.DashboardInterface
 import com.ecommerce.albeliapp.dashboard.data.reposotory.DashboardRepository
@@ -108,5 +110,29 @@ class DashboardRepositoryImp(
 
     override suspend fun getAddressList(): AddressResponse {
         return dashboardInterface.getAddressList()
+    }
+
+    override suspend fun getMyProfile(): MyProfileResponse {
+        return dashboardInterface.getMyProfile()
+    }
+
+    override suspend fun storeMyProfile(
+        first_name: RequestBody,
+        last_name: RequestBody,
+        email: RequestBody,
+        phone: RequestBody
+    ): BaseResponse {
+        return dashboardInterface.storeMyProfile(first_name, last_name, email, phone)
+    }
+
+    override suspend fun getNotificationList(
+        limit: RequestBody,
+        offset: RequestBody
+    ): NotificationResponse {
+        return dashboardInterface.getNotificationList(limit, offset)
+    }
+
+    override suspend fun logout(): BaseResponse {
+        return dashboardInterface.logout()
     }
 }

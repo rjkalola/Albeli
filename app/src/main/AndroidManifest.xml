@@ -85,10 +85,15 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
-<!--        <activity-->
-<!--            android:name=".dashboard.ui.activity.AddAddressActivity"-->
-<!--            android:exported="false"-->
-<!--            android:screenOrientation="portrait" />-->
+        <activity
+            android:name=".dashboard.ui.activity.EditProfileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".dashboard.ui.activity.NotificationListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

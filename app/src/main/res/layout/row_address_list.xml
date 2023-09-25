@@ -28,54 +28,61 @@
                     android:id="@+id/tvName"
                     style="@style/TextStyleNormal"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/size_10dp"
                     android:layout_toStartOf="@id/ivDone"
-                    android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="2"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp"
                     android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivDone"
-                    android:layout_width="@dimen/size_24dp"
-                    android:layout_height="@dimen/size_24dp"
+                    android:layout_width="@dimen/size_22dp"
+                    android:layout_height="@dimen/size_22dp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/ic_circle_default_address_normal"
                     android:padding="@dimen/size_3dp"
                     android:src="@drawable/ic_done"
-                    android:background="@drawable/ic_circle_default_address_normal"
-                    app:tint="@color/colorWhite"
-                 android:layout_alignParentEnd="true" />
+                    app:tint="@color/colorWhite" />
 
             </RelativeLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvAddress"
                 style="@style/TextStyleSmall"
-                android:layout_marginTop="@dimen/size_6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_6dp"
                 android:ellipsize="end"
-                android:minLines="3" />
+                android:minLines="2"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size_14sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/size_10dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_10dp">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvPhone"
                     style="@style/TextStyleSmall"
-                    android:layout_centerVertical="true"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/size_25dp"
+                    android:layout_centerVertical="true"
                     android:maxLength="15"
+                    android:text="@{info.phone}"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_14sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:id="@+id/llActions"
-                    android:layout_width="@dimen/size_60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/size_25dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_height="@dimen/size_25dp">
+                    android:layout_centerVertical="true">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvEdit"
@@ -83,8 +90,10 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/size_6dp"
                         android:gravity="center"
                         android:text="@string/edit"
+                        android:textSize="@dimen/text_size_15sp"
                         android:textColor="@color/colorRed"
                         android:textStyle="bold" />
 
@@ -99,9 +108,9 @@
                         style="@style/TextStyleSmall"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/size_10dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:layout_marginStart="@dimen/size_10dp"
                         android:text="@string/delete"
                         android:textColor="@color/colorRed"
                         android:textStyle="bold"
