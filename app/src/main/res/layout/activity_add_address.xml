@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.ecommerce.albeliapp.dashboard.data.model.AddressInfo" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/routToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:elevation="@dimen/max_elevation"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/routBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgBack"
+                        android:layout_width="@dimen/size_30dp"
+                        android:layout_height="@dimen/size_30dp"
+                        android:layout_marginStart="@dimen/size_8dp"
+                        android:padding="@dimen/size_8dp"
+                        app:srcCompat="@drawable/ic_back"
+                        app:tint="@color/colorBlack" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_4dp"
+                        android:fontFamily="@string/font_family_medium"
+                        android:includeFontPadding="false"
+                        android:text="Add Address"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="@dimen/text_size_17sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/size_20dp"
+                    android:paddingBottom="@dimen/size_20dp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtAddress1"
+                        style="@style/Style_edt_AddAddress"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:hint="@string/title_address1"
+                        android:text="@={info.address_1}" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtAddress2"
+                        style="@style/Style_edt_AddAddress"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:hint="@string/title_address2"
+                        android:text="@={info.address_2}" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtCity"
+                        style="@style/Style_edt_AddAddress"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:hint="@string/title_city"
+                        android:text="@={info.city}" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_40dp"
+                        android:layout_marginTop="@dimen/size_10dp">
+
+                        <View
+                            android:id="@+id/viewState"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_40dp"
+                            android:layout_marginStart="@dimen/size_20dp"
+                            android:layout_marginEnd="@dimen/size_20dp"
+                            android:background="@drawable/bg_edittext" />
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/spState"
+                            android:layout_width="match_parent"
+                            android:layout_marginStart="@dimen/size_6dp"
+                            android:layout_height="match_parent"
+                            android:layout_alignTop="@id/viewState"
+                            android:layout_alignBottom="@id/viewState"
+                            android:background="@color/transparent"
+                            android:paddingStart="0dp"
+                            android:spinnerMode="dropdown" />
+
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtPinCode"
+                        style="@style/Style_edt_AddAddress"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:digits="1234567890"
+                        android:imeOptions="actionNext"
+                        android:hint="@string/title_zip_code"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:text="@={info.zip}" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtCountry"
+                        style="@style/Style_edt_AddAddress"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:focusable="false"
+                        android:hint="@string/title_country"
+                        android:inputType="none"
+                        android:text="India" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtFirstName"
+                        style="@style/Style_edt_AddAddress"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:hint="@string/hint_user_firstname"
+                        android:inputType="textPersonName"
+                        android:text="@={info.first_name}" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtLastName"
+                        style="@style/Style_edt_AddAddress"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:hint="@string/hint_user_lastname"
+                        android:inputType="textPersonName"
+                        android:text="@={info.last_name}" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtEmail"
+                        style="@style/Style_edt_AddAddress"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:hint="@string/hint_email"
+                        android:inputType="textEmailAddress"
+                        android:text="@={info.email}" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtPhone"
+                        style="@style/Style_edt_AddAddress"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:digits="1234567890 ()-"
+                        android:hint="@string/hint_phone"
+                        android:inputType="phone"
+                        android:imeOptions="actionDone"
+                        android:maxLength="13"
+                        android:text="@={info.phone}" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/cbDefault"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_14dp"
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:layout_marginEnd="@dimen/size_14dp"
+                        android:text="Set to default"
+                        android:textSize="@dimen/text_normal" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSave"
+                style="@style/Style_tvActionButtons"
+                android:layout_marginTop="@dimen/size_10dp"
+                android:text="@string/save" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+
+</layout>

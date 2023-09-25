@@ -1,0 +1,35 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGrayLight">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdd"
+            style="@style/Button_Signup"
+            android:layout_margin="@dimen/size_20dp"
+            android:gravity="center"
+            android:backgroundTint="@color/colorTvSignin"
+            android:text="@string/add_new_address" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvList"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tvAdd"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/size_20dp"
+            android:paddingTop="@dimen/size_10dp"
+            android:paddingEnd="@dimen/size_20dp"
+            android:paddingBottom="@dimen/size_20dp" />
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+</layout>

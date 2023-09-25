@@ -38,7 +38,7 @@ object AppConstants {
         const val WEB_URL = "WEB_URL"
         const val TITLE = "TITLE"
         const val PRODUCT_ID = "PRODUCT_ID"
-
+        const val ADDRESS_INFO = "ADDRESS_INFO"
 
     }
 
@@ -60,9 +60,8 @@ object AppConstants {
 
     object DialogIdentifier {
         const val LOGOUT = 1
-        const val UPDATE_APP = 22
-
-        const val DOB_PICKER = "DOB_PICKER"
+        const val UPDATE_APP = 2
+        const val REMOVE_CART_ITEM = 3
     }
 
     object LocationMode {
@@ -74,6 +73,9 @@ object AppConstants {
         const val PRODUCTS_DETAILS = 2
         const val CATEGORY_DETAILS = 3
         const val SELECT_CATEGORY = 4
+        const val INCREASE_QTY = 5
+        const val DECREASE_QTY = 6
+        const val REMOVE_CART_ITEM = 7
     }
 
     object FileExtension {

@@ -1,6 +1,9 @@
 package com.ecommerce.albeliapp.dashboard.data.reposotory.imp
 
 import com.ecommerce.albeliapp.common.api.model.BaseResponse
+import com.ecommerce.albeliapp.dashboard.data.model.AddressInfo
+import com.ecommerce.albeliapp.dashboard.data.model.AddressResourcesResponse
+import com.ecommerce.albeliapp.dashboard.data.model.AddressResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
@@ -64,5 +67,46 @@ class DashboardRepositoryImp(
 
     override suspend fun getProductDetails(product_id: RequestBody): ProductDetailsResponse {
         return dashboardInterface.getProductDetails(product_id)
+    }
+
+    override suspend fun addProductToCart(
+        options: HashMap<String, String>
+    ): BaseResponse {
+        return dashboardInterface.addProductToCart(options)
+    }
+
+    override suspend fun getWishlistProducts(
+        limit: RequestBody,
+        offset: RequestBody
+    ): CategoryProductsResponse {
+        return dashboardInterface.getWishlistProducts(limit, offset)
+    }
+
+    override suspend fun getCartList(): CategoryProductsResponse {
+        return dashboardInterface.getCartList()
+    }
+
+    override suspend fun updateProductToCart(id: RequestBody, qty: RequestBody): BaseResponse {
+        return dashboardInterface.updateProductToCart(id, qty)
+    }
+
+    override suspend fun removeProductFromCart(id: RequestBody): BaseResponse {
+        return dashboardInterface.removeProductFromCart(id)
+    }
+
+    override suspend fun getAddressResources(): AddressResourcesResponse {
+        return dashboardInterface.getAddressResources()
+    }
+
+    override suspend fun addAddress(addressRequest: AddressInfo): BaseResponse {
+        return dashboardInterface.addAddress(addressRequest)
+    }
+
+    override suspend fun makeDefaultAddress(id: RequestBody): BaseResponse {
+        return dashboardInterface.makeDefaultAddress(id)
+    }
+
+    override suspend fun getAddressList(): AddressResponse {
+        return dashboardInterface.getAddressList()
     }
 }

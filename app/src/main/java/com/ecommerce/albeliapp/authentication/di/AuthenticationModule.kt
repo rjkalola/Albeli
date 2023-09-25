@@ -56,10 +56,13 @@ var authenticationModule = module {
                         AppUtils.getDeviceId(MyApplication().getContext())!!
                     )
                 }
+//                requestBuilder.header("Accept-Encoding", "identity")
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }
             val request = requestBuilder.build()
+//            request.header("Accept-Encoding")
             chain.proceed(request)
         }
             .cache(cache)

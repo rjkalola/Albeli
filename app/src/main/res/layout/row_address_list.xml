@@ -1,0 +1,115 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.ecommerce.albeliapp.dashboard.data.model.AddressInfo" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_10dp"
+        app:cardBackgroundColor="@color/colorWhite">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/size_15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvName"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_marginEnd="@dimen/size_10dp"
+                    android:layout_toStartOf="@id/ivDone"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivDone"
+                    android:layout_width="@dimen/size_24dp"
+                    android:layout_height="@dimen/size_24dp"
+                    android:padding="@dimen/size_3dp"
+                    android:src="@drawable/ic_done"
+                    android:background="@drawable/ic_circle_default_address_normal"
+                    app:tint="@color/colorWhite"
+                 android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAddress"
+                style="@style/TextStyleSmall"
+                android:layout_marginTop="@dimen/size_6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:minLines="3" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/size_10dp"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPhone"
+                    style="@style/TextStyleSmall"
+                    android:layout_centerVertical="true"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/size_25dp"
+                    android:maxLength="15"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/llActions"
+                    android:layout_width="@dimen/size_60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_height="@dimen/size_25dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvEdit"
+                        style="@style/TextStyleSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/edit"
+                        android:textColor="@color/colorRed"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="@dimen/size_1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorGray"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDelete"
+                        style="@style/TextStyleSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginStart="@dimen/size_10dp"
+                        android:text="@string/delete"
+                        android:textColor="@color/colorRed"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

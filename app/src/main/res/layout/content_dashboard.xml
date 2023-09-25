@@ -42,8 +42,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgHomeTab"
                     android:layout_width="@dimen/size_27dp"
-                    android:padding="@dimen/size_1dp"
                     android:layout_height="@dimen/size_27dp"
+                    android:padding="@dimen/size_1dp"
                     app:srcCompat="@drawable/ic_home_selected" />
 
             </LinearLayout>
@@ -67,8 +67,42 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/routCartTab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgCartTab"
+                    android:layout_width="@dimen/size_36dp"
+                    android:layout_height="@dimen/size_36dp"
+                    android:layout_marginTop="@dimen/size_10dp"
+                    android:layout_marginBottom="@dimen/size_10dp"
+                    android:padding="@dimen/size_1dp"
+                    app:srcCompat="@drawable/ic_shopping_cart" />
+
+                <TextView
+                    android:id="@+id/txtNotificationCount"
+                    style="@style/VerySmallFontTextView"
+                    android:layout_width="@dimen/size_22dp"
+                    android:layout_height="@dimen/size_22dp"
+                    android:layout_marginStart="@dimen/size_minus_12dp"
+                    android:layout_marginTop="@dimen/size_6dp"
+                    android:layout_toEndOf="@+id/imgCartTab"
+                    android:background="@drawable/notification_count_bg"
+                    android:gravity="center"
+                    android:minWidth="@dimen/size_22dp"
+                    android:singleLine="true"
+                    android:textColor="@color/colorWhite"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/routWatchlistTab"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -78,11 +112,11 @@
                 android:paddingBottom="@dimen/size_10dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgCartTab"
+                    android:id="@+id/imgWatchlistTab"
                     android:layout_width="@dimen/size_27dp"
                     android:layout_height="@dimen/size_27dp"
                     android:padding="@dimen/size_1dp"
-                    app:srcCompat="@drawable/ic_shopping_cart" />
+                    app:srcCompat="@drawable/ic_like" />
 
             </LinearLayout>
 
@@ -99,8 +133,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgProfileTab"
                     android:layout_width="@dimen/size_27dp"
-                    android:padding="@dimen/size_1dp"
                     android:layout_height="@dimen/size_27dp"
+                    android:padding="@dimen/size_1dp"
                     app:srcCompat="@drawable/ic_avatar" />
 
             </LinearLayout>

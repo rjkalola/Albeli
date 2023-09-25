@@ -177,8 +177,8 @@
     <color name="colorGreen">#57b76b</color>
     <color name="colorIvBack">#c8c8c8</color>
     <color name="colorPriceStrike">#ff3c3c</color>
-    <color name="colorPrimary">#cec7c7</color>
-    <color name="colorPrimaryDark">#979191</color>
+    <color name="colorPrimary">#57b86b</color>
+    <color name="colorPrimaryDark">#3B914D</color>
     <color name="colorRed">#ff0000</color>
     <color name="colorTvRating">#3eb658</color>
     <color name="colorTvReview">#ff5151</color>

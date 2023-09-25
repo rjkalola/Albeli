@@ -1,14 +1,18 @@
 package com.ecommerce.albeliapp.dashboard.data.remote
 
 import com.ecommerce.albeliapp.common.api.model.BaseResponse
+import com.ecommerce.albeliapp.dashboard.data.model.AddressInfo
+import com.ecommerce.albeliapp.dashboard.data.model.AddressResourcesResponse
+import com.ecommerce.albeliapp.dashboard.data.model.AddressResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import okhttp3.RequestBody
+import retrofit2.http.Body
+import retrofit2.http.FieldMap
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
-import retrofit2.http.HeaderMap
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
@@ -65,6 +69,50 @@ interface DashboardInterface {
     suspend fun getProductDetails(
         @Part("product_id") product_id: RequestBody
     ): ProductDetailsResponse
+
+    @FormUrlEncoded
+    @POST("add-product-to-cart")
+    suspend fun addProductToCart(
+        @FieldMap options: HashMap<String, String>
+    ): BaseResponse
+
+    @Multipart
+    @POST("wishlist-products")
+    suspend fun getWishlistProducts(
+        @Part("limit") limit: RequestBody,
+        @Part("offset") offset: RequestBody,
+    ): CategoryProductsResponse
+
+    @GET("get-cart")
+    suspend fun getCartList(): CategoryProductsResponse
+
+    @Multipart
+    @POST("update-product-to-cart")
+    suspend fun updateProductToCart(
+        @Part("id") id: RequestBody,
+        @Part("qty") qty: RequestBody,
+    ): BaseResponse
+
+    @Multipart
+    @POST("remove-product-from-cart")
+    suspend fun removeProductFromCart(
+        @Part("id") id: RequestBody,
+    ): BaseResponse
+
+    @GET("address-data")
+    suspend fun getAddressResources(): AddressResourcesResponse
+
+    @POST("store-address")
+    suspend fun addAddress(@Body addressRequest: AddressInfo): BaseResponse
+
+    @Multipart
+    @POST("make-default-address")
+    suspend fun makeDefaultAddress(
+        @Part("id") id: RequestBody,
+    ): BaseResponse
+
+    @GET("addresses")
+    suspend fun getAddressList(): AddressResponse
 
 }
 

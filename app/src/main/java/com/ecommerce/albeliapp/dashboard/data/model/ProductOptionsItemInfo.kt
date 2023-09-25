@@ -5,4 +5,5 @@ class ProductOptionsItemInfo(
     var label: String = "",
     var check: Boolean = false,
     var price: String? = "",
+    var option_id: Int = 0,
 )

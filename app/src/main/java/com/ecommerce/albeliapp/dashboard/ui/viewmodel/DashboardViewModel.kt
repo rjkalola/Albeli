@@ -6,17 +6,23 @@ import androidx.lifecycle.viewModelScope
 import com.ecommerce.albeliapp.common.api.model.BaseResponse
 import com.ecommerce.albeliapp.common.utils.AppUtils
 import com.ecommerce.albeliapp.common.utils.traceErrorException
+import com.ecommerce.albeliapp.dashboard.data.model.AddressInfo
+import com.ecommerce.albeliapp.dashboard.data.model.AddressResourcesResponse
+import com.ecommerce.albeliapp.dashboard.data.model.AddressResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
+import com.ecommerce.albeliapp.dashboard.data.model.ProductOptionsItemInfo
 import com.ecommerce.albeliapp.dashboard.data.reposotory.DashboardRepository
+import com.ecommerce.utilities.utils.StringHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.RequestBody
 import org.json.JSONException
 import java.util.concurrent.CancellationException
+
 
 class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     ViewModel() {
@@ -25,6 +31,11 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val categoryResponse = MutableLiveData<CategoryResponse>()
     val baseResponse = MutableLiveData<BaseResponse>()
     val productDetailsResponse = MutableLiveData<ProductDetailsResponse>()
+    val addProductToCartResponse = MutableLiveData<BaseResponse>()
+    val addressResourcesResponse = MutableLiveData<AddressResourcesResponse>()
+    val addAddressResponse = MutableLiveData<BaseResponse>()
+    val addressResponse = MutableLiveData<AddressResponse>()
+    val makeDefaultAddress = MutableLiveData<BaseResponse>()
 
     fun getDashboardResponse() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -206,6 +217,208 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                 traceErrorException(e)
             } catch (e: Exception) {
                 e.printStackTrace()
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun addProductToCartResponse(
+        productId: String,
+        quantity: Int,
+        options: MutableList<ProductOptionsItemInfo>
+    ) {
+        val productIdBody: RequestBody = AppUtils.getRequestBody(productId)
+        val quantityBody: RequestBody = AppUtils.getRequestBody(quantity.toString())
+        val partMap: HashMap<String, String> = HashMap()
+        partMap["product_id"] = productId
+        partMap["quantity"] = quantity.toString()
+        if (options.isNotEmpty()) {
+            for (i in 0 until options.size) {
+////                partMap["options[$i][id]"] = AppUtils.getRequestBody(options[i].id.toString())
+////                partMap["options[$i][value]"] = AppUtils.getRequestBody(options[i].label)
+////                if (!StringHelper.isEmpty(options[i].price))
+////                    partMap["options[$i][price]"] = AppUtils.getRequestBody(options[i].price.toString())
+////                else
+////                    partMap["options[$i][price]"] = AppUtils.getRequestBody("0")
+
+                partMap["options[$i][id]"] = options[i].option_id.toString()
+                partMap["options[$i][value]"] = options[i].id.toString()
+                if (!StringHelper.isEmpty(options[i].price))
+                    partMap["options[$i][price]"] = options[i].price.toString()
+                else
+                    partMap["options[$i][price]"] = "0"
+            }
+        }
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.addProductToCart(partMap)
+                withContext(Dispatchers.Main) {
+                    addProductToCartResponse.value = response
+                }
+            } catch (e: JSONException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getWishlistProductsResponse(limit: Int, offset: Int) {
+        val limitBody: RequestBody = AppUtils.getRequestBody(limit.toString())
+        val offsetBody: RequestBody = AppUtils.getRequestBody(offset.toString())
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.getWishlistProducts(limitBody, offsetBody)
+                withContext(Dispatchers.Main) {
+                    categoryProductsResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getCartListResponse() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.getCartList()
+                withContext(Dispatchers.Main) {
+                    categoryProductsResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun updateProductToCartResponse(id: Int, qty: Int) {
+        val idBody: RequestBody = AppUtils.getRequestBody(id.toString())
+        val qtyBody: RequestBody = AppUtils.getRequestBody(qty.toString())
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.updateProductToCart(idBody, qtyBody)
+                withContext(Dispatchers.Main) {
+                    addProductToCartResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun removeProductFromCartResponse(id: Int) {
+        val idBody: RequestBody = AppUtils.getRequestBody(id.toString())
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.removeProductFromCart(idBody)
+                withContext(Dispatchers.Main) {
+                    addProductToCartResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getAddressResourcesResponse() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.getAddressResources()
+                withContext(Dispatchers.Main) {
+                    addressResourcesResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun addAddressResponse(addressRequest: AddressInfo) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.addAddress(addressRequest)
+                withContext(Dispatchers.Main) {
+                    addAddressResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getAddressListResponse() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.getAddressList()
+                withContext(Dispatchers.Main) {
+                    addressResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun makeDefaultAddress(id: Int) {
+        val idBody: RequestBody = AppUtils.getRequestBody(id.toString())
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.makeDefaultAddress(idBody)
+                withContext(Dispatchers.Main) {
+                    addProductToCartResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
                 traceErrorException(e)
             }
         }

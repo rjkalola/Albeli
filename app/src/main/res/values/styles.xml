@@ -386,8 +386,7 @@
 
     <style name="Style_edt_AddAddress">
         <item name="android:textColorHint">@color/colorBlack</item>
-        <item name="android:gravity">right|center_horizontal|clip_horizontal</item>
-        <item name="android:layout_gravity">left|center_horizontal|clip_horizontal</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:background">@drawable/bg_edittext</item>
         <item name="android:layout_height">@dimen/size_40dp</item>
         <item name="android:inputType">none|text|textShortMessage|number|phone|datetime</item>

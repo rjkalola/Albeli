@@ -1,0 +1,103 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.ecommerce.albeliapp.dashboard.data.model.CategoryProductInfo" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_100dp"
+        android:layout_marginBottom="@dimen/size_1dp"
+        android:background="@color/colorWhite"
+        android:paddingStart="@dimen/size_14dp"
+        android:paddingTop="@dimen/size_12dp"
+        android:paddingEnd="@dimen/size_14dp"
+        android:paddingBottom="@dimen/size_12dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="@dimen/size_70dp"
+            android:layout_height="@dimen/size_100dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="@dimen/size_22dp"
+            android:layout_height="@dimen/size_30dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_delete" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
+            style="@style/TextStyleNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_12dp"
+            android:layout_marginEnd="@dimen/size_14dp"
+            android:layout_toStartOf="@id/ivDelete"
+            android:layout_toEndOf="@id/imgProduct"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@{info.product_name}"
+            android:textColor="@color/colorBlack" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llIncreaseDecreaseCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/imgProduct"
+            android:layout_marginStart="@dimen/size_12dp"
+            android:layout_marginEnd="@dimen/size_14dp"
+            android:layout_toEndOf="@id/imgProduct">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivDecrease"
+                style="@style/Style_ivCartItemCount"
+                android:background="@drawable/bg_cart_decrease"
+                android:src="@drawable/ic_remove" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvItemCount"
+                style="@style/Style_tvCartItemCount"
+                android:background="@drawable/bg_cart_count"
+                android:gravity="center"
+                android:maxLength="3"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size_12sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivIncrease"
+                style="@style/Style_ivCartItemCount"
+                android:background="@drawable/bg_cart_increase"
+                android:src="@drawable/ic_add" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/imgProduct"
+            android:layout_alignParentEnd="true">
+
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                style="@style/TextStyleLarge"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center"-->
+<!--                android:text="\u20B9"-->
+<!--                android:textColor="@color/colorBlack"-->
+<!--                android:textSize="@dimen/text_size_15sp" />-->
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvItemPrice"
+                style="@style/TextStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size_15sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

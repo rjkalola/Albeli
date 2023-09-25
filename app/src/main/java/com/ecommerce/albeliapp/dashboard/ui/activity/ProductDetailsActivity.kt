@@ -1,6 +1,7 @@
 package com.ecommerce.albeliapp.dashboard.ui.activity
 
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Paint
 import android.os.Bundle
@@ -8,12 +9,10 @@ import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
 import android.text.Html
-import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.ArrayAdapter
-import android.widget.LinearLayout
 import android.widget.RadioButton
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,11 +29,10 @@ import com.ecommerce.albeliapp.dashboard.data.ui.adapter.CheckboxListAdapter
 import com.ecommerce.albeliapp.dashboard.data.ui.adapter.DashboardBannerPagerDotsAdapter
 import com.ecommerce.albeliapp.dashboard.data.ui.adapter.DashboardCategoryAdapter
 import com.ecommerce.albeliapp.dashboard.ui.adapter.DashboardBannerPagerAdapter
-import com.ecommerce.albeliapp.dashboard.ui.fragment.SelectItemBottomSheetDialog
 import com.ecommerce.albeliapp.dashboard.ui.viewmodel.DashboardViewModel
 import com.ecommerce.albeliapp.databinding.ActivityProductDetailsBinding
 import com.ecommerce.utilities.utils.AlertDialogHelper
-import com.ecommerce.utilities.utils.CollectionUtils
+import com.ecommerce.utilities.utils.NetworkHelper
 import com.ecommerce.utilities.utils.StringHelper
 import com.ecommerce.utilities.utils.ToastHelper
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -48,6 +46,7 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
     private val dashboardViewModel: DashboardViewModel by viewModel()
     private var lastClickedTime: Long = 0
     private var productId: String = ""
+    private var isUpdate = false
     private var productDetails: CategoryProductInfo = CategoryProductInfo()
     private lateinit var adapterBannerDots: DashboardBannerPagerDotsAdapter
     private var adapterCategoryProduct: DashboardCategoryAdapter? = null
@@ -56,6 +55,7 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
     val handler = Handler(Looper.getMainLooper())
     private var adapterCheckBox: CheckboxListAdapter? = null
     private var listSelectedOptions: MutableList<ProductOptionsItemInfo> = ArrayList()
+    private var optionId = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,9 +63,11 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
         setStatusBarColor()
         mContext = this
         mProductDetailsResponse()
+        mAddToCartResponse()
+        baseResponseObservers()
         binding.imgBack.setOnClickListener(this)
         binding.btnAddToCart.setOnClickListener(this)
-
+        binding.imgFavorite.setOnClickListener(this)
         getIntentData()
     }
 
@@ -82,14 +84,51 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
             this.lastClickedTime = SystemClock.elapsedRealtime();
             when (v.id) {
                 R.id.imgBack ->
-                    finish()
+                    onBackPressed()
 
                 R.id.btnAddToCart -> {
-                    if (validate()) {
-                        Log.e("test", "valid")
+                    if (!NetworkHelper.isConnected(mContext)) {
+                        ToastHelper.showSnackBar(
+                            mContext,
+                            mContext.getString(R.string.alert_no_connection),
+                            binding.root
+                        )
+                    } else if (AppUtils.isLogin(mContext)) {
+                        if (validate()) {
+                            Log.e("test", "valid")
+                            showProgressDialog(mContext, "")
+                            dashboardViewModel.addProductToCartResponse(
+                                productId,
+                                1,
+                                listSelectedOptions
+                            )
+                        } else {
+                            ToastHelper.showSnackBar(mContext, "Please select any Size.", binding.root)
+                        }
                     } else {
-                        ToastHelper.showSnackBar(mContext, "Please select any Size.", binding.root)
+                        AppUtils.showLoginRequiredAlertDialog(mContext)
                     }
+                }
+
+                R.id.imgFavorite -> {
+                    if (!NetworkHelper.isConnected(mContext)) {
+                        ToastHelper.showSnackBar(
+                            mContext,
+                            mContext.getString(R.string.alert_no_connection),
+                            binding.root
+                        )
+                    } else if (AppUtils.isLogin(mContext)) {
+                        if (productDetails.wishlisted) {
+                            dashboardViewModel.removeProductToWatchListResponse(productDetails.id.toString())
+                        } else {
+                            dashboardViewModel.addProductToWatchListResponse(productDetails.id.toString())
+                        }
+                        productDetails.wishlisted = !productDetails.wishlisted;
+                        binding.imgFavorite.isChecked = productDetails.wishlisted;
+                    } else {
+                        AppUtils.showLoginRequiredAlertDialog(mContext)
+                    }
+
                 }
             }
         }
@@ -149,10 +188,10 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
             hideCustomProgressDialog(binding.progressBarView.routProgress)
             try {
                 if (response == null) {
-                    AlertDialogHelper.showDialog(
-                        mContext, null,
-                        mContext.getString(R.string.error_unknown), mContext.getString(R.string.ok),
-                        null, false, null, 0
+                    ToastHelper.showSnackBar(
+                        mContext,
+                        getString(R.string.error_unknown),
+                        binding.root
                     )
                 } else {
                     if (response.IsSuccess) {
@@ -198,6 +237,52 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
                         binding.tvDescAdditional.text = sb
                         setSliderAdapter(productDetails.additional_images)
                         setProductOptions()
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response, binding.root)
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    private fun mAddToCartResponse() {
+        dashboardViewModel.addProductToCartResponse.observe(this) { response ->
+            hideProgressDialog()
+            try {
+                if (response == null) {
+                    ToastHelper.showSnackBar(
+                        mContext,
+                        getString(R.string.error_unknown),
+                        binding.root
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        isUpdate = true
+                        ToastHelper.showSnackBar(mContext, response.Message!!, binding.root)
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response, binding.root)
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    private fun baseResponseObservers() {
+        dashboardViewModel.baseResponse.observe(this) { response ->
+            try {
+                if (response == null) {
+                    ToastHelper.showSnackBar(
+                        mContext,
+                        mContext.getString(R.string.error_unknown),
+                        binding.root
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        isUpdate = true
                     } else {
                         AppUtils.handleUnauthorized(mContext, response, binding.root)
                     }
@@ -263,6 +348,7 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
                         val id: Int = binding.radioGroup.checkedRadioButtonId
                         if (id != -1) {
                             valid = true
+                            info.values[id].option_id = info.id
                             listSelectedOptions.add(info.values[id])
                             break
                         }
@@ -270,18 +356,15 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
 
                     "multiple_select", "checkbox" -> {
                         if (adapterCheckBox != null) {
-                            var check = false;
                             val listIds: MutableList<String> = ArrayList()
                             for (j in 0 until adapterCheckBox?.list!!.size) {
                                 if (adapterCheckBox?.list!![j].check) {
                                     listIds.add(adapterCheckBox?.list!![j].id.toString())
-                                    check = true
+                                    valid = true
+                                    info.values[j].option_id = info.id
                                     listSelectedOptions.add(info.values[j])
                                 }
                             }
-                            valid = check
-                            if (check)
-                                break
                         }
                     }
 
@@ -289,8 +372,9 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
                         if (binding.spDropdown.selectedItemPosition > 0) {
                             Log.e("test", "Not Checked")
                             valid = true
+                            info.values[binding.spDropdown.selectedItemPosition - 1].option_id =
+                                info.id
                             listSelectedOptions.add(info.values[binding.spDropdown.selectedItemPosition - 1])
-                            break
                         }
                     }
                 }
@@ -344,6 +428,12 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
     override fun onDestroy() {
         super.onDestroy()
         stopTimer()
+    }
+
+    override fun onBackPressed() {
+        if (isUpdate)
+            setResult(Activity.RESULT_OK)
+        finish()
     }
 
 }

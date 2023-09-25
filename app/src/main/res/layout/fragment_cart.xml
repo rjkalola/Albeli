@@ -1,0 +1,278 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:wheel="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEmptyView"
+            style="@style/TextStyleNormal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/you_haven_t_added_any_item_in_cart"
+            android:visibility="gone" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llCart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/size_5dp"
+                android:text="@string/sum_up_of_your_order"
+                android:textColor="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatImageView style="@style/Style_ivDividerCart" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvCart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorGray" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/Style_ivDividerCart"
+                        android:layout_marginTop="0dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/size_20dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvTotalPriceTitle"
+                                style="@style/TextStyleVerySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:textColor="@color/colorBlack" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvTotalPrice"
+                                style="@style/TextStyleLarge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:textColor="@color/colorBlack"
+                                android:layout_centerVertical="true"
+                                android:textSize="@dimen/text_size_15sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_3dp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/TextStyleVerySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="Delivery"
+                                android:textColor="@color/colorBlack" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvDelivery"
+                                style="@style/TextStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:text="Free"
+                                android:textColor="@color/colorRed" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/routDiscountView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_3dp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvDiscount"
+                                style="@style/TextStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:text="-"
+                                android:textColor="@color/colorRed" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/TextStyleVerySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="Discount"
+                                android:textColor="@color/colorBlack" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/routNetPriceView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_3dp"
+                            android:visibility="gone">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvNetPrice"
+                                style="@style/TextStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:text="0"
+                                android:textColor="@color/colorRed"
+                                android:visibility="visible" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvNetPriceTitle"
+                                style="@style/TextStyleVerySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="Net Total Price"
+                                android:textColor="@color/colorBlack"
+                                android:visibility="visible" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_12dp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvApplyCoupon"
+                                style="@style/TextStyleVerySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/size_32dp"
+                                android:layout_alignParentEnd="true"
+                                android:background="@drawable/bg_tv_apply_coupon"
+                                android:gravity="center"
+                                android:padding="@dimen/size_7dp"
+                                android:text="@string/apply_voucher"
+                                android:textColor="@color/colorWhite" />
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/edtCoupon"
+                                style="@style/Widget.AppCompat.EditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/size_32dp"
+                                android:layout_marginEnd="@dimen/size_14dp"
+                                android:layout_toStartOf="@id/tvApplyCoupon"
+                                android:background="@drawable/bg_edt_voucher"
+                                android:gravity="center_vertical"
+                                android:hint="@string/enter_voucher_code"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:minLines="1"
+                                android:paddingStart="@dimen/size_10dp"
+                                android:paddingEnd="@dimen/size_10dp"
+                                android:singleLine="true"
+                                android:textColorHint="@color/colorGray"
+                                android:textSize="@dimen/text_very_small" />
+
+                        </RelativeLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvOR"
+                            style="@style/TextStyleNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/size_16dp"
+                            android:text="- OR -"
+                            android:textColor="@color/colorBlack"
+                            android:visibility="gone" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/linearLayoutCompat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="@dimen/size_16dp"
+                            android:background="@drawable/bg_reedom_dashed_border"
+                            android:visibility="gone">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvRedeemInfo"
+                                style="@style/TextStyleNormal"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="@dimen/size_13dp"
+                                android:text="5600 points, corresponding to 28$, will be redeem"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_very_small" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvRedeem"
+                                style="@style/TextStyleNormal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/size_13dp"
+                                android:text="@string/redeem"
+                                android:textColor="@color/colorRed" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvEarn"
+                            style="@style/TextStyleNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_15dp"
+                            android:layout_marginBottom="@dimen/size_15dp"
+                            android:gravity="center"
+                            android:text="You will earn 280 rewards points ($1,40)"
+                            android:textColor="@color/colorGray"
+                            android:textSize="@dimen/text_very_small"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.ecommerce.utilities.utils.ProgressWheel
+            android:id="@+id/progressBarCart"
+            android:layout_width="@dimen/progressbar_size"
+            android:visibility="gone"
+            android:layout_height="@dimen/progressbar_size"
+            android:layout_centerInParent="true"
+            wheel:matProg_progressIndeterminate="true" />
+    </RelativeLayout>
+</layout>
