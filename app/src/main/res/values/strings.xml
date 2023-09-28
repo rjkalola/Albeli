@@ -28,7 +28,6 @@
     <string name="photos">Photos</string>
     <string name="camera">Camera</string>
 
-
     <string name="select_photos">Select Photos</string>
 
     <string name="msg_no_application_found">No Application available to view pdf</string>
@@ -231,7 +230,8 @@
     <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
     <string name="payment">Payment</string>
     <string name="project_id">liveprojects-d5f53</string>
-    <string name="razorKey">rzp_live_BF6MXV0Ssy8uMZ</string>
+<!--    <string name="razorKey">rzp_live_BF6MXV0Ssy8uMZ</string>-->
+    <string name="razorKey">rzp_test_9KeOS44pIXZwQZ</string>
     <string name="redeem">Redeem</string>
     <string name="reset">Reset</string>
     <string name="reviews">Reviews</string>
@@ -265,4 +265,6 @@
     <string name="you_haven_t_added_any_item_in_cart">You haven\'t added any item in Cart.</string>
     <string name="you_haven_t_ordered_any_item_yet">You haven\'t ordered any item yet.</string>
     <string name="loading_more">Loading more&#8230;</string>
+    <string name="msg_submit_order">Are you sure you want to submit order?</string>
+
 </resources>

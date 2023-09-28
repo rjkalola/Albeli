@@ -41,6 +41,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val myProfileResponse = MutableLiveData<MyProfileResponse>()
     val mNotificationResponse = MutableLiveData<NotificationResponse>()
     val mLogoutResponse = MutableLiveData<BaseResponse>()
+    val mPlaceOrderResponse = MutableLiveData<BaseResponse>()
 
     fun getDashboardResponse() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -509,6 +510,37 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
             } catch (e: CancellationException) {
                 traceErrorException(e)
             } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun placeOrderResponse(
+        addressId: Int,
+        paymentType: Int,
+        paymentCode: String,
+    ) {
+        val partMap: HashMap<String, String> = HashMap()
+        partMap["address_id"] = addressId.toString()
+        partMap["payment_type"] = paymentType.toString()
+        if(paymentType == 1)
+            partMap["payment_success_code"] = paymentCode
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.placeOrder(partMap)
+                withContext(Dispatchers.Main) {
+                    mPlaceOrderResponse.value = response
+                }
+            } catch (e: JSONException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: Exception) {
+                e.printStackTrace()
                 traceErrorException(e)
             }
         }

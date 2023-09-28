@@ -94,8 +94,8 @@ class HomeFragment : BaseFragment(), View.OnClickListener, SelectItemListener,
         }
         if (!NetworkHelper.isConnected(requireContext())) {
             ToastHelper.showSnackBar(
-                mContext,
-                mContext.getString(R.string.alert_no_connection),
+                requireActivity(),
+                requireActivity().getString(R.string.alert_no_connection),
                 binding.root
             )
         } else {

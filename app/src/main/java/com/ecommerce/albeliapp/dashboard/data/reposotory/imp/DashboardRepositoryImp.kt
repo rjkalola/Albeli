@@ -135,4 +135,8 @@ class DashboardRepositoryImp(
     override suspend fun logout(): BaseResponse {
         return dashboardInterface.logout()
     }
+
+    override suspend fun placeOrder(options: HashMap<String, String>): BaseResponse {
+        return dashboardInterface.placeOrder(options)
+    }
 }

@@ -11,7 +11,6 @@ import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
 import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import okhttp3.RequestBody
-import retrofit2.http.GET
 
 interface DashboardRepository {
     suspend fun getDashboard(): DashboardResponse
@@ -103,4 +102,9 @@ interface DashboardRepository {
 
 
     suspend fun logout(): BaseResponse
+
+
+    suspend fun placeOrder(
+        options: HashMap<String, String>
+    ): BaseResponse
 }

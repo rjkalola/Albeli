@@ -35,6 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_12dp"
+            android:textSize="@dimen/text_size_15sp"
             android:layout_marginEnd="@dimen/size_14dp"
             android:layout_toStartOf="@id/ivDelete"
             android:layout_toEndOf="@id/imgProduct"

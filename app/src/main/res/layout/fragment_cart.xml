@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textSize="@dimen/text_size_15sp"
                 android:paddingTop="@dimen/size_5dp"
                 android:text="@string/sum_up_of_your_order"
                 android:textColor="@color/colorBlack" />
@@ -67,6 +68,7 @@
                                 android:id="@+id/tvTotalPriceTitle"
                                 style="@style/TextStyleVerySmall"
                                 android:layout_width="wrap_content"
+                                android:textSize="@dimen/text_size_13sp"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:textColor="@color/colorBlack" />
@@ -79,7 +81,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:textColor="@color/colorBlack"
                                 android:layout_centerVertical="true"
-                                android:textSize="@dimen/text_size_15sp" />
+                                android:textSize="@dimen/text_size_16sp" />
 
                         </RelativeLayout>
 
@@ -93,6 +95,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
+                                android:textSize="@dimen/text_size_13sp"
                                 android:text="Delivery"
                                 android:textColor="@color/colorBlack" />
 
@@ -102,6 +105,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:textSize="@dimen/text_size_13sp"
                                 android:layout_centerVertical="true"
                                 android:text="Free"
                                 android:textColor="@color/colorRed" />
@@ -120,6 +124,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:textSize="@dimen/text_size_13sp"
                                 android:layout_centerVertical="true"
                                 android:text="-"
                                 android:textColor="@color/colorRed" />
@@ -128,6 +133,7 @@
                                 style="@style/TextStyleVerySmall"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_13sp"
                                 android:layout_centerVertical="true"
                                 android:text="Discount"
                                 android:textColor="@color/colorBlack" />
@@ -147,6 +153,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:textSize="@dimen/text_size_13sp"
                                 android:layout_centerVertical="true"
                                 android:text="0"
                                 android:textColor="@color/colorRed"
@@ -157,6 +164,7 @@
                                 style="@style/TextStyleVerySmall"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_13sp"
                                 android:layout_centerVertical="true"
                                 android:text="Net Total Price"
                                 android:textColor="@color/colorBlack"
@@ -178,6 +186,7 @@
                                 android:background="@drawable/bg_tv_apply_coupon"
                                 android:gravity="center"
                                 android:padding="@dimen/size_7dp"
+                                android:textSize="@dimen/text_size_12sp"
                                 android:text="@string/apply_voucher"
                                 android:textColor="@color/colorWhite" />
 
@@ -198,7 +207,7 @@
                                 android:paddingEnd="@dimen/size_10dp"
                                 android:singleLine="true"
                                 android:textColorHint="@color/colorGray"
-                                android:textSize="@dimen/text_very_small" />
+                                android:textSize="@dimen/text_size_13sp" />
 
                         </RelativeLayout>
 

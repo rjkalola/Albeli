@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,7 @@ class ManageCartFragment : BaseFragment(), View.OnClickListener, SelectItemListe
     var categoryProductsResponse: CategoryProductsResponse? = null
     private var lastClickedTime: Long = 0
     private var selectedPosition: Int = 0
+    private var totalItems: Int = 0
     private var payingAmount = 0.0f
     private var discountAmt = 0.0f
     private var productInfo = ""
@@ -175,6 +177,7 @@ class ManageCartFragment : BaseFragment(), View.OnClickListener, SelectItemListe
 
 //        this.discountAmt = this.discountPerc * f / 100.0f
         payingAmount = totalPrice
+        totalItems = totalQty
 
         val spannableStringBuilder = SpannableStringBuilder()
         binding.tvTotalPriceTitle.text = "Total Price ($totalQty item)"
@@ -209,6 +212,9 @@ class ManageCartFragment : BaseFragment(), View.OnClickListener, SelectItemListe
             binding.tvDiscount.text = "-"
         }
         productInfo = spannableStringBuilder.toString()
+        Log.e("test", "productInfo:" + productInfo)
+        Log.e("test", "payingAmount:" + payingAmount)
+        Log.e("test", "totalItems:" + totalItems)
     }
 
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
@@ -284,6 +290,18 @@ class ManageCartFragment : BaseFragment(), View.OnClickListener, SelectItemListe
 
     fun isUpdate(): Boolean {
         return isUpdate
+    }
+
+    fun getTotalItems(): Int {
+        return totalItems
+    }
+
+    fun getTotalAmount(): kotlin.String {
+        return payingAmount.toString()
+    }
+
+    fun getProductInfo(): kotlin.String {
+        return productInfo
     }
 
 }

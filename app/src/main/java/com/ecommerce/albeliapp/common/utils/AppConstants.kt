@@ -62,6 +62,7 @@ object AppConstants {
         const val LOGOUT = 1
         const val UPDATE_APP = 2
         const val REMOVE_CART_ITEM = 3
+        const val SUBMIT_ORDER = 4
     }
 
     object LocationMode {

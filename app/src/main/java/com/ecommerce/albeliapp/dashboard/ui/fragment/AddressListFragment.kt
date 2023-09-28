@@ -48,6 +48,7 @@ class AddressListFragment : BaseFragment(), View.OnClickListener, SelectItemList
     var addressResponse: AddressResponse? = null
     private var lastClickedTime: Long = 0
     private var selectedPosition: Int = 0
+    private var addressId = 0
 
     companion object {
         fun newInstance(): AddressListFragment {
@@ -110,6 +111,7 @@ class AddressListFragment : BaseFragment(), View.OnClickListener, SelectItemList
         for (i in addressResponse?.Data!!.indices){
             if(addressResponse?.Data!![i].is_default == "1"){
                 isDefaultAddress = true
+                addressId = addressResponse?.Data!![i].id
             }
         }
         return isDefaultAddress
@@ -208,6 +210,10 @@ class AddressListFragment : BaseFragment(), View.OnClickListener, SelectItemList
 
     override fun onNegativeButtonClicked(dialogIdentifier: Int) {
 
+    }
+
+    fun getAddressId(): Int {
+        return addressId
     }
 
 

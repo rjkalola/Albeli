@@ -13,6 +13,7 @@ import com.ecommerce.albeliapp.common.ui.activity.BaseActivity
 import com.ecommerce.albeliapp.common.ui.adapter.ViewPagerAdapter
 import com.ecommerce.albeliapp.dashboard.data.ui.fragment.AddressListFragment
 import com.ecommerce.albeliapp.dashboard.data.ui.fragment.ManageCartFragment
+import com.ecommerce.albeliapp.dashboard.data.ui.fragment.PaymentFragment
 import com.ecommerce.albeliapp.dashboard.ui.viewmodel.DashboardViewModel
 import com.ecommerce.albeliapp.databinding.ActivityManageCartBinding
 import com.ecommerce.utilities.utils.ToastHelper
@@ -72,7 +73,23 @@ class ManageCartActivity : BaseActivity(), OnClickListener {
                                 if ((pagerAdapter.getmFragmentList()[selectedTabIndex] as AddressListFragment).isDefaultAddress()) {
                                     selectedTabIndex = 2
                                     setOrderProgress(selectedTabIndex)
-                                }else{
+                                    binding.viewPager.currentItem = selectedTabIndex
+                                    setContinueButtonText(getString(R.string.make_payment))
+                                    val addressId =
+                                        (pagerAdapter.getmFragmentList()[1] as AddressListFragment).getAddressId()
+                                    val totalItems =
+                                        (pagerAdapter.getmFragmentList()[0] as ManageCartFragment).getTotalItems()
+                                    val totalAmount =
+                                        (pagerAdapter.getmFragmentList()[0] as ManageCartFragment).getTotalAmount()
+                                    val productInfo =
+                                        (pagerAdapter.getmFragmentList()[0] as ManageCartFragment).getProductInfo()
+                                    (pagerAdapter.getmFragmentList()[2] as PaymentFragment).initialLoad(
+                                        addressId,
+                                        totalItems,
+                                        totalAmount,
+                                        productInfo
+                                    )
+                                } else {
                                     ToastHelper.showSnackBar(
                                         mContext, "Please select any address.", binding.root
                                     )
@@ -82,6 +99,10 @@ class ManageCartActivity : BaseActivity(), OnClickListener {
                                     mContext, "You have not added any address.", binding.root
                                 )
                             }
+                        }
+
+                        2 -> {
+                            (pagerAdapter.getmFragmentList()[selectedTabIndex] as PaymentFragment).onclickPayment()
                         }
                     }
                 }
@@ -98,6 +119,7 @@ class ManageCartActivity : BaseActivity(), OnClickListener {
         pagerAdapter = ViewPagerAdapter(supportFragmentManager)
         pagerAdapter.addFrag(ManageCartFragment.newInstance(), "")
         pagerAdapter.addFrag(AddressListFragment.newInstance(), "")
+        pagerAdapter.addFrag(PaymentFragment.newInstance(), "")
         viewPager.adapter = pagerAdapter
 //        setupTab(selectedTabIndex)
 
@@ -157,14 +179,20 @@ class ManageCartActivity : BaseActivity(), OnClickListener {
                 selectedTabIndex = 0
                 setOrderProgress(selectedTabIndex)
                 binding.viewPager.currentItem = selectedTabIndex
+                setContinueButtonText(getString(R.string.action_continue))
             }
 
             2 -> {
                 selectedTabIndex = 1
                 setOrderProgress(selectedTabIndex)
                 binding.viewPager.currentItem = selectedTabIndex
+                setContinueButtonText(getString(R.string.action_continue))
             }
         }
+    }
+
+    fun setContinueButtonText(text:String) {
+        binding.btnContinue.text = text
     }
 
 }

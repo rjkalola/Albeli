@@ -137,5 +137,11 @@ interface DashboardInterface {
 
     @GET("logout")
     suspend fun logout(): BaseResponse
+
+    @FormUrlEncoded
+    @POST("place-order")
+    suspend fun placeOrder(
+        @FieldMap options: HashMap<String, String>
+    ): BaseResponse
 }
 
