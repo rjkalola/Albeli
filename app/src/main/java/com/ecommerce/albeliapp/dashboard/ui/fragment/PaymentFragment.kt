@@ -10,7 +10,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import com.ecommerce.albeliapp.MyApplication
 import com.ecommerce.albeliapp.R
@@ -25,16 +24,13 @@ import com.ecommerce.utilities.callback.DialogButtonClickListener
 import com.ecommerce.utilities.utils.AlertDialogHelper
 import com.ecommerce.utilities.utils.ToastHelper
 import com.razorpay.Checkout
-import com.razorpay.ExternalWalletListener
-import com.razorpay.PaymentData
 import com.razorpay.PaymentResultListener
-import com.razorpay.PaymentResultWithDataListener
 import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class PaymentFragment : BaseFragment(), View.OnClickListener,
-    DialogButtonClickListener, PaymentResultWithDataListener, ExternalWalletListener,
+    DialogButtonClickListener,
     PaymentResultListener {
     private lateinit var binding: FragmentPaymentBinding
     private lateinit var mContext: Context
@@ -62,7 +58,7 @@ class PaymentFragment : BaseFragment(), View.OnClickListener,
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_payment, container, false)
         mContext = requireActivity()
-        mLogoutResponseObservers()
+        mPlaceOrderResponseObservers()
         binding.tvAddress.setOnClickListener(this)
         binding.tvPhone.setOnClickListener(this)
         binding.rgOptions.setOnCheckedChangeListener { group, checkedId ->
@@ -159,35 +155,35 @@ class PaymentFragment : BaseFragment(), View.OnClickListener,
         }
     }
 
-    override fun onPaymentSuccess(p0: String?, p1: PaymentData?) {
-        Log.e("test", "Payment Successful : Payment ID: $p0\nPayment Data: ${p1?.data}")
-//        try {
-//            alertDialogBuilder.setMessage("Payment Successful : Payment ID: $p0\nPayment Data: ${p1?.data}")
-//            alertDialogBuilder.show()
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-    }
+    /*    override fun onPaymentSuccess(p0: String?, p1: PaymentData?) {
+            Log.e("test", "Payment Successful : Payment ID: $p0\nPayment Data: ${p1?.data}")
+    //        try {
+    //            alertDialogBuilder.setMessage("Payment Successful : Payment ID: $p0\nPayment Data: ${p1?.data}")
+    //            alertDialogBuilder.show()
+    //        } catch (e: Exception) {
+    //            e.printStackTrace()
+    //        }
+        }
 
-    override fun onPaymentError(p0: Int, p1: String?, p2: PaymentData?) {
-        Log.e("test", "Payment Failed : Payment Data: ${p2?.data}")
-//        try {
-//            alertDialogBuilder.setMessage("Payment Failed : Payment Data: ${p2?.data}")
-//            alertDialogBuilder.show()
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-    }
+        override fun onPaymentError(p0: Int, p1: String?, p2: PaymentData?) {
+            Log.e("test", "Payment Failed : Payment Data: ${p2?.data}")
+    //        try {
+    //            alertDialogBuilder.setMessage("Payment Failed : Payment Data: ${p2?.data}")
+    //            alertDialogBuilder.show()
+    //        } catch (e: Exception) {
+    //            e.printStackTrace()
+    //        }
+        }
 
-    override fun onExternalWalletSelected(p0: String?, p1: PaymentData?) {
-        Log.e("test", "External wallet was selected : Payment Data: ${p1?.data}")
-//        try {
-//            alertDialogBuilder.setMessage("External wallet was selected : Payment Data: ${p1?.data}")
-//            alertDialogBuilder.show()
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-    }
+        override fun onExternalWalletSelected(p0: String?, p1: PaymentData?) {
+            Log.e("test", "External wallet was selected : Payment Data: ${p1?.data}")
+    //        try {
+    //            alertDialogBuilder.setMessage("External wallet was selected : Payment Data: ${p1?.data}")
+    //            alertDialogBuilder.show()
+    //        } catch (e: Exception) {
+    //            e.printStackTrace()
+    //        }
+        }*/
 
     override fun onPaymentSuccess(p0: String?) {
         Log.e("test", "Payment Successful : Payment ID: $p0")
@@ -197,8 +193,8 @@ class PaymentFragment : BaseFragment(), View.OnClickListener,
         Log.e("test", "Payment Failed : Payment Data: ${p1}")
     }
 
-    private fun mLogoutResponseObservers() {
-        dashboardViewModel.mLogoutResponse.observe(requireActivity()) { response ->
+    private fun mPlaceOrderResponseObservers() {
+        dashboardViewModel.mPlaceOrderResponse.observe(requireActivity()) { response ->
             hideProgressDialog()
             try {
                 if (response == null) {
@@ -209,7 +205,6 @@ class PaymentFragment : BaseFragment(), View.OnClickListener,
                     )
                 } else {
                     if (response.IsSuccess) {
-                        MyApplication().clearData()
                         moveActivity(
                             mContext,
                             DashboardActivity::class.java, true, true, null
@@ -224,12 +219,17 @@ class PaymentFragment : BaseFragment(), View.OnClickListener,
         }
     }
 
+    fun callOrderAPI(paymentType: Int, paymentCode: String) {
+        showProgressDialog(mContext, "")
+        dashboardViewModel.placeOrderResponse(addressId, paymentType, paymentCode)
+    }
+
     override fun onPositiveButtonClicked(dialogIdentifier: Int) {
         if (dialogIdentifier == AppConstants.DialogIdentifier.SUBMIT_ORDER) {
             if (binding.rgOptions.checkedRadioButtonId == R.id.rbOnline) {
-                startPayment()
+                if (activity is ManageCartActivity) (activity as ManageCartActivity?)!!.startPayment()
             } else if (binding.rgOptions.checkedRadioButtonId == R.id.rbCOD) {
-                dashboardViewModel.placeOrderResponse(addressId,2,"")
+                callOrderAPI(2, "")
             }
         }
     }

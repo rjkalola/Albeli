@@ -5,23 +5,29 @@ import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import androidx.databinding.DataBindingUtil
 import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.common.ui.activity.BaseActivity
 import com.ecommerce.albeliapp.common.ui.adapter.ViewPagerAdapter
+import com.ecommerce.albeliapp.common.utils.AppUtils
 import com.ecommerce.albeliapp.dashboard.data.ui.fragment.AddressListFragment
 import com.ecommerce.albeliapp.dashboard.data.ui.fragment.ManageCartFragment
 import com.ecommerce.albeliapp.dashboard.data.ui.fragment.PaymentFragment
 import com.ecommerce.albeliapp.dashboard.ui.viewmodel.DashboardViewModel
 import com.ecommerce.albeliapp.databinding.ActivityManageCartBinding
+import com.ecommerce.utilities.utils.StringHelper
 import com.ecommerce.utilities.utils.ToastHelper
 import com.ecommerce.utilities.utils.ViewPagerDisableSwipe
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
+import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ManageCartActivity : BaseActivity(), OnClickListener {
+class ManageCartActivity : BaseActivity(), OnClickListener, PaymentResultListener {
     private lateinit var binding: ActivityManageCartBinding
     private lateinit var mContext: Context;
     private lateinit var pagerAdapter: ViewPagerAdapter
@@ -191,8 +197,55 @@ class ManageCartActivity : BaseActivity(), OnClickListener {
         }
     }
 
-    fun setContinueButtonText(text:String) {
+    fun setContinueButtonText(text: String) {
         binding.btnContinue.text = text
     }
 
+    fun startPayment() {
+        Log.e("test", "startPayment")
+        val activity: Activity = this
+
+        val co = Checkout()
+        co.setKeyID(getString(R.string.razorKey))
+        try {
+            val options = JSONObject()
+            options.put("name", getString(R.string.app_name))
+            options.put("description", "Payment")
+            //You can omit the image option to fetch the image from dashboard
+//            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png")
+            options.put("currency", "INR")
+            options.put("amount", "1000")
+//            options.put("send_sms_hash", true);
+
+            val prefill = JSONObject()
+            prefill.put("email", AppUtils.getUserPreference(mContext)?.email)
+            prefill.put("contact", AppUtils.getUserPreference(mContext)?.phone)
+
+            options.put("prefill", prefill)
+            co.open(activity, options)
+        } catch (e: Exception) {
+            ToastHelper.showSnackBar(
+                mContext,
+                "Error in payment: " + e.message,
+                binding.root
+            )
+            e.printStackTrace()
+        }
+    }
+
+    override fun onPaymentSuccess(p0: String?) {
+        Log.e("test", "Payment Successful : Payment ID: $p0")
+        if (pagerAdapter.getmFragmentList()[selectedTabIndex] is PaymentFragment && !StringHelper.isEmpty(
+                p0
+            )
+        )
+            (pagerAdapter.getmFragmentList()[selectedTabIndex] as PaymentFragment).callOrderAPI(
+                1,
+                p0!!
+            )
+    }
+
+    override fun onPaymentError(p0: Int, p1: String?) {
+        Log.e("test", "Payment Failed : Payment Data: ${p1}")
+    }
 }
