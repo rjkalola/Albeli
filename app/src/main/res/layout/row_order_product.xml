@@ -1,0 +1,112 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.ecommerce.albeliapp.dashboard.data.model.OrderProductInfo" />
+    </data>
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
+            style="@style/Style_tvOrderDetailHeader"
+            android:text="Order Details" />
+
+        <LinearLayout
+            android:id="@+id/llSize"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/size_2dp"
+            android:paddingBottom="@dimen/size_2dp"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSizeName"
+                style="@style/Style_tvMyOrdersDetailTitle"
+                android:layout_width="wrap_content"
+                android:text="Size:"
+                android:textStyle="normal" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSize"
+                style="@style/Style_tvMyOrderDetail_Grid" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSku"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/size_2dp"
+            android:paddingBottom="@dimen/size_2dp"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Style_tvMyOrdersDetailTitle"
+                android:layout_width="wrap_content"
+                android:text="Sku:"
+                android:textStyle="normal" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSku"
+                style="@style/Style_tvMyOrderDetail_Grid" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/size_2dp"
+            android:paddingBottom="@dimen/size_2dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Style_tvMyOrdersDetailTitle"
+                android:layout_width="wrap_content"
+                android:text="Unit Price:" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUnit"
+                style="@style/Style_tvMyOrderDetail_Grid" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/size_2dp"
+            android:paddingBottom="@dimen/size_2dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Style_tvMyOrdersDetailTitle"
+                android:layout_width="wrap_content"
+                android:text="Quantity:" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvQty"
+                style="@style/Style_tvMyOrderDetail_Grid" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/size_2dp"
+            android:paddingBottom="@dimen/size_2dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Style_tvMyOrdersDetailTitle"
+                android:layout_width="wrap_content"
+                android:text="Line Total:" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLineTotal"
+                style="@style/Style_tvMyOrderDetail_Grid" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

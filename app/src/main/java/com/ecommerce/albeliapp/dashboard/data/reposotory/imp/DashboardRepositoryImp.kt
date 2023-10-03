@@ -9,6 +9,8 @@ import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
 import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
 import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
+import com.ecommerce.albeliapp.dashboard.data.model.OrderDetailsResponse
+import com.ecommerce.albeliapp.dashboard.data.model.OrdersResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import com.ecommerce.albeliapp.dashboard.data.remote.DashboardInterface
 import com.ecommerce.albeliapp.dashboard.data.reposotory.DashboardRepository
@@ -138,5 +140,13 @@ class DashboardRepositoryImp(
 
     override suspend fun placeOrder(options: HashMap<String, String>): BaseResponse {
         return dashboardInterface.placeOrder(options)
+    }
+
+    override suspend fun getMyOrders(limit: RequestBody, offset: RequestBody): OrdersResponse {
+        return dashboardInterface.getMyOrders(limit, offset)
+    }
+
+    override suspend fun orderDetails(id: RequestBody): OrderDetailsResponse {
+        return dashboardInterface.orderDetails(id)
     }
 }

@@ -14,6 +14,8 @@ import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
 import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
 import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
+import com.ecommerce.albeliapp.dashboard.data.model.OrderDetailsResponse
+import com.ecommerce.albeliapp.dashboard.data.model.OrdersResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductOptionsItemInfo
 import com.ecommerce.albeliapp.dashboard.data.reposotory.DashboardRepository
@@ -42,6 +44,8 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val mNotificationResponse = MutableLiveData<NotificationResponse>()
     val mLogoutResponse = MutableLiveData<BaseResponse>()
     val mPlaceOrderResponse = MutableLiveData<BaseResponse>()
+    val mMyOrdersResponse = MutableLiveData<OrdersResponse>()
+    val mOrderDetailsResponse = MutableLiveData<OrderDetailsResponse>()
 
     fun getDashboardResponse() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -541,6 +545,50 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                 traceErrorException(e)
             } catch (e: Exception) {
                 e.printStackTrace()
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun mOrderDetailsResponse(id:String) {
+        val idBody: RequestBody = AppUtils.getRequestBody(id)
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.orderDetails(idBody)
+                withContext(Dispatchers.Main) {
+                    mOrderDetailsResponse.value = response
+                }
+            } catch (e: JSONException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getMyOrdersList(limit: Int, offset: Int) {
+        val limitBody: RequestBody = AppUtils.getRequestBody(limit.toString())
+        val offsetBody: RequestBody = AppUtils.getRequestBody(offset.toString())
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.getMyOrders(limitBody, offsetBody)
+                withContext(Dispatchers.Main) {
+                    mMyOrdersResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
                 traceErrorException(e)
             }
         }

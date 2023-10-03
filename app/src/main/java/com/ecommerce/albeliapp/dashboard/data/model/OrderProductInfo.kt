@@ -1,6 +1,6 @@
 package com.ecommerce.albeliapp.dashboard.data.model
 
-class CategoryProductInfo(
+class OrderProductInfo(
     var id: Int = 0,
     var product_name: String = "",
     var product_description: String = "",
@@ -8,7 +8,7 @@ class CategoryProductInfo(
     var path: String = "",
     var product_image: String = "",
     var categoryName: String = "",
-    var price: ProductPriceInfo= ProductPriceInfo(),
+    var price: String = "",
     var selling_price: ProductPriceInfo= ProductPriceInfo(),
     var special_price: ProductPriceInfo = ProductPriceInfo(),
     var sku: String = "",
@@ -19,7 +19,7 @@ class CategoryProductInfo(
     var description: String = "",
     var short_description: String = "",
     var unit_price: Float = 0f,
-    var line_total: Float = 0f,
+    var line_total:String = "",
     var wishlisted:Boolean = false,
     var additional_images: MutableList<String> = ArrayList(),
     var total_review: String = "",

@@ -9,6 +9,8 @@ import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
 import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
 import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
+import com.ecommerce.albeliapp.dashboard.data.model.OrderDetailsResponse
+import com.ecommerce.albeliapp.dashboard.data.model.OrdersResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import okhttp3.RequestBody
 import retrofit2.http.Body
@@ -143,5 +145,18 @@ interface DashboardInterface {
     suspend fun placeOrder(
         @FieldMap options: HashMap<String, String>
     ): BaseResponse
+
+    @Multipart
+    @POST("my-orders")
+    suspend fun getMyOrders(
+        @Part("limit") limit: RequestBody,
+        @Part("offset") offset: RequestBody,
+    ): OrdersResponse
+
+    @Multipart
+    @POST("order-detail")
+    suspend fun orderDetails(
+        @Part("id") id: RequestBody,
+    ): OrderDetailsResponse
 }
 

@@ -1,0 +1,297 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.ecommerce.albeliapp.dashboard.data.model.OrderInfo" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/routToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:elevation="@dimen/max_elevation"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/routBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="@dimen/size_30dp"
+                    android:layout_height="@dimen/size_30dp"
+                    android:layout_marginStart="@dimen/size_8dp"
+                    android:padding="@dimen/size_8dp"
+                    app:srcCompat="@drawable/ic_back"
+                    app:tint="@color/colorBlack" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_4dp"
+                    android:fontFamily="@string/font_family_medium"
+                    android:includeFontPadding="false"
+                    android:text="Order Details"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_17sp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/_nsv"
+            android:layout_width="match_parent"
+            android:layout_below="@id/routToolbar"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/size_16dp"
+                android:paddingEnd="@dimen/size_16dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Style_tvOrderDetailHeader"
+                    android:text="Order Details" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/size_5dp"
+                    android:paddingBottom="@dimen/size_5dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/Style_tvMyOrdersDetailTitle"
+                        android:layout_weight="0.95"
+                        android:text="Telephone:" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/_tvTelephoneValue"
+                        style="@style/Style_tvMyOrderDetail_Grid" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/size_2dp"
+                    android:paddingBottom="@dimen/size_2dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/Style_tvMyOrdersDetailTitle"
+                        android:layout_weight="0.95"
+                        android:text="Email:" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/_tvEmailValue"
+                        style="@style/Style_tvMyOrderDetail_Grid" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/size_2dp"
+                    android:paddingBottom="@dimen/size_2dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/Style_tvMyOrdersDetailTitle"
+                        android:layout_weight="0.95"
+                        android:text="Date:" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/_tvDateValue"
+                        style="@style/Style_tvMyOrderDetail_Grid" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/size_2dp"
+                    android:paddingBottom="@dimen/size_2dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/Style_tvMyOrdersDetailTitle"
+                        android:layout_weight="0.95"
+                        android:text="Shipping Method:" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/_tvShippingValue"
+                        style="@style/Style_tvMyOrderDetail_Grid" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/size_2dp"
+                    android:paddingBottom="@dimen/size_2dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/Style_tvMyOrdersDetailTitle"
+                        android:layout_weight="0.95"
+                        android:text="Payment Method:" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/_tvPaymentValue"
+                        style="@style/Style_tvMyOrderDetail_Grid"
+                        android:text="Cash On Delivery" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Style_tvOrderDetailHeader"
+                    android:text="Billing Address" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/_tvBillingAddressValue"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cash On Delivery"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Style_tvOrderDetailHeader"
+                    android:text="Shipping Address" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/_tvShippingAddressValue"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cash On Delivery"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/size_15dp"
+                    android:background="@color/colorGray" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProductInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/size_15dp"
+                    android:background="@color/colorGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_10dp"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/size_5dp"
+                    android:paddingBottom="@dimen/size_5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Style_tvMyOrdersDetailTitle"
+                            android:layout_weight="0.95"
+                            android:text="Subtotal"
+                            android:textStyle="normal" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/_tvSubTotal"
+                            style="@style/Style_tvMyOrderDetail_Grid"
+                            android:gravity="end" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/size_5dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Style_tvMyOrdersDetailTitle"
+                            android:layout_weight="0.95"
+                            android:text="Free Shipping"
+                            android:textStyle="normal" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/_tvFreeShipping"
+                            style="@style/Style_tvMyOrderDetail_Grid"
+                            android:gravity="end" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/_llDiscount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/size_5dp"
+                        android:visibility="gone">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Style_tvMyOrdersDetailTitle"
+                            android:layout_weight="0.95"
+                            android:text="Discount"
+                            android:textStyle="normal" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/_tvDiscount"
+                            style="@style/Style_tvMyOrderDetail_Grid"
+                            android:gravity="end" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/size_5dp"
+                        android:background="@color/colorGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/size_5dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Style_tvMyOrdersDetailTitle"
+                            android:layout_weight="0.95"
+                            android:text="Total"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/_tvTotal"
+                            style="@style/Style_tvMyOrderDetail_Grid"
+                            android:gravity="end"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routToolbar" />
+    </RelativeLayout>
+</layout>

@@ -19,6 +19,7 @@ import com.ecommerce.albeliapp.dashboard.ui.activity.AddAddressActivity
 import com.ecommerce.albeliapp.dashboard.ui.activity.DashboardActivity
 import com.ecommerce.albeliapp.dashboard.ui.activity.EditProfileActivity
 import com.ecommerce.albeliapp.dashboard.ui.activity.NotificationListActivity
+import com.ecommerce.albeliapp.dashboard.ui.activity.OrdersListActivity
 import com.ecommerce.albeliapp.dashboard.ui.viewmodel.DashboardViewModel
 import com.ecommerce.albeliapp.databinding.FragmentMyProfileBinding
 import com.ecommerce.utilities.callback.DialogButtonClickListener
@@ -81,6 +82,10 @@ class MyProfileFragment : BaseFragment(), View.OnClickListener,
                     moveActivity(mContext, NotificationListActivity::class.java, false, false, null)
                 }
 
+                R.id.tvMyOrders -> {
+                    moveActivity(mContext, OrdersListActivity::class.java, false, false, null)
+                }
+
                 R.id.btnLogout -> {
                     AlertDialogHelper.showDialog(
                         mContext,
@@ -127,7 +132,7 @@ class MyProfileFragment : BaseFragment(), View.OnClickListener,
 
     override fun onPositiveButtonClicked(dialogIdentifier: Int) {
         if (dialogIdentifier == AppConstants.DialogIdentifier.LOGOUT) {
-            showProgressDialog(mContext,"")
+            showProgressDialog(mContext, "")
             dashboardViewModel.mLogoutResponse()
         }
     }

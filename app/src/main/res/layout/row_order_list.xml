@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.ecommerce.albeliapp.dashboard.data.model.OrderInfo" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/routMainView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_16dp"
+        android:layout_marginEnd="@dimen/size_16dp"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/size_6dp"
+        android:paddingBottom="@dimen/size_6dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvItemId"
+            style="@style/Style_tvOrderList"
+            android:textStyle="normal"
+            android:textSize="@dimen/text_size_16sp"
+            android:layout_weight="0.8"
+            android:text="" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvItemDate"
+            style="@style/Style_tvOrderList"
+            android:textStyle="normal"
+            android:textSize="@dimen/text_size_16sp"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:text="@{info.created_at}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvItemStatus"
+            style="@style/Style_tvOrderList"
+            android:layout_weight="0.8"
+            android:textSize="@dimen/text_size_16sp"
+            android:gravity="center"
+            android:textStyle="normal"
+            android:text="@{info.status}"  />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvItemTotal"
+            style="@style/Style_tvOrderList"
+            android:layout_weight="1.1"
+            android:textSize="@dimen/text_size_16sp"
+            android:gravity="end"
+            android:textStyle="normal"
+            android:text="@{info.total}"  />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

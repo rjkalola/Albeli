@@ -40,6 +40,7 @@ object AppConstants {
         const val PRODUCT_ID = "PRODUCT_ID"
         const val ADDRESS_INFO = "ADDRESS_INFO"
         const val FROM_DASHBOARD = "FROM_DASHBOARD"
+        const val ORDER_ID = "ORDER_ID"
     }
 
     object SharedPrefKey {

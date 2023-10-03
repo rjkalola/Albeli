@@ -9,8 +9,13 @@ import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
 import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
 import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
+import com.ecommerce.albeliapp.dashboard.data.model.OrderDetailsResponse
+import com.ecommerce.albeliapp.dashboard.data.model.OrdersResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import okhttp3.RequestBody
+import retrofit2.http.Multipart
+import retrofit2.http.POST
+import retrofit2.http.Part
 
 interface DashboardRepository {
     suspend fun getDashboard(): DashboardResponse
@@ -107,4 +112,13 @@ interface DashboardRepository {
     suspend fun placeOrder(
         options: HashMap<String, String>
     ): BaseResponse
+
+    suspend fun getMyOrders(
+        limit: RequestBody,
+        offset: RequestBody,
+    ): OrdersResponse
+
+    suspend fun orderDetails(
+        id: RequestBody,
+    ): OrderDetailsResponse
 }
