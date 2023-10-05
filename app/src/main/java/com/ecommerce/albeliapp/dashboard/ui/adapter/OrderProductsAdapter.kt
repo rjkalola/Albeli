@@ -1,19 +1,16 @@
 package com.ecommerce.albeliapp.dashboard.data.ui.adapter
 
 import android.content.Context
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ecommerce.albeliapp.R
-import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductInfo
-import com.ecommerce.albeliapp.dashboard.data.model.NotificationInfo
-import com.ecommerce.albeliapp.dashboard.data.model.OrderInfo
 import com.ecommerce.albeliapp.dashboard.data.model.OrderProductInfo
-import com.ecommerce.albeliapp.databinding.RowNotificationBinding
-import com.ecommerce.albeliapp.databinding.RowOrderListBinding
 import com.ecommerce.albeliapp.databinding.RowOrderProductBinding
+
 
 class OrderProductsAdapter(
     var mContext: Context,
@@ -32,7 +29,22 @@ class OrderProductsAdapter(
         val itemViewHolder = holder as ItemViewHolder
         val info = list[position]
         itemViewHolder.getData(info)
-//        itemViewHolder.binding.tvItemId.text = "#" + info.id.toString()
+
+        itemViewHolder.binding.tvQty.text = info.qty.toString()
+        if (info.options.isNotEmpty()) {
+            itemViewHolder.binding.llSize.visibility = View.VISIBLE
+
+            itemViewHolder.binding.tvSizeName.text = info.options[0].opt_name + ":"
+            itemViewHolder.binding.tvSize.text = info.options[0].opt_lable
+        } else {
+            itemViewHolder.binding.llSize.visibility = View.GONE
+        }
+        if (!TextUtils.isEmpty(info.sku))
+            itemViewHolder.binding.llSku.visibility = View.VISIBLE
+        else
+            itemViewHolder.binding.llSku.visibility = View.GONE
+
+
     }
 
     override fun getItemCount(): Int {

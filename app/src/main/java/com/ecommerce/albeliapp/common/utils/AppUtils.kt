@@ -215,7 +215,7 @@ object AppUtils {
         } //Not same serve? Already false
     }
 
-    fun handleUnauthorized(context: Context?, baseResponse: BaseResponse?,view:View) {
+    fun handleUnauthorized(context: Context?, baseResponse: BaseResponse?, view: View) {
         if (context == null || baseResponse == null) return
         if (baseResponse.ErrorCode == AppConstants.UNAUTHORIZED) {
             AlertDialogHelper.showDialog(
@@ -242,25 +242,25 @@ object AppUtils {
                 0
             )
         } else {
-            handleResponseMessage(context, baseResponse.Message!!,view)
+            handleResponseMessage(context, baseResponse.Message!!, view)
         }
     }
 
-    private fun handleResponseMessage(context: Context, messageString: String,view:View) {
+    private fun handleResponseMessage(context: Context, messageString: String, view: View) {
         try {
             if (context == null) return
             var message: String? = ""
-           /* if (messageString.contains("ERR") || messageString.contains("SUCC")) {
-                message = getStringResourceByName(context, messageString)
-            } else {
-                message = messageString
-            }*/
+            /* if (messageString.contains("ERR") || messageString.contains("SUCC")) {
+                 message = getStringResourceByName(context, messageString)
+             } else {
+                 message = messageString
+             }*/
             message = messageString
-            ToastHelper.showSnackBar(context, message,view)
-          /*  AlertDialogHelper.showDialog(
-                context, null, message, context.getString(R.string.ok),
-                null, false, null, 0
-            )*/
+            ToastHelper.showSnackBar(context, message, view)
+            /*  AlertDialogHelper.showDialog(
+                  context, null, message, context.getString(R.string.ok),
+                  null, false, null, 0
+              )*/
         } catch (e: Exception) {
 
         }
@@ -590,17 +590,16 @@ object AppUtils {
         imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
     }
 
-    fun getFcmIntent(data: FcmData): Intent? {
+    fun getFcmIntent(context: Context, data: FcmData): Intent {
         var intent: Intent? = null
         val bundle = Bundle()
         bundle.putString(AppConstants.IntentKey.NOTIFICATION_TYPE, data.type)
-        when (data.type) {
-            "1" -> intent = Intent("com.ecommerce.albeliapp.dashboard.ui.activity.DashBoardActivity")
-            else -> intent = Intent("com.ecommerce.albeliapp.dashboard.ui.activity.DashBoardActivity")
-        }
-        if (intent != null) {
-            intent.putExtras(bundle)
-        }
+        intent = Intent(context, DashboardActivity::class.java)
+//        when (data.type) {
+//            "1" -> intent = Intent("com.ecommerce.albeliapp.dashboard.ui.activity.DashBoardActivity")
+//            else -> intent = Intent("com.ecommerce.albeliapp.dashboard.ui.activity.DashBoardActivity")
+//        }
+        intent.putExtras(bundle)
         return intent
     }
 

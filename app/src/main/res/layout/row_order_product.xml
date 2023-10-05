@@ -15,7 +15,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvName"
             style="@style/Style_tvOrderDetailHeader"
-            android:text="Order Details" />
+            android:text="@{info.product_name}" />
 
         <LinearLayout
             android:id="@+id/llSize"
@@ -55,6 +55,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvSku"
+                android:text="@{info.sku}"
                 style="@style/Style_tvMyOrderDetail_Grid" />
         </LinearLayout>
 
@@ -72,6 +73,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvUnit"
+                android:text="@{info.price}"
                 style="@style/Style_tvMyOrderDetail_Grid" />
         </LinearLayout>
 
@@ -106,6 +108,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvLineTotal"
+                android:text="@{info.line_total}"
                 style="@style/Style_tvMyOrderDetail_Grid" />
         </LinearLayout>
     </LinearLayout>

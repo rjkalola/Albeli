@@ -121,4 +121,9 @@ interface DashboardRepository {
     suspend fun orderDetails(
         id: RequestBody,
     ): OrderDetailsResponse
+
+    suspend fun addDeviceToken(
+        token: RequestBody,
+        device_type: RequestBody,
+    ): BaseResponse
 }

@@ -46,6 +46,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val mPlaceOrderResponse = MutableLiveData<BaseResponse>()
     val mMyOrdersResponse = MutableLiveData<OrdersResponse>()
     val mOrderDetailsResponse = MutableLiveData<OrderDetailsResponse>()
+    val mAddDeviceTokenResponse = MutableLiveData<BaseResponse>()
 
     fun getDashboardResponse() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -583,6 +584,27 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                     dashboardRepository.getMyOrders(limitBody, offsetBody)
                 withContext(Dispatchers.Main) {
                     mMyOrdersResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun addDeviceToken(token: String) {
+        val tokenBody: RequestBody = AppUtils.getRequestBody(token)
+        val deviceTypeBody: RequestBody = AppUtils.getRequestBody("1")
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.addDeviceToken(tokenBody, deviceTypeBody)
+                withContext(Dispatchers.Main) {
+                    mAddDeviceTokenResponse.value = response
                 }
             } catch (e: JSONException) {
                 traceErrorException(e)

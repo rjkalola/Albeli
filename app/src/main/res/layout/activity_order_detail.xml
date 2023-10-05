@@ -49,7 +49,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/_nsv"
+            android:id="@+id/nsv"
             android:layout_width="match_parent"
             android:layout_below="@id/routToolbar"
             android:layout_height="match_parent">
@@ -70,7 +70,7 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:paddingTop="@dimen/size_5dp"
-                    android:paddingBottom="@dimen/size_5dp">
+                    android:paddingBottom="@dimen/size_2dp">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/Style_tvMyOrdersDetailTitle"
@@ -78,7 +78,7 @@
                         android:text="Telephone:" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/_tvTelephoneValue"
+                        android:id="@+id/tvTelephoneValue"
                         style="@style/Style_tvMyOrderDetail_Grid" />
                 </LinearLayout>
 
@@ -95,7 +95,7 @@
                         android:text="Email:" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/_tvEmailValue"
+                        android:id="@+id/tvEmailValue"
                         style="@style/Style_tvMyOrderDetail_Grid" />
                 </LinearLayout>
 
@@ -112,7 +112,7 @@
                         android:text="Date:" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/_tvDateValue"
+                        android:id="@+id/tvDateValue"
                         style="@style/Style_tvMyOrderDetail_Grid" />
                 </LinearLayout>
 
@@ -129,7 +129,7 @@
                         android:text="Shipping Method:" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/_tvShippingValue"
+                        android:id="@+id/tvShippingValue"
                         style="@style/Style_tvMyOrderDetail_Grid" />
                 </LinearLayout>
 
@@ -146,7 +146,7 @@
                         android:text="Payment Method:" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/_tvPaymentValue"
+                        android:id="@+id/tvPaymentValue"
                         style="@style/Style_tvMyOrderDetail_Grid"
                         android:text="Cash On Delivery" />
                 </LinearLayout>
@@ -156,26 +156,26 @@
                     android:text="Billing Address" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/_tvBillingAddressValue"
+                    android:id="@+id/tvBillingAddressValue"
                     style="@style/TextStyleNormal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Cash On Delivery"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/text_size_14sp" />
+                    android:textSize="@dimen/text_size_15sp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/Style_tvOrderDetailHeader"
                     android:text="Shipping Address" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/_tvShippingAddressValue"
+                    android:id="@+id/tvShippingAddressValue"
                     style="@style/TextStyleNormal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Cash On Delivery"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/text_size_14sp" />
+                    android:textSize="@dimen/text_size_15sp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -198,11 +198,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/size_20dp"
+                    android:layout_marginTop="@dimen/size_10dp"
                     android:layout_marginBottom="@dimen/size_10dp"
-                    android:orientation="vertical"
-                    android:paddingTop="@dimen/size_5dp"
-                    android:paddingBottom="@dimen/size_5dp">
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -216,7 +214,7 @@
                             android:textStyle="normal" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/_tvSubTotal"
+                            android:id="@+id/tvSubTotal"
                             style="@style/Style_tvMyOrderDetail_Grid"
                             android:gravity="end" />
                     </LinearLayout>
@@ -225,7 +223,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:paddingTop="@dimen/size_5dp">
+                        android:layout_marginTop="@dimen/size_5dp">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/Style_tvMyOrdersDetailTitle"
@@ -234,17 +232,17 @@
                             android:textStyle="normal" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/_tvFreeShipping"
+                            android:id="@+id/tvFreeShipping"
                             style="@style/Style_tvMyOrderDetail_Grid"
                             android:gravity="end" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/_llDiscount"
+                        android:id="@+id/llDiscount"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:paddingTop="@dimen/size_5dp"
+                        android:layout_marginTop="@dimen/size_5dp"
                         android:visibility="gone">
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -254,7 +252,7 @@
                             android:textStyle="normal" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/_tvDiscount"
+                            android:id="@+id/tvDiscount"
                             style="@style/Style_tvMyOrderDetail_Grid"
                             android:gravity="end" />
                     </LinearLayout>
@@ -262,14 +260,15 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginTop="@dimen/size_5dp"
+                        android:layout_marginTop="@dimen/size_10dp"
                         android:background="@color/colorGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:paddingTop="@dimen/size_5dp">
+                        android:layout_marginTop="@dimen/size_10dp"
+                        android:layout_marginBottom="@dimen/size_10dp">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/Style_tvMyOrdersDetailTitle"
@@ -278,7 +277,7 @@
                             android:textStyle="bold" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/_tvTotal"
+                            android:id="@+id/tvTotal"
                             style="@style/Style_tvMyOrderDetail_Grid"
                             android:gravity="end"
                             android:textStyle="bold" />

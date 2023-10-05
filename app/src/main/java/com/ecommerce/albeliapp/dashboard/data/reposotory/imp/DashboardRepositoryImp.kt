@@ -149,4 +149,11 @@ class DashboardRepositoryImp(
     override suspend fun orderDetails(id: RequestBody): OrderDetailsResponse {
         return dashboardInterface.orderDetails(id)
     }
+
+    override suspend fun addDeviceToken(
+        token: RequestBody,
+        device_type: RequestBody
+    ): BaseResponse {
+        return dashboardInterface.addDeviceToken(token,device_type)
+    }
 }

@@ -32,22 +32,18 @@ class MyFirebaseMessagingService : FirebaseMessagingService(), ImageLoadingListe
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         mContext = this
 
-        if (remoteMessage.data.isNotEmpty()){
+        if (remoteMessage.data.isNotEmpty()) {
             Log.d("test", "Message data payload: ${remoteMessage.data}")
             data = FcmData()
             data!!.title = remoteMessage.data["title"]
             data!!.body = remoteMessage.data["body"]
-            data!!.imageUrl = remoteMessage.data["imageUrl"]
-            data!!.sound = remoteMessage.data["sound"]
-            data!!.type = remoteMessage.data["type"]
-            data!!.notification_type = remoteMessage.data["notification_type"]
-            data!!.timestamp = remoteMessage.data["timestamp"]
+//            data!!.imageUrl = remoteMessage.data["imageUrl"]
+//            data!!.sound = remoteMessage.data["sound"]
+//            data!!.type = remoteMessage.data["type"]
+//            data!!.notification_type = remoteMessage.data["notification_type"]
+//            data!!.timestamp = remoteMessage.data["timestamp"]
 
-            if (!StringHelper.isEmpty(data!!.imageUrl)) {
-                getBitmapFromUrl(data!!.imageUrl!!)
-            } else {
-                sendNotification(data!!, null)
-            }
+            sendNotification(data!!, null)
         }
 
     }
@@ -71,9 +67,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService(), ImageLoadingListe
         if (pendingIntent != null) {
             val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
             val notificationBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_app_white_120)
+                .setSmallIcon(R.drawable.ic_push_notification)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setContentTitle(Html.fromHtml(data.title, HtmlCompat.FROM_HTML_MODE_LEGACY)) //                    .setContentTitle(getString(R.string.app_name))
+                .setContentTitle(
+                    Html.fromHtml(
+                        data.title,
+                        HtmlCompat.FROM_HTML_MODE_LEGACY
+                    )
+                ) //                    .setContentTitle(getString(R.string.app_name))
                 .setContentText(Html.fromHtml(data.body, HtmlCompat.FROM_HTML_MODE_LEGACY))
 
             if (bitmap != null) {
@@ -84,7 +85,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService(), ImageLoadingListe
                 ).setLargeIcon(bitmap)
             } else {
                 notificationBuilder.setStyle(
-                    NotificationCompat.BigTextStyle().bigText(Html.fromHtml(data.body, HtmlCompat.FROM_HTML_MODE_LEGACY))
+                    NotificationCompat.BigTextStyle()
+                        .bigText(Html.fromHtml(data.body, HtmlCompat.FROM_HTML_MODE_LEGACY))
                 )
             }
                 .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))
@@ -109,15 +111,13 @@ class MyFirebaseMessagingService : FirebaseMessagingService(), ImageLoadingListe
 
     private fun redirectToActivity(data: FcmData): PendingIntent? {
         var intent: Intent? = null
-        intent = if (AppUtils.getUserPreference(this@MyFirebaseMessagingService) == null) {
-            Intent("com.ecommerce.albeliapp.authentication.ui.activity.LoginActivity")
-        } else {
-            AppUtils.getFcmIntent(data)
-        }
-        if (intent != null) {
-            intent.putExtra(AppConstants.IntentKey.IS_FROM_NOTIFICATION, true)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        }
+//        intent = if (AppUtils.getUserPreference(this@MyFirebaseMessagingService) == null) {
+//            Intent("com.ecommerce.albeliapp.authentication.ui.activity.LoginActivity")
+//        } else {
+        intent = AppUtils.getFcmIntent(this, data)
+//        }
+        intent.putExtra(AppConstants.IntentKey.IS_FROM_NOTIFICATION, true)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         return if (intent != null) {
             PendingIntent.getActivity(
                 this, 0 /* Request code */, intent,

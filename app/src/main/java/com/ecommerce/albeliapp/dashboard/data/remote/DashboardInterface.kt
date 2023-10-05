@@ -158,5 +158,13 @@ interface DashboardInterface {
     suspend fun orderDetails(
         @Part("id") id: RequestBody,
     ): OrderDetailsResponse
+
+    @Multipart
+    @POST("add-device-token")
+    suspend fun addDeviceToken(
+        @Part("token") token: RequestBody,
+        @Part("device_type") device_type: RequestBody,
+    ): BaseResponse
+
 }
 

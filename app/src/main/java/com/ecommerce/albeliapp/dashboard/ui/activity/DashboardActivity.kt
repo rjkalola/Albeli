@@ -27,6 +27,7 @@ import com.ecommerce.utilities.utils.NetworkHelper
 import com.ecommerce.utilities.utils.ToastHelper
 import com.ecommerce.utilities.utils.ViewPagerDisableSwipe
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.messaging.FirebaseMessaging
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -47,12 +48,14 @@ class DashboardActivity : BaseActivity(), OnClickListener {
         setStatusBarColor()
         mContext = this
         mCartListResponse()
+        addFCMTokenResponse()
         bindingContent.routHomeTab.setOnClickListener(this)
         bindingContent.routCategoryTab.setOnClickListener(this)
         bindingContent.routWatchlistTab.setOnClickListener(this)
         bindingContent.routCartTab.setOnClickListener(this)
         bindingContent.routProfileTab.setOnClickListener(this)
         setupViewPager(bindingContent.viewPager);
+        getFcmToken()
     }
 
     override fun onClick(v: View) {
@@ -197,6 +200,41 @@ class DashboardActivity : BaseActivity(), OnClickListener {
                 }
             } catch (e: Exception) {
 
+            }
+        }
+    }
+
+    private fun addFCMTokenResponse() {
+        dashboardViewModel.mAddDeviceTokenResponse.observe(this) { response ->
+            hideProgressDialog()
+            try {
+                if (response == null) {
+                    ToastHelper.showSnackBar(
+                        mContext,
+                        getString(R.string.error_unknown),
+                        binding.root
+                    )
+                } else {
+                    if (response.IsSuccess) {
+
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response, binding.root)
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    private fun getFcmToken() {
+        if (NetworkHelper.isConnected(mContext) && AppUtils.isLogin(mContext)) {
+            FirebaseMessaging.getInstance().token.addOnCompleteListener {
+                if (it.isComplete) {
+                    val firebaseToken = it.result.toString()
+                    Log.e("test", "firebaseToken:$firebaseToken")
+                    dashboardViewModel.addDeviceToken(firebaseToken)
+                }
             }
         }
     }
