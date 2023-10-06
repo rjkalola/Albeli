@@ -149,7 +149,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener, SelectItemListener,
             val adapterPager =
                 DashboardBannerPagerAdapter(
                     mContext,
-                    list
+                    list,this
                 )
             binding.pagerBannerSlider.adapter = adapterPager
             binding.pagerBannerSlider.addOnPageChangeListener(object :

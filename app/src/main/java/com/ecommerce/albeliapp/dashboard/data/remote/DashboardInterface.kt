@@ -12,6 +12,7 @@ import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
 import com.ecommerce.albeliapp.dashboard.data.model.OrderDetailsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.OrdersResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
+import com.ecommerce.albeliapp.dashboard.data.model.ReviewListResponse
 import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.FieldMap
@@ -166,5 +167,21 @@ interface DashboardInterface {
         @Part("device_type") device_type: RequestBody,
     ): BaseResponse
 
+    @Multipart
+    @POST("product-review")
+    suspend fun productReview(
+        @Part("product_id") product_id: RequestBody,
+        @Part("limit") limit: RequestBody,
+        @Part("offset") offset: RequestBody,
+    ): ReviewListResponse
+
+    @Multipart
+    @POST("store-product-review")
+    suspend fun storeProductReview(
+        @Part("product_id") product_id: RequestBody,
+        @Part("rating") rating: RequestBody,
+        @Part("reviewer_name") reviewer_name: RequestBody,
+        @Part("comment") comment: RequestBody,
+    ): BaseResponse
 }
 

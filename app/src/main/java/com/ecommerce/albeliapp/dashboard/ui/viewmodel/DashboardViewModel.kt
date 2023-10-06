@@ -18,6 +18,7 @@ import com.ecommerce.albeliapp.dashboard.data.model.OrderDetailsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.OrdersResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductOptionsItemInfo
+import com.ecommerce.albeliapp.dashboard.data.model.ReviewListResponse
 import com.ecommerce.albeliapp.dashboard.data.reposotory.DashboardRepository
 import com.ecommerce.utilities.utils.StringHelper
 import kotlinx.coroutines.Dispatchers
@@ -47,6 +48,8 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val mMyOrdersResponse = MutableLiveData<OrdersResponse>()
     val mOrderDetailsResponse = MutableLiveData<OrderDetailsResponse>()
     val mAddDeviceTokenResponse = MutableLiveData<BaseResponse>()
+    val mStoreReviewResponse = MutableLiveData<BaseResponse>()
+    val mGetReviewListResponse = MutableLiveData<ReviewListResponse>()
 
     fun getDashboardResponse() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -528,7 +531,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         val partMap: HashMap<String, String> = HashMap()
         partMap["address_id"] = addressId.toString()
         partMap["payment_type"] = paymentType.toString()
-        if(paymentType == 1)
+        if (paymentType == 1)
             partMap["payment_success_code"] = paymentCode
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -551,7 +554,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         }
     }
 
-    fun mOrderDetailsResponse(id:String) {
+    fun mOrderDetailsResponse(id: String) {
         val idBody: RequestBody = AppUtils.getRequestBody(id)
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -605,6 +608,54 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                     dashboardRepository.addDeviceToken(tokenBody, deviceTypeBody)
                 withContext(Dispatchers.Main) {
                     mAddDeviceTokenResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getReviewsList(productId: Int, limit: Int, offset: Int) {
+        val productIdBody: RequestBody = AppUtils.getRequestBody(productId.toString())
+        val limitBody: RequestBody = AppUtils.getRequestBody(limit.toString())
+        val offsetBody: RequestBody = AppUtils.getRequestBody(offset.toString())
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.productReview(productIdBody, limitBody, offsetBody)
+                withContext(Dispatchers.Main) {
+                    mGetReviewListResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+                e.printStackTrace()
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+                e.printStackTrace()
+            } catch (e: Exception) {
+                traceErrorException(e)
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun storeReview(productId: Int, rating: Int, reviewerName: String, comment: String) {
+        val productIdBody: RequestBody = AppUtils.getRequestBody(productId.toString())
+        val ratingBody: RequestBody = AppUtils.getRequestBody(rating.toString())
+        val reviewerNameBody: RequestBody = AppUtils.getRequestBody(reviewerName)
+        val commentBody: RequestBody = AppUtils.getRequestBody(comment)
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.storeProductReview(productIdBody,ratingBody,reviewerNameBody,commentBody)
+                withContext(Dispatchers.Main) {
+                    mStoreReviewResponse.value = response
                 }
             } catch (e: JSONException) {
                 traceErrorException(e)

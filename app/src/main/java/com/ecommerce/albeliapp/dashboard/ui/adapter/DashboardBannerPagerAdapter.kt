@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.PagerAdapter
 import com.ecommerce.albeliapp.R
+import com.ecommerce.albeliapp.common.callback.SelectItemListener
+import com.ecommerce.albeliapp.common.utils.AppConstants
 import com.ecommerce.albeliapp.common.utils.AppUtils.setImage
 import com.ecommerce.albeliapp.databinding.RowDashboardBannerPagerBinding
 import com.ecommerce.imagepickers.utils.Constant
 
-class DashboardBannerPagerAdapter(private val mContext: Context, private val list: List<String>) :
+class DashboardBannerPagerAdapter(private val mContext: Context, private val list: List<String>,private val listener:SelectItemListener?) :
     PagerAdapter() {
     private var layoutInflater: LayoutInflater? = null
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
@@ -28,7 +30,9 @@ class DashboardBannerPagerAdapter(private val mContext: Context, private val lis
             mContext, list[position], binding.imgBanner,
             Constant.ImageScaleType.FIT_CENTER
         )
-        binding.routMainView.setOnClickListener { v -> }
+        binding.routMainView.setOnClickListener { v ->
+            listener?.onSelectItem(position,AppConstants.Action.VIEW_IMAGE,0)
+        }
         return binding.root
     }
 

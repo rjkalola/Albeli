@@ -12,6 +12,7 @@ import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
 import com.ecommerce.albeliapp.dashboard.data.model.OrderDetailsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.OrdersResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
+import com.ecommerce.albeliapp.dashboard.data.model.ReviewListResponse
 import com.ecommerce.albeliapp.dashboard.data.remote.DashboardInterface
 import com.ecommerce.albeliapp.dashboard.data.reposotory.DashboardRepository
 import okhttp3.RequestBody
@@ -155,5 +156,22 @@ class DashboardRepositoryImp(
         device_type: RequestBody
     ): BaseResponse {
         return dashboardInterface.addDeviceToken(token,device_type)
+    }
+
+    override suspend fun productReview(
+        product_id: RequestBody,
+        limit: RequestBody,
+        offset: RequestBody
+    ): ReviewListResponse {
+        return dashboardInterface.productReview(product_id,limit, offset)
+    }
+
+    override suspend fun storeProductReview(
+        product_id: RequestBody,
+        rating: RequestBody,
+        reviewer_name: RequestBody,
+        comment: RequestBody
+    ): BaseResponse {
+        return dashboardInterface.storeProductReview(product_id, rating, reviewer_name, comment)
     }
 }

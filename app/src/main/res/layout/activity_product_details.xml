@@ -14,62 +14,60 @@
         android:layout_height="match_parent"
         android:background="@color/colorWhite">
 
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:id="@+id/routToolbarView"
             android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:elevation="@dimen/max_elevation"
-            android:orientation="vertical">
+            android:layout_height="?android:attr/actionBarSize">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/routBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical">
 
-                <LinearLayout
-                    android:id="@+id/routBack"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="@dimen/size_30dp"
+                    android:layout_height="@dimen/size_30dp"
+                    android:layout_marginStart="@dimen/size_8dp"
+                    android:padding="@dimen/size_8dp"
+                    app:srcCompat="@drawable/ic_back"
+                    app:tint="@color/colorBlack" />
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:gravity="center_vertical">
+                    android:layout_marginStart="@dimen/size_4dp"
+                    android:fontFamily="@string/font_family_medium"
+                    android:includeFontPadding="false"
+                    android:text="Product Details"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_17sp" />
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/imgBack"
-                        android:layout_width="@dimen/size_30dp"
-                        android:layout_height="@dimen/size_30dp"
-                        android:layout_marginStart="@dimen/size_8dp"
-                        android:padding="@dimen/size_8dp"
-                        app:srcCompat="@drawable/ic_back"
-                        app:tint="@color/colorBlack" />
+            </LinearLayout>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/size_4dp"
-                        android:fontFamily="@string/font_family_medium"
-                        android:includeFontPadding="false"
-                        android:text="Product Details"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="@dimen/text_size_17sp" />
+            <androidx.appcompat.widget.AppCompatCheckedTextView
+                android:id="@+id/imgFavorite"
+                android:layout_width="@dimen/size_24dp"
+                android:layout_height="@dimen/size_24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/size_14dp"
+                android:drawableStart="@drawable/drawable_like_selector"
+                android:visibility="visible" />
 
-                </LinearLayout>
+        </RelativeLayout>
 
-                <androidx.appcompat.widget.AppCompatCheckedTextView
-                    android:id="@+id/imgFavorite"
-                    android:layout_width="@dimen/size_24dp"
-                    android:layout_height="@dimen/size_24dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/size_14dp"
-                    android:drawableStart="@drawable/drawable_like_selector"
-                    android:visibility="visible" />
-
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+        <View
+            android:id="@+id/dividerToolbar"
+            style="@style/ToolbarDivider"
+            android:layout_below="@id/routToolbarView" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/routToolbarView">
+            android:layout_below="@id/dividerToolbar">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -92,7 +90,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@id/vpBanner1"
                         android:layout_centerHorizontal="true"
-                        android:layout_margin="@dimen/size_8dp"
+                        android:layout_marginStart="@dimen/size_8dp"
+                        android:layout_marginTop="@dimen/size_8dp"
+                        android:layout_marginEnd="@dimen/size_8dp"
+                        android:layout_marginBottom="@dimen/size_8dp"
                         android:nestedScrollingEnabled="false" />
                 </RelativeLayout>
 
@@ -434,6 +435,30 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:id="@+id/routPreviewImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:visibility="gone">
+
+            <com.jsibbold.zoomage.ZoomageView
+                android:id="@+id/imgPreviewImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                app:zoomage_animateOnReset="true"
+                app:zoomage_autoCenter="true"
+                app:zoomage_autoResetMode="UNDER"
+                app:zoomage_maxScale="8"
+                app:zoomage_minScale="0.6"
+                app:zoomage_restrictBounds="false"
+                app:zoomage_translatable="true"
+                app:zoomage_zoomable="true" />
+
+        </RelativeLayout>
 
         <include
             android:id="@+id/progressBarView"

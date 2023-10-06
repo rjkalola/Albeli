@@ -3,6 +3,7 @@ package com.ecommerce.albeliapp.dashboard.ui.activity
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
 import android.os.Handler
@@ -14,10 +15,12 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.ecommerce.albeliapp.R
+import com.ecommerce.albeliapp.common.callback.SelectItemListener
 import com.ecommerce.albeliapp.common.ui.activity.BaseActivity
 import com.ecommerce.albeliapp.common.utils.AppConstants
 import com.ecommerce.albeliapp.common.utils.AppUtils
@@ -31,6 +34,7 @@ import com.ecommerce.albeliapp.dashboard.data.ui.adapter.DashboardCategoryAdapte
 import com.ecommerce.albeliapp.dashboard.ui.adapter.DashboardBannerPagerAdapter
 import com.ecommerce.albeliapp.dashboard.ui.viewmodel.DashboardViewModel
 import com.ecommerce.albeliapp.databinding.ActivityProductDetailsBinding
+import com.ecommerce.imagepickers.utils.Constant
 import com.ecommerce.utilities.utils.AlertDialogHelper
 import com.ecommerce.utilities.utils.NetworkHelper
 import com.ecommerce.utilities.utils.StringHelper
@@ -40,7 +44,7 @@ import java.util.Timer
 import java.util.TimerTask
 
 
-class ProductDetailsActivity : BaseActivity(), OnClickListener {
+class ProductDetailsActivity : BaseActivity(), OnClickListener, SelectItemListener {
     private lateinit var binding: ActivityProductDetailsBinding
     private lateinit var mContext: Context;
     private val dashboardViewModel: DashboardViewModel by viewModel()
@@ -68,6 +72,7 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
         binding.imgBack.setOnClickListener(this)
         binding.btnAddToCart.setOnClickListener(this)
         binding.imgFavorite.setOnClickListener(this)
+        binding.tvReviewCount.setOnClickListener(this)
         getIntentData()
     }
 
@@ -103,7 +108,11 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
                                 listSelectedOptions
                             )
                         } else {
-                            ToastHelper.showSnackBar(mContext, "Please select any Size.", binding.root)
+                            ToastHelper.showSnackBar(
+                                mContext,
+                                "Please select any Size.",
+                                binding.root
+                            )
                         }
                     } else {
                         AppUtils.showLoginRequiredAlertDialog(mContext)
@@ -130,10 +139,31 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
                     }
 
                 }
+
+                R.id.tvReviewCount -> {
+                    val intent = Intent(mContext, ReviewListActivity::class.java)
+                    val bundle = Bundle()
+                    bundle.putInt(
+                        AppConstants.IntentKey.PRODUCT_ID,
+                        productDetails.id
+                    )
+                    intent.putExtras(bundle)
+                    resultReviewActivity.launch(intent)
+                }
+
             }
         }
 
     }
+
+    var resultReviewActivity =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result != null
+                && result.resultCode == Activity.RESULT_OK
+            ) {
+
+            }
+        }
 
     private fun setSliderAdapter(list: List<String>?) {
         if (!list.isNullOrEmpty()) {
@@ -145,7 +175,7 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
             val adapterPager =
                 DashboardBannerPagerAdapter(
                     mContext,
-                    list
+                    list, this
                 )
             binding.vpBanner1.adapter = adapterPager
             binding.vpBanner1.addOnPageChangeListener(object :
@@ -180,6 +210,16 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
             binding.tblPageIndicator1.visibility = View.GONE
 
             stopTimer()
+        }
+    }
+
+    override fun onSelectItem(position: Int, action: Int, productType: Int) {
+        if (action == AppConstants.Action.VIEW_IMAGE) {
+            AppUtils.setImage(
+                mContext, productDetails.additional_images[position], binding.imgPreviewImage,
+                Constant.ImageScaleType.FIT_CENTER
+            )
+            binding.routPreviewImage.visibility = View.VISIBLE
         }
     }
 
@@ -431,9 +471,14 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener {
     }
 
     override fun onBackPressed() {
-        if (isUpdate)
-            setResult(Activity.RESULT_OK)
-        finish()
+        if (binding.routPreviewImage.visibility == View.VISIBLE) {
+            binding.routPreviewImage.visibility = View.GONE
+        } else {
+            if (isUpdate)
+                setResult(Activity.RESULT_OK)
+            finish()
+        }
+
     }
 
 }

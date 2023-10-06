@@ -12,6 +12,7 @@ import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
 import com.ecommerce.albeliapp.dashboard.data.model.OrderDetailsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.OrdersResponse
 import com.ecommerce.albeliapp.dashboard.data.model.ProductDetailsResponse
+import com.ecommerce.albeliapp.dashboard.data.model.ReviewListResponse
 import okhttp3.RequestBody
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -125,5 +126,18 @@ interface DashboardRepository {
     suspend fun addDeviceToken(
         token: RequestBody,
         device_type: RequestBody,
+    ): BaseResponse
+
+    suspend fun productReview(
+        product_id: RequestBody,
+        limit: RequestBody,
+        offset: RequestBody,
+    ): ReviewListResponse
+
+    suspend fun storeProductReview(
+        product_id: RequestBody,
+        rating: RequestBody,
+        reviewer_name: RequestBody,
+        comment: RequestBody,
     ): BaseResponse
 }

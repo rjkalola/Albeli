@@ -80,6 +80,7 @@ object AppConstants {
         const val REMOVE_CART_ITEM = 7
         const val ADDRESS_DETAILS = 8
         const val CHANGE_DEFAULT_ADDRESS = 9
+        const val VIEW_IMAGE = 10
     }
 
     object FileExtension {
