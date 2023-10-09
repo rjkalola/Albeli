@@ -11,6 +11,7 @@ import com.ecommerce.albeliapp.dashboard.data.model.AddressResourcesResponse
 import com.ecommerce.albeliapp.dashboard.data.model.AddressResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
+import com.ecommerce.albeliapp.dashboard.data.model.CouponCodeResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
 import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
 import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
@@ -36,6 +37,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val categoryResponse = MutableLiveData<CategoryResponse>()
     val baseResponse = MutableLiveData<BaseResponse>()
     val productDetailsResponse = MutableLiveData<ProductDetailsResponse>()
+    val productDetailsReviewUpdateResponse = MutableLiveData<ProductDetailsResponse>()
     val addProductToCartResponse = MutableLiveData<BaseResponse>()
     val addressResourcesResponse = MutableLiveData<AddressResourcesResponse>()
     val addAddressResponse = MutableLiveData<BaseResponse>()
@@ -50,6 +52,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val mAddDeviceTokenResponse = MutableLiveData<BaseResponse>()
     val mStoreReviewResponse = MutableLiveData<BaseResponse>()
     val mGetReviewListResponse = MutableLiveData<ReviewListResponse>()
+    val mCouponCodeResponse = MutableLiveData<CouponCodeResponse>()
 
     fun getDashboardResponse() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -222,6 +225,29 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                     dashboardRepository.getProductDetails(productIdBody)
                 withContext(Dispatchers.Main) {
                     productDetailsResponse.value = response
+                }
+            } catch (e: JSONException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getProductDetailsReviewUpdateResponse(productId: String) {
+        val productIdBody: RequestBody = AppUtils.getRequestBody(productId.toString())
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.getProductDetails(productIdBody)
+                withContext(Dispatchers.Main) {
+                    productDetailsReviewUpdateResponse.value = response
                 }
             } catch (e: JSONException) {
                 e.printStackTrace()
@@ -653,9 +679,36 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response =
-                    dashboardRepository.storeProductReview(productIdBody,ratingBody,reviewerNameBody,commentBody)
+                    dashboardRepository.storeProductReview(
+                        productIdBody,
+                        ratingBody,
+                        reviewerNameBody,
+                        commentBody
+                    )
                 withContext(Dispatchers.Main) {
                     mStoreReviewResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun verifyCouponCode(couponCode: String) {
+        val couponCodeBody: RequestBody = AppUtils.getRequestBody(couponCode)
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response =
+                    dashboardRepository.verifyCouponCode(
+                        couponCodeBody
+                    )
+                withContext(Dispatchers.Main) {
+                    mCouponCodeResponse.value = response
                 }
             } catch (e: JSONException) {
                 traceErrorException(e)

@@ -27,6 +27,7 @@ import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
 import com.ecommerce.albeliapp.dashboard.data.ui.adapter.DashboardCategoryAdapter
 import com.ecommerce.albeliapp.dashboard.data.ui.adapter.DashboardBannerPagerDotsAdapter
 import com.ecommerce.albeliapp.dashboard.ui.activity.DashboardActivity
+import com.ecommerce.albeliapp.dashboard.ui.activity.NotificationListActivity
 import com.ecommerce.albeliapp.dashboard.ui.activity.ProductFilterActivity
 import com.ecommerce.albeliapp.dashboard.ui.activity.SearchProductActivity
 import com.ecommerce.albeliapp.dashboard.ui.adapter.DashboardBannerPagerAdapter
@@ -46,6 +47,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener, SelectItemListener,
     private lateinit var binding: FragmentHomeBinding
     private lateinit var mContext: Context
     private lateinit var adapterBannerDots: DashboardBannerPagerDotsAdapter
+    private lateinit var adapterFooterBannerDots: DashboardBannerPagerDotsAdapter
     private val dashboardViewModel: DashboardViewModel by viewModel()
     private var adapterCategoryProduct: DashboardCategoryAdapter? = null
     private lateinit var dashboardData: DashboardResponse
@@ -76,6 +78,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener, SelectItemListener,
         dashboardResponseObservers()
         initialDataLoad()
         binding.imgSearch.setOnClickListener(this)
+        binding.imgNotification.setOnClickListener(this)
         return binding.root
     }
 
@@ -109,6 +112,20 @@ class HomeFragment : BaseFragment(), View.OnClickListener, SelectItemListener,
             when (v.id) {
                 R.id.imgSearch -> {
                     moveActivity(mContext, SearchProductActivity::class.java, false, false, null)
+                }
+
+                R.id.imgNotification -> {
+                    if (!NetworkHelper.isConnected(mContext)) {
+                        ToastHelper.showSnackBar(
+                            mContext,
+                            mContext.getString(R.string.alert_no_connection),
+                            binding.root
+                        )
+                    } else if (AppUtils.isLogin(mContext)) {
+                        moveActivity(mContext, NotificationListActivity::class.java, false, false, null)
+                    } else {
+                        AppUtils.showLoginRequiredAlertDialog(mContext)
+                    }
                 }
             }
         }
@@ -149,7 +166,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener, SelectItemListener,
             val adapterPager =
                 DashboardBannerPagerAdapter(
                     mContext,
-                    list,this
+                    list, this
                 )
             binding.pagerBannerSlider.adapter = adapterPager
             binding.pagerBannerSlider.addOnPageChangeListener(object :
@@ -186,6 +203,46 @@ class HomeFragment : BaseFragment(), View.OnClickListener, SelectItemListener,
         }
     }
 
+    private fun setFooterBannerAdapter(list: List<String>?) {
+        if (!list.isNullOrEmpty()) {
+            binding.vpBanner1.visibility = View.VISIBLE
+            binding.tblPageIndicator1.visibility = View.VISIBLE
+            val adapterPager =
+                DashboardBannerPagerAdapter(
+                    mContext,
+                    list, this
+                )
+            binding.vpBanner1.adapter = adapterPager
+            binding.vpBanner1.addOnPageChangeListener(object :
+                ViewPager.OnPageChangeListener {
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+                }
+
+                override fun onPageSelected(position: Int) {
+                    adapterFooterBannerDots.setSelectedDot(
+                        position
+                    )
+                }
+
+                override fun onPageScrollStateChanged(state: Int) {}
+            })
+
+            val linearLayoutManager =
+                LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+            binding.tblPageIndicator1.layoutManager = linearLayoutManager
+            adapterFooterBannerDots =
+                DashboardBannerPagerDotsAdapter(mContext, list!!.size)
+            binding.tblPageIndicator1.adapter = adapterFooterBannerDots
+        } else {
+            binding.vpBanner1.visibility = View.GONE
+            binding.tblPageIndicator1.visibility = View.GONE
+        }
+    }
+
     private fun dashboardResponseObservers() {
         dashboardViewModel.dashboardResponse.observe(requireActivity()) { response ->
             hideProgressDialog()
@@ -207,6 +264,14 @@ class HomeFragment : BaseFragment(), View.OnClickListener, SelectItemListener,
                         dashboardData = response
                         setCategoryProductsAdapter(response.categorySlider)
                         setBannerAdapter(response.mainSlider)
+                        if(response.footerSlider.isNotEmpty()){
+                            val list:MutableList<String>  = ArrayList()
+                            for (info in response.footerSlider) {
+                                list.add(info.image)
+                            }
+                            setFooterBannerAdapter(list)
+                        }
+
                         MyApplication().preferencePutString(
                             AppConstants.SharedPrefKey.DEFAULT_CATEGORY_NAME,
                             response.categoryName
@@ -230,7 +295,10 @@ class HomeFragment : BaseFragment(), View.OnClickListener, SelectItemListener,
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
         when (action) {
             AppConstants.Action.CATEGORY_DETAILS -> {
-                if (activity is DashboardActivity) (activity as DashboardActivity?)!!.refreshCategoryProducts(adapterCategoryProduct!!.list[position].category_id,adapterCategoryProduct!!.list[position].categoryName)
+                if (activity is DashboardActivity) (activity as DashboardActivity?)!!.refreshCategoryProducts(
+                    adapterCategoryProduct!!.list[position].category_id,
+                    adapterCategoryProduct!!.list[position].categoryName
+                )
             }
         }
     }

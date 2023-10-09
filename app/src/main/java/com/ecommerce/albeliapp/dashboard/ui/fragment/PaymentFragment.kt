@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.ecommerce.albeliapp.MyApplication
 import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.common.ui.fragment.BaseFragment
 import com.ecommerce.albeliapp.common.utils.AppConstants
@@ -130,13 +129,16 @@ class PaymentFragment : BaseFragment(), View.OnClickListener,
         val co = Checkout()
         co.setKeyID(getString(R.string.razorKey))
         try {
+            val totalPayment = totalAmount.toFloat()
             val options = JSONObject()
             options.put("name", getString(R.string.app_name))
             options.put("description", "Payment")
             //You can omit the image option to fetch the image from dashboard
 //            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png")
             options.put("currency", "INR")
-            options.put("amount", "1000")
+            Log.e("test", "totalPayment:" + totalPayment)
+            Log.e("test", "totalAmount:" + totalAmount)
+            options.put("amount", totalPayment * 100f)
 //            options.put("send_sms_hash", true);
 
             val prefill = JSONObject()
@@ -227,7 +229,9 @@ class PaymentFragment : BaseFragment(), View.OnClickListener,
     override fun onPositiveButtonClicked(dialogIdentifier: Int) {
         if (dialogIdentifier == AppConstants.DialogIdentifier.SUBMIT_ORDER) {
             if (binding.rgOptions.checkedRadioButtonId == R.id.rbOnline) {
-                if (activity is ManageCartActivity) (activity as ManageCartActivity?)!!.startPayment()
+                if (activity is ManageCartActivity) (activity as ManageCartActivity?)!!.startPayment(
+                    totalAmount
+                )
             } else if (binding.rgOptions.checkedRadioButtonId == R.id.rbCOD) {
                 callOrderAPI(2, "")
             }

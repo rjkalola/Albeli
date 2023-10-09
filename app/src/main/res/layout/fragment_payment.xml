@@ -68,7 +68,7 @@
                 android:paddingTop="@dimen/size_10dp"
                 android:paddingEnd="@dimen/size_20dp"
                 android:paddingBottom="@dimen/size_10dp"
-                android:text="079 2277 0223"
+                android:text="98 25 510 520"
                 android:textColor="@color/colorBlack" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 

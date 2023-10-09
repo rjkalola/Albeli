@@ -1,7 +1,6 @@
 package com.ecommerce.albeliapp.dashboard.data.ui.adapter
 
 import android.content.Context
-import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.common.api.model.ModuleInfo
-import com.ecommerce.albeliapp.common.callback.SelectItemListener
-import com.ecommerce.albeliapp.common.utils.AppConstants
-import com.ecommerce.albeliapp.common.utils.AppUtils
 import com.ecommerce.albeliapp.dashboard.callback.SelectSubItemListener
-import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductInfo
-import com.ecommerce.albeliapp.databinding.RowCategoryProductBinding
 import com.ecommerce.albeliapp.databinding.RowFilterItemBinding
-import com.ecommerce.imagepickers.utils.Constant
 
 class FilterItemAdapter(
     var mContext: Context,

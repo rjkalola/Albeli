@@ -6,6 +6,7 @@ import com.ecommerce.albeliapp.dashboard.data.model.AddressResourcesResponse
 import com.ecommerce.albeliapp.dashboard.data.model.AddressResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
+import com.ecommerce.albeliapp.dashboard.data.model.CouponCodeResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
 import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
 import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
@@ -173,5 +174,9 @@ class DashboardRepositoryImp(
         comment: RequestBody
     ): BaseResponse {
         return dashboardInterface.storeProductReview(product_id, rating, reviewer_name, comment)
+    }
+
+    override suspend fun verifyCouponCode(coupon_code: RequestBody): CouponCodeResponse {
+        return dashboardInterface.verifyCouponCode(coupon_code)
     }
 }

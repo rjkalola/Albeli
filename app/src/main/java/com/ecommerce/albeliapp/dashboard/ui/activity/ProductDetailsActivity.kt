@@ -67,6 +67,7 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener, SelectItemListen
         setStatusBarColor()
         mContext = this
         mProductDetailsResponse()
+        mProductDetailsReviewUpdateResponse()
         mAddToCartResponse()
         baseResponseObservers()
         binding.imgBack.setOnClickListener(this)
@@ -161,7 +162,8 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener, SelectItemListen
             if (result != null
                 && result.resultCode == Activity.RESULT_OK
             ) {
-
+                showProgressDialog(mContext,"")
+                dashboardViewModel.getProductDetailsReviewUpdateResponse(productId)
             }
         }
 
@@ -277,6 +279,31 @@ class ProductDetailsActivity : BaseActivity(), OnClickListener, SelectItemListen
                         binding.tvDescAdditional.text = sb
                         setSliderAdapter(productDetails.additional_images)
                         setProductOptions()
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response, binding.root)
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    private fun mProductDetailsReviewUpdateResponse() {
+        dashboardViewModel.productDetailsReviewUpdateResponse.observe(this) { response ->
+            hideProgressDialog()
+            try {
+                if (response == null) {
+                    ToastHelper.showSnackBar(
+                        mContext,
+                        getString(R.string.error_unknown),
+                        binding.root
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        productDetails = response.Data
+                        binding.tvAvgReview.text = "${productDetails.review_average} out of 5"
+                        binding.tvReviewCount.text = productDetails.total_review + " reviews";
                     } else {
                         AppUtils.handleUnauthorized(mContext, response, binding.root)
                     }

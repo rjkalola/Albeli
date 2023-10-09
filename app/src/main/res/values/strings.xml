@@ -268,5 +268,6 @@
     <string name="you_haven_t_ordered_any_item_yet">You haven\'t ordered any item yet.</string>
     <string name="loading_more">Loading more&#8230;</string>
     <string name="msg_submit_order">Are you sure you want to submit order?</string>
+    <string name="msg_exit_app">Press again to exit</string>
 
 </resources>

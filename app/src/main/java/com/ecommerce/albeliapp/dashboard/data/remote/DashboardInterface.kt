@@ -6,6 +6,7 @@ import com.ecommerce.albeliapp.dashboard.data.model.AddressResourcesResponse
 import com.ecommerce.albeliapp.dashboard.data.model.AddressResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryProductsResponse
 import com.ecommerce.albeliapp.dashboard.data.model.CategoryResponse
+import com.ecommerce.albeliapp.dashboard.data.model.CouponCodeResponse
 import com.ecommerce.albeliapp.dashboard.data.model.DashboardResponse
 import com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse
 import com.ecommerce.albeliapp.dashboard.data.model.NotificationResponse
@@ -183,5 +184,12 @@ interface DashboardInterface {
         @Part("reviewer_name") reviewer_name: RequestBody,
         @Part("comment") comment: RequestBody,
     ): BaseResponse
+
+    @Multipart
+    @POST("verify-coupon-code")
+    suspend fun verifyCouponCode(
+        @Part("coupon_code") coupon_code: RequestBody,
+    ): CouponCodeResponse
+
 }
 

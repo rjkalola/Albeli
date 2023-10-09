@@ -4,7 +4,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/routToolbar"
@@ -13,12 +15,6 @@
             android:elevation="@dimen/max_elevation"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-            </RelativeLayout>
             <LinearLayout
                 android:id="@+id/routBack"
                 android:layout_width="wrap_content"
@@ -36,6 +32,7 @@
                     app:tint="@color/colorBlack" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/size_4dp"
@@ -48,61 +45,47 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_above="@id/routSubmitReview"
             android:layout_below="@id/routToolbar"
-            android:layout_marginStart="@dimen/size_4dp"
-            android:layout_marginTop="@dimen/size_9dp"
-            android:layout_marginEnd="@dimen/size_4dp"
-            android:layout_marginBottom="@dimen/size_6dp"
-            android:background="@color/colorWhite">
+            android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvReviewList"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@id/loadMore"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/txtEmptyPlaceHolder"
+            <RatingBar
+                android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/no_data_found"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/text_size_14sp"
-                android:visibility="gone" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_22dp"
+                android:numStars="5"
+                android:rating="1"
+                android:stepSize="1" />
 
-            <LinearLayout
-                android:id="@+id/loadMore"
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLabel"
+                style="@style/Style_tvMyProfile"
+                android:layout_marginTop="@dimen/size_10dp"
+                android:background="@color/colorWhite"
+                android:drawableEnd="@null"
+                android:text="Please enter review about product:"
+                android:textColor="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtReview"
+                style="@style/Edittext_Login"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp"
+                android:gravity="start"
+                android:hint="Write here..."
+                android:maxLength="500"
+                android:maxLines="15"
+                android:minLines="15"
                 android:paddingStart="@dimen/size_16dp"
-                android:paddingTop="@dimen/size_8dp"
-                android:paddingEnd="0dp"
-                android:paddingBottom="@dimen/size_8dp"
-                android:visibility="gone">
+                android:paddingEnd="@dimen/size_16dp"
+                android:singleLine="false" />
 
-                <ProgressBar
-                    style="?android:attr/progressBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/size_6dp"
-                    android:padding="@dimen/size_3dp"
-                    android:text="@string/loading_more"
-                    android:textColor="@color/colorPrimaryText" />
-            </LinearLayout>
-
-        </RelativeLayout>
+        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/routSubmitReview"
@@ -116,19 +99,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@string/font_family_regular"
-                android:text="@string/submit_review"
+                android:text="@string/submit"
                 android:textSize="@dimen/text_size_15sp"
                 android:visibility="visible" />
 
         </RelativeLayout>
 
-        <include
-            android:id="@+id/progressBarView"
-            layout="@layout/layout_progressbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/routToolbar" />
-
     </RelativeLayout>
-
 </layout>

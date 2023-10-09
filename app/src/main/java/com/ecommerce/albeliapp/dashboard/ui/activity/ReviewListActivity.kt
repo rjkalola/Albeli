@@ -1,11 +1,16 @@
 package com.ecommerce.albeliapp.dashboard.ui.activity
 
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
 import android.view.View.OnClickListener
+import android.widget.RatingBar.OnRatingBarChangeListener
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,12 +18,9 @@ import com.ecommerce.albeliapp.R
 import com.ecommerce.albeliapp.common.ui.activity.BaseActivity
 import com.ecommerce.albeliapp.common.utils.AppConstants
 import com.ecommerce.albeliapp.common.utils.AppUtils
-import com.ecommerce.albeliapp.dashboard.data.model.NotificationInfo
 import com.ecommerce.albeliapp.dashboard.data.model.ReviewInfo
-import com.ecommerce.albeliapp.dashboard.data.ui.adapter.NotificationListAdapter
 import com.ecommerce.albeliapp.dashboard.data.ui.adapter.ReviewListAdapter
 import com.ecommerce.albeliapp.dashboard.ui.viewmodel.DashboardViewModel
-import com.ecommerce.albeliapp.databinding.ActivityNotificationListBinding
 import com.ecommerce.albeliapp.databinding.ActivityReviewListBinding
 import com.ecommerce.utilities.utils.NetworkHelper
 import com.ecommerce.utilities.utils.ToastHelper
@@ -38,6 +40,7 @@ class ReviewListActivity : BaseActivity(), OnClickListener {
     var mIsLastPage = false
     var adapter: ReviewListAdapter? = null
     var productId = 0
+    var isUpdate = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +49,7 @@ class ReviewListActivity : BaseActivity(), OnClickListener {
         mContext = this
         mReviewsResponse()
         binding.imgBack.setOnClickListener(this)
+        binding.btnSubmitReview.setOnClickListener(this)
         getIntentData()
     }
 
@@ -55,6 +59,12 @@ class ReviewListActivity : BaseActivity(), OnClickListener {
             when (v.id) {
                 R.id.imgBack ->
                     onBackPressed()
+
+                R.id.btnSubmitReview -> {
+                    val intent = Intent(mContext, AddReviewActivity::class.java)
+                    intent.putExtra(AppConstants.IntentKey.PRODUCT_ID, productId)
+                    resultAddReviewActivity.launch(intent)
+                }
             }
         }
     }
@@ -153,6 +163,23 @@ class ReviewListActivity : BaseActivity(), OnClickListener {
                 e.printStackTrace()
             }
         }
+    }
+
+    var resultAddReviewActivity =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result != null
+                && result.resultCode == Activity.RESULT_OK
+            ) {
+                isUpdate = true
+                offset = 0
+                loadData(true)
+            }
+        }
+
+    override fun onBackPressed() {
+        if (isUpdate)
+            setResult(Activity.RESULT_OK)
+        finish()
     }
 
 }

@@ -3,10 +3,12 @@ package com.ecommerce.albeliapp.dashboard.ui.activity
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.os.SystemClock
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.databinding.DataBindingUtil
 import com.ecommerce.albeliapp.R
@@ -244,6 +246,16 @@ class DashboardActivity : BaseActivity(), OnClickListener {
         Log.e("test", "onResume")
         if (AppUtils.isLogin(mContext))
             dashboardViewModel.getCartListResponse()
+    }
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, getString(R.string.msg_exit_app), Toast.LENGTH_SHORT).show()
+        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
 }

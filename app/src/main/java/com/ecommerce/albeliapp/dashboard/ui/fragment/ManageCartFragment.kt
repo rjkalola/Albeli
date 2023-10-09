@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.text.SpannableStringBuilder
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -27,10 +28,12 @@ import com.ecommerce.albeliapp.databinding.FragmentCartBinding
 import com.ecommerce.utilities.callback.DialogButtonClickListener
 import com.ecommerce.utilities.utils.AlertDialogHelper
 import com.ecommerce.utilities.utils.NetworkHelper
+import com.ecommerce.utilities.utils.StringHelper
 import com.ecommerce.utilities.utils.ToastHelper
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.String
 import java.util.Locale
+
 
 class ManageCartFragment : BaseFragment(), View.OnClickListener, SelectItemListener,
     DialogButtonClickListener {
@@ -46,6 +49,7 @@ class ManageCartFragment : BaseFragment(), View.OnClickListener, SelectItemListe
     private var discountAmt = 0.0f
     private var productInfo = ""
     private var isUpdate = false
+    private var discountPerc = 0.0f
 
     companion object {
         fun newInstance(): ManageCartFragment {
@@ -68,7 +72,9 @@ class ManageCartFragment : BaseFragment(), View.OnClickListener, SelectItemListe
         mContext = requireActivity()
         categoryProductsListObservers()
         addRemoveQtyObservers()
+        mCouponCodeResponseObservers()
         loadData(true)
+        binding.tvApplyCoupon.setOnClickListener(this)
         return binding.root
     }
 
@@ -90,11 +96,27 @@ class ManageCartFragment : BaseFragment(), View.OnClickListener, SelectItemListe
         if (SystemClock.elapsedRealtime() - this.lastClickedTime >= 1000) {
             this.lastClickedTime = SystemClock.elapsedRealtime()
             when (v.id) {
-
+                R.id.tvApplyCoupon -> {
+                    if (checkCouponValidation(binding.edtCoupon.text.toString().trim())) {
+                        showProgressDialog(mContext, "")
+                        dashboardViewModel.verifyCouponCode(
+                            binding.edtCoupon.text.toString().trim()
+                        )
+                    }
+                }
             }
         }
 
     }
+
+    private fun checkCouponValidation(str: kotlin.String): Boolean {
+        if (!TextUtils.isEmpty(str)) {
+            return true
+        }
+        ToastHelper.showSnackBar(mContext, "Please enter valid voucher code.", binding.root)
+        return false
+    }
+
 
     public fun validate(): Boolean {
         return categoryProductsResponse?.Data!!.isNotEmpty()
@@ -140,6 +162,39 @@ class ManageCartFragment : BaseFragment(), View.OnClickListener, SelectItemListe
         }
     }
 
+    private fun mCouponCodeResponseObservers() {
+        dashboardViewModel.mCouponCodeResponse.observe(requireActivity()) { response ->
+            hideProgressDialog()
+            try {
+                if (response == null) {
+                    ToastHelper.showSnackBar(
+                        mContext,
+                        mContext.getString(R.string.error_unknown),
+                        binding.root
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        if (!StringHelper.isEmpty(response.value)) {
+                            ToastHelper.showSnackBar(
+                                mContext,
+                                response.Message!!,
+                                binding.root
+                            )
+                            discountPerc = response.value.toFloat();
+                            Log.e("test", "discountPerc:" + discountPerc)
+                            refreshCartPrices();
+                            binding.edtCoupon.setText("")
+                        }
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response, binding.root)
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
     private fun categoryProductsListObservers() {
         dashboardViewModel.categoryProductsResponse.observe(requireActivity()) { response ->
             hideCustomProgressDialog(binding.progressBarView.routProgress)
@@ -175,7 +230,8 @@ class ManageCartFragment : BaseFragment(), View.OnClickListener, SelectItemListe
             totalPrice += categoryProductsResponse?.Data!![i].line_total
         }
 
-//        this.discountAmt = this.discountPerc * f / 100.0f
+        this.discountAmt = discountPerc * totalPrice / 100.0f
+        Log.e("test", "discountAmt:" + discountAmt)
         payingAmount = totalPrice
         totalItems = totalQty
 
@@ -195,7 +251,7 @@ class ManageCartFragment : BaseFragment(), View.OnClickListener, SelectItemListe
             binding.tvNetPrice.text = "₹" + String.format(
                 Locale.getDefault(),
                 "%.02f",
-                arrayOf<Any>(java.lang.Float.valueOf(this.payingAmount))
+                payingAmount
             )
             spannableStringBuilder.append(binding.tvNetPrice.text)
         } else {

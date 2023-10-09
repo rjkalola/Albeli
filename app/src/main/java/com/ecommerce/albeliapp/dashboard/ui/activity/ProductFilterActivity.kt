@@ -22,7 +22,8 @@ import com.ecommerce.utilities.utils.ToastHelper
 import org.parceler.Parcels
 
 
-class ProductFilterActivity : BaseActivity(), View.OnClickListener, SelectSubItemListener {
+class ProductFilterActivity : BaseActivity(), View.OnClickListener,
+    SelectSubItemListener {
     private lateinit var binding: ActivityProductFilterBinding
     private lateinit var mContext: Context;
     private var listFilters: MutableList<ModuleInfo> = ArrayList()

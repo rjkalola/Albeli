@@ -88,15 +88,14 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size_130dp"
+                        android:layout_height="@dimen/size_158dp"
                         android:layout_marginStart="@dimen/size_12dp"
                         android:layout_marginEnd="@dimen/size_12dp">
 
                         <androidx.viewpager.widget.ViewPager
                             android:id="@+id/pagerBannerSlider"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/size_10dp" />
+                            android:layout_height="match_parent" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rvBannerDots"
@@ -136,6 +135,7 @@
                         android:id="@+id/rvFeaturedProducts"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:layout_marginStart="@dimen/size_12dp"
                         android:layout_marginEnd="@dimen/size_12dp"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -143,16 +143,15 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size_130dp"
+                        android:layout_height="@dimen/size_158dp"
+                        android:layout_marginTop="@dimen/size_10dp"
                         android:layout_marginStart="@dimen/size_12dp"
-                        android:layout_marginEnd="@dimen/size_12dp"
-                        android:layout_marginTop="@dimen/size_10dp">
+                        android:layout_marginEnd="@dimen/size_12dp">
 
-                        <com.ecommerce.albeliapp.common.utils.WrapContentHeightViewPager
+                        <androidx.viewpager.widget.ViewPager
                             android:id="@+id/vpBanner1"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/size_10dp" />
+                            android:layout_height="match_parent" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/tblPageIndicator1"
@@ -160,7 +159,10 @@
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@id/vpBanner1"
                             android:layout_centerHorizontal="true"
-                            android:layout_margin="@dimen/size_8dp"
+                            android:layout_marginStart="@dimen/size_8dp"
+                            android:layout_marginTop="@dimen/size_8dp"
+                            android:layout_marginEnd="@dimen/size_8dp"
+                            android:layout_marginBottom="@dimen/size_8dp"
                             android:nestedScrollingEnabled="false" />
                     </RelativeLayout>
 

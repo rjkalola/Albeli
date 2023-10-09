@@ -25,13 +25,13 @@ class DashboardCategoryAdapter(
             LayoutInflater.from(parent.context).inflate(R.layout.row_dashboard_category_item, parent, false)
         return ItemViewHolder(itemView)
     }
-
+    
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val itemViewHolder = holder as ItemViewHolder
         val info = list[position]
         itemViewHolder.getData(info)
         AppUtils.setImage(mContext,info.image,itemViewHolder.binding.imgProduct,
-            Constant.ImageScaleType.CENTER_CROP)
+            Constant.ImageScaleType.FIT_CENTER)
 
         itemViewHolder.binding.routMainView.setOnClickListener {
             listener.onSelectItem(position, AppConstants.Action.CATEGORY_DETAILS, 0)

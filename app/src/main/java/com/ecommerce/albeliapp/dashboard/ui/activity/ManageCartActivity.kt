@@ -201,20 +201,24 @@ class ManageCartActivity : BaseActivity(), OnClickListener, PaymentResultListene
         binding.btnContinue.text = text
     }
 
-    fun startPayment() {
+    fun startPayment(totalAmount:String) {
         Log.e("test", "startPayment")
         val activity: Activity = this
 
         val co = Checkout()
         co.setKeyID(getString(R.string.razorKey))
         try {
+            val totalPayment = totalAmount.toFloat()
             val options = JSONObject()
             options.put("name", getString(R.string.app_name))
             options.put("description", "Payment")
             //You can omit the image option to fetch the image from dashboard
 //            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png")
             options.put("currency", "INR")
-            options.put("amount", "1000")
+//            options.put("amount", "1000")
+            Log.e("test","totalPayment:"+totalPayment)
+            Log.e("test","totalAmount:"+totalAmount)
+            options.put("amount", totalPayment*100f)
 //            options.put("send_sms_hash", true);
 
             val prefill = JSONObject()
