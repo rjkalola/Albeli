@@ -41,7 +41,7 @@ class CategoryProductsAdapter(
         itemViewHolder.getData(info)
         AppUtils.setImage(
             mContext, info.path, itemViewHolder.binding.imgProduct,
-            Constant.ImageScaleType.CENTER_CROP
+            Constant.ImageScaleType.FIT_CENTER
         )
         itemViewHolder.binding.txtOldPrice.paintFlags =
             itemViewHolder.binding.txtOldPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG

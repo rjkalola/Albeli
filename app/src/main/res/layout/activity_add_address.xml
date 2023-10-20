@@ -110,10 +110,10 @@
                         <androidx.appcompat.widget.AppCompatSpinner
                             android:id="@+id/spState"
                             android:layout_width="match_parent"
-                            android:layout_marginStart="@dimen/size_6dp"
                             android:layout_height="match_parent"
                             android:layout_alignTop="@id/viewState"
                             android:layout_alignBottom="@id/viewState"
+                            android:layout_marginStart="@dimen/size_6dp"
                             android:background="@color/transparent"
                             android:paddingStart="0dp"
                             android:spinnerMode="dropdown" />
@@ -127,8 +127,8 @@
                         android:layout_marginTop="@dimen/size_10dp"
                         android:layout_marginEnd="@dimen/size_20dp"
                         android:digits="1234567890"
-                        android:imeOptions="actionNext"
                         android:hint="@string/title_zip_code"
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:maxLength="6"
                         android:text="@={info.zip}" />
@@ -182,8 +182,8 @@
                         android:layout_marginEnd="@dimen/size_20dp"
                         android:digits="1234567890 ()-"
                         android:hint="@string/hint_phone"
-                        android:inputType="phone"
                         android:imeOptions="actionDone"
+                        android:inputType="phone"
                         android:maxLength="13"
                         android:text="@={info.phone}" />
 
