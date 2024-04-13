@@ -1,4 +1,4 @@
-package com.ecommerce.albeliapp
+package com.ecommerce.albeli
 
 import org.junit.Test
 

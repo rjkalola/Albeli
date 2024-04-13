@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
 
     <application
-        android:name="com.ecommerce.albeliapp.MyApplication"
+        android:name="com.ecommerce.albeli.MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,7 +20,7 @@
         tools:replace="android:allowBackup">
 
         <activity
-            android:name="com.ecommerce.albeliapp.authentication.ui.activity.SplashActivity"
+            android:name="com.ecommerce.albeli.authentication.ui.activity.SplashActivity"
             android:exported="true"
             tools:ignore="Instantiatable">
             <intent-filter>
@@ -32,12 +32,12 @@
         </activity>
 
         <activity
-            android:name="com.ecommerce.albeliapp.authentication.ui.activity.LoginActivity"
+            android:name="com.ecommerce.albeli.authentication.ui.activity.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.ecommerce.albeliapp.authentication.ui.activity.SignUpActivity"
+            android:name="com.ecommerce.albeli.authentication.ui.activity.SignUpActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
@@ -117,7 +117,7 @@
             android:value="@string/google_maps_key" />
 
         <service
-            android:name="com.ecommerce.albeliapp.MyFirebaseMessagingService"
+            android:name="com.ecommerce.albeli.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

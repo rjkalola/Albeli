@@ -6,7 +6,7 @@
 
         <variable
             name="info"
-            type="com.ecommerce.albeliapp.dashboard.data.model.MyProfileResponse" />
+            type="com.ecommerce.albeli.dashboard.data.model.MyProfileResponse" />
     </data>
 
     <RelativeLayout

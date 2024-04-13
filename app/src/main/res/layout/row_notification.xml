@@ -4,7 +4,7 @@
 
         <variable
             name="info"
-            type="com.ecommerce.albeliapp.dashboard.data.model.NotificationInfo" />
+            type="com.ecommerce.albeli.dashboard.data.model.NotificationInfo" />
     </data>
 
     <LinearLayout

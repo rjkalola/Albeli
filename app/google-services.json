@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:520156587732:android:644914a7398adc185e3d41",
         "android_client_info": {
-          "package_name": "com.ecommerce.albeliapp"
+          "package_name": "com.ecommerce.albeli"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "520156587732-5vanrv7r8lvb7lo474ce44103l5mbbi5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.ecommerce.albeliapp",
+            "package_name": "com.ecommerce.albeli",
             "certificate_hash": "6a8fa76aed2240b2eee45b147d13e6252e03a905"
           }
         },

@@ -4,7 +4,7 @@
 
         <variable
             name="info"
-            type="com.ecommerce.albeliapp.dashboard.data.model.ReviewInfo" />
+            type="com.ecommerce.albeli.dashboard.data.model.ReviewInfo" />
     </data>
 
     <androidx.cardview.widget.CardView

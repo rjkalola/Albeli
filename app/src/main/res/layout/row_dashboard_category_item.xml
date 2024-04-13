@@ -4,7 +4,7 @@
 
         <variable
             name="info"
-            type="com.ecommerce.albeliapp.dashboard.data.model.DashboardCategoryInfo" />
+            type="com.ecommerce.albeli.dashboard.data.model.DashboardCategoryInfo" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.ecommerce.albeliapp.common.utils.ProductImageViewByWidth
+            <com.ecommerce.albeli.common.utils.ProductImageViewByWidth
                 android:id="@+id/imgProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

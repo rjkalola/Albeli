@@ -4,7 +4,7 @@
 
         <variable
             name="info"
-            type="com.ecommerce.albeliapp.common.api.model.ModuleInfo" />
+            type="com.ecommerce.albeli.common.api.model.ModuleInfo" />
     </data>
 
     <RelativeLayout

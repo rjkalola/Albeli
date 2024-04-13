@@ -6,7 +6,7 @@
 
         <variable
             name="info"
-            type="com.ecommerce.albeliapp.dashboard.data.model.AddressInfo" />
+            type="com.ecommerce.albeli.dashboard.data.model.AddressInfo" />
     </data>
 
     <RelativeLayout
