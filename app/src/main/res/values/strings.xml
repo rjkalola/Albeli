@@ -231,9 +231,9 @@
     <string name="payment">Payment</string>
     <string name="project_id">liveprojects-d5f53</string>
     <!--    <string name="razorKey">rzp_live_BF6MXV0Ssy8uMZ</string>--> original
-    <string name="razorKey">rzp_test_QOJeepabVJJoaQ</string>
     <!--    <string name="razorKey">rzp_test_9KeOS44pIXZwQZ</string>--> old app
-
+<!--    <string name="razorKey">rzp_test_QOJeepabVJJoaQ</string>-->
+    <string name="razorKey">rzp_live_pXmLRk8i9364ju</string>
     <string name="redeem">Redeem</string>
     <string name="reset">Reset</string>
     <string name="reviews">Reviews</string>
